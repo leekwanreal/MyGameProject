@@ -15,17 +15,18 @@ import main.UtilityTool;
 public class TileManager {
 	GamePanel gp;
 	public Tile[] tile;
-	public int mapTileNum[][];
+	public int mapTileNum[][][];
 	
 	public TileManager(GamePanel gp) {
 		this.gp = gp;
 		
-		tile = new Tile[50];
-		mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
+		tile = new Tile[100];
+		mapTileNum = new int[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
 		
 		
 		getTileImage();
-		loadMap("/maps/worldV2.txt");
+		loadMap("/maps/mymap1.txt", 0);
+		//loadMap("/maps/interior01.txt", 1);
 	}
 	public void getTileImage() {
 		// Placeholder
@@ -41,38 +42,67 @@ public class TileManager {
 		setup(9, "grass00", false);
 		
 		// Real setup
-		setup(10, "grass00", false);
+		setup(10, "mydirt", false);
 		setup(11, "grass01", false);
-		setup(12, "water00", true);
-		setup(13, "water01", true);
-		setup(14, "water02", true);
-		setup(15, "water03", true);
-		setup(16, "water04", true);
-		setup(17, "water05", true);
-		setup(18, "water06", true);
-		setup(19, "water07", true);
-		setup(20, "water08", true);
-		setup(21, "water09", true);
-		setup(22, "water10", true);
-		setup(23, "water11", true);
-		setup(24, "water12", true);
-		setup(25, "water13", true);
-		setup(26, "road00", false);
-		setup(27, "road01", false);
-		setup(28, "road02", false);
-		setup(29, "road03", false);
-		setup(30, "road04", false);
-		setup(31, "road05", false);
-		setup(32, "road06", false);
-		setup(33, "road07", false);
-		setup(34, "road08", false);
-		setup(35, "road09", false);
-		setup(36, "road10", false);
-		setup(37, "road11", false);
-		setup(38, "road12", false);
-		setup(39, "earth", false);
-		setup(40, "wall", true);
-		setup(41, "tree", true);
+		setup(12, "table2", true);
+		setup(13, "table1", true);
+		setup(14, "chair_1", true);
+		setup(15, "chair_2", true);
+		setup(16, "chair_3", true);
+		setup(17, "chair_4", true);
+		setup(18, "brick", true);
+		setup(19, "stonelinedown", false);
+		setup(20, "stonelineup", false);
+		setup(21, "cellright", true);
+		setup(22, "cellup", true);
+		setup(23, "cellleft", true);
+		setup(24, "celldown", true);
+		setup(25, "celltopright", true);
+		setup(26, "celltopleft", true);
+		setup(27, "celldownleft", true);
+		setup(28, "celldownright", true);
+		setup(29, "cellfloor", false);
+		setup(30, "mybush", true);
+		setup(31, "boardtopright", true);
+		setup(32, "boardtopleft", true);
+		setup(33, "boarddownleft", true);
+		setup(34, "boarddownright", true);
+		setup(35, "boarddown", true);
+		setup(36, "boardtop", true);
+		setup(37, "tableboard2", true);
+		setup(38, "bookshelf2", true);
+		setup(39, "chairboard", true);
+		setup(40, "stair1", false);
+		setup(41, "holder1", false);
+		setup(42, "england1", true);
+		setup(43, "vietnam1", true);
+		setup(44, "usa1", true);
+		setup(45, "bed1", true);
+		setup(46, "bed2", true);
+		setup(47, "drawer", true);
+		setup(48, "schoollogo", true);
+		setup(49, "math_sign", true);
+		setup(50, "computer", true);
+		setup(51, "stadium_bot_horizontal_line", false); 
+		setup(52, "stadium_botleft_corner", false); 
+		setup(53, "stadium_botright_corner", false); 
+		setup(54, "stadium_box_botleft", false); 
+		setup(55, "stadium_box_botright", false); 
+		setup(56, "stadium_box_topleft", false); 
+		setup(57, "stadium_box_topright", false); 
+		setup(58, "stadium_horizontal_line", false); 
+		setup(59, "stadium_left_vertical_line", false); 
+		setup(60, "stadium_top_horizontal_line", false); 
+		setup(61, "stadium_topleft_corner", false); 
+		setup(62, "stadium_topright_corner", false); 
+		setup(63, "stadium_Tshape_down", false); 
+		setup(64, "stadium_Tshape_left", false); 
+		setup(65, "stadium_Tshape_right", false); 
+		setup(66, "stadium_Tshape_up", false); 
+		setup(67, "stadium_right_vertical_line", false); 
+		setup(68, "stadium_plain", false); 
+		setup(69, "stadium_vertical_line", false);
+		setup(70, "kickoff", false);
 	}
 	
 	public void setup(int index, String imageName, boolean collision) {
@@ -88,7 +118,7 @@ public class TileManager {
 		}
 	}
 	
-	public void loadMap(String filePath) {
+	public void loadMap(String filePath, int map) {
 		try {
 			InputStream is = getClass().getResourceAsStream(filePath);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -98,7 +128,7 @@ public class TileManager {
 				String numbers[] = line.split(" ");
 				for (int j = 0; j < gp.maxWorldCol; ++j) {
 					int num = Integer.parseInt(numbers[j]);
-					mapTileNum[j][i] = num;
+					mapTileNum[map][j][i] = num;
 				}
 			}
 			br.close();
@@ -110,6 +140,8 @@ public class TileManager {
 	public void draw(Graphics2D g2) {
 		for (int i = 0; i < gp.maxWorldRow; ++i) {
 			for (int j = 0; j < gp.maxWorldCol; ++j) {	
+				int tileNum = mapTileNum[gp.currentMap][j][i];
+				
 				int worldX = j * gp.tileSize;
 				int worldY = i * gp.tileSize;
 				int screenX = worldX - gp.player.worldX + gp.player.screenX;
@@ -135,13 +167,13 @@ public class TileManager {
 					worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
 					worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && 
 					worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-					g2.drawImage(tile[mapTileNum[j][i]].image, screenX, screenY, null);
+					g2.drawImage(tile[tileNum].image, screenX, screenY, null);
 				}
 				else if (gp.player.screenX > gp.player.worldX ||
 						 gp.player.screenY > gp.player.worldY ||
 						 rightOffset > gp.worldWidth - gp.player.worldX ||
 						 bottomOffset > gp.worldHeight - gp.player.worldY) {
-						g2.drawImage(tile[mapTileNum[j][i]].image, screenX, screenY, null);
+						g2.drawImage(tile[tileNum].image, screenX, screenY, null);
 				}
 			}
 		}

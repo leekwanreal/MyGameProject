@@ -19,19 +19,19 @@ public class NPC_OldMan extends Entity{
 	}
 	
 	public void getNPCImage() {
-		up1 = setup("/npc/oldman_up_1.png");
-		up2 = setup("/npc/oldman_up_2.png");
-		down1 = setup("/npc/oldman_down_1.png");
-		down2 = setup("/npc/oldman_down_2.png");
-		left1 = setup("/npc/oldman_left_1.png");
-		left2 = setup("/npc/oldman_left_2.png");
-		right1 = setup("/npc/oldman_right_1.png");
-		right2 = setup("/npc/oldman_right_2.png");
+		up1 = setup("/npc/oldman_up_1.png", gp.tileSize, gp.tileSize);
+		up2 = setup("/npc/oldman_up_2.png", gp.tileSize, gp.tileSize);
+		down1 = setup("/npc/oldman_down_1.png", gp.tileSize, gp.tileSize);
+		down2 = setup("/npc/oldman_down_2.png", gp.tileSize, gp.tileSize);
+		left1 = setup("/npc/oldman_left_1.png", gp.tileSize, gp.tileSize);
+		left2 = setup("/npc/oldman_left_2.png", gp.tileSize, gp.tileSize);
+		right1 = setup("/npc/oldman_right_1.png", gp.tileSize, gp.tileSize);
+		right2 = setup("/npc/oldman_right_2.png", gp.tileSize, gp.tileSize);
 	}
 	
 	public void setDialogue() {
 		dialogue[0] = "Hello, buddy.";
-		dialogue[1] = "You must find the treasure on this ;island.";
+		dialogue[1] = "You must find the treasure on this \nisland.";
 		dialogue[2] = "I'm too old for an adventure.";
 		dialogue[3] = "Good luck!";
 		
