@@ -64,7 +64,7 @@ public class AssetSetter {
 	}
 	
 	public void setMonster() {
-		int i = 0;
+		/*int i = 0;
 		gp.monster[i] = new MON_GreenSlime(gp);
 		gp.monster[i].worldX = gp.tileSize * 23;
 		gp.monster[i].worldY = gp.tileSize * 36;
@@ -84,7 +84,7 @@ public class AssetSetter {
 		gp.monster[i] = new MON_GreenSlime(gp);
 		gp.monster[i].worldX = gp.tileSize * 38;
 		gp.monster[i].worldY = gp.tileSize * 42;
-		i++;
+		i++;*/
 	}
 	
 	public void setInteractiveTile() {

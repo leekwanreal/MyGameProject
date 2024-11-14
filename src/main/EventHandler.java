@@ -8,6 +8,7 @@ public class EventHandler {
 	
 	int previousEventX, previousEventY;
 	boolean canTouchEvent;
+	int talkToNPCindex = 0;
 	
 	public EventHandler(GamePanel gp) {
 		this.gp = gp;
@@ -42,9 +43,11 @@ public class EventHandler {
 			//if (hit(23,19,"any")) {damagePit(27,16,gp.dialogueState);}
 			//if (hit(23,12,"up")) {healingPool(23,12,gp.dialogueState);}
 			if (hit(18,15,"any")) {
-				healingPool(18,15,gp.dialogueState);
+				talkToNPC(18,15,gp.dialogueState);
 			}
-		}
+			if (hit(18,16,"any")) {
+				talkToNPC(18,16,gp.dialogueState);
+			}		}
 	}
 	
 	public boolean hit(int col, int row, String reqDirection) {
@@ -101,5 +104,22 @@ public class EventHandler {
 			gp.aSetter.setMonster();
 		}
 		
+	}
+
+	public void talkToNPC(int col, int row, int gameState) {
+		if (gp.keyH.enterPressed == true) {
+			gp.gameState = gameState;
+			gp.player.attackCanceled = true;
+			switch(talkToNPCindex) {
+			case 0: gp.ui.currentDialogue = "Help me please!"; break;
+			case 1: gp.ui.currentDialogue = "I am trapped here because the monsters \nhave taken over the school!"; break;
+			case 2: gp.ui.currentDialogue = "You need to rescue the school from the \nmonsters!"; break;
+
+			}
+			talkToNPCindex++;
+			if (talkToNPCindex > 2) {
+				talkToNPCindex = 0;
+			}
+		}
 	}
 }
