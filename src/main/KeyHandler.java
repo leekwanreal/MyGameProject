@@ -128,7 +128,10 @@ public class KeyHandler implements KeyListener {
 			}
 		}
 		if (code == KeyEvent.VK_R) {
-			gp.tileM.loadMap("/maps/worldV3.txt", 0);
+			switch(gp.currentMap) {
+			case 0: gp.tileM.loadMap("/maps/mymap1.txt", 0);
+			case 1: gp.tileM.loadMap("/maps/mymap2.txt", 1);
+			}
 		}
 	}
 	

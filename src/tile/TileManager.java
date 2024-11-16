@@ -26,20 +26,20 @@ public class TileManager {
 		
 		getTileImage();
 		loadMap("/maps/mymap1.txt", 0);
-		//loadMap("/maps/interior01.txt", 1);
+		loadMap("/maps/mymap2.txt", 1);
 	}
 	public void getTileImage() {
 		// Placeholder
-		setup(0, "grass00", false);
-		setup(1, "grass00", false);
-		setup(2, "grass00", false);
-		setup(3, "grass00", false);
-		setup(4, "grass00", false);
-		setup(5, "grass00", false);
-		setup(6, "grass00", false);
-		setup(7, "grass00", false);
-		setup(8, "grass00", false);
-		setup(9, "grass00", false);
+		setup(0, "mydirt", false);
+		setup(1, "mydirt", false);
+		setup(2, "mydirt", false);
+		setup(3, "mydirt", false);
+		setup(4, "mydirt", false);
+		setup(5, "mydirt", false);
+		setup(6, "mydirt", false);
+		setup(7, "mydirt", false);
+		setup(8, "mydirt", false);
+		setup(9, "mydirt", false);
 		
 		// Real setup
 		setup(10, "mydirt", false);
