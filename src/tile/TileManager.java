@@ -1,7 +1,6 @@
 package tile;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +19,7 @@ public class TileManager {
 	public TileManager(GamePanel gp) {
 		this.gp = gp;
 		
-		tile = new Tile[100];
+		tile = new Tile[200];
 		mapTileNum = new int[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
 		
 		
@@ -103,6 +102,33 @@ public class TileManager {
 		setup(68, "stadium_plain", false); 
 		setup(69, "stadium_vertical_line", false);
 		setup(70, "kickoff", false);
+
+		// 3 digits map 2
+		setup(100, "ground(10)", false);
+		setup(101, "blackstone(11)", true);
+		setup(102, "bluegraystonefloor(12)", false);
+		setup(103, "whitestair1(13)", false);
+		setup(104, "whitestair2(14)", false);
+		setup(105, "whitestair3(15)", false);
+		setup(106, "blackstair(16)", true);
+		setup(107, "pavement(17)", false);
+		setup(108, "grass(18)", false);
+		setup(109, "brick(19)", true);
+		setup(123, "whitestair2c(20)", true);
+		setup(110, "wall1(21)", true);
+		setup(111, "wall2(22)", true);
+		setup(112, "wall3(23)", true);
+		setup(113, "glass(30)", true);
+		setup(114, "glassdooroutside(31)", true);
+		setup(115, "glassdoorleft(32)", true);
+		setup(116, "glassdoorright(33)", true);
+		setup(117, "window(34)", true);
+		setup(118, "grey(90)", false);
+		setup(119, "road1(91)", false);
+		setup(120, "road2(92)", false);
+		setup(121, "road3(93)", false);
+		setup(122, "sidepavement(94)", true);
+		
 	}
 	
 	public void setup(int index, String imageName, boolean collision) {

@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import main.GamePanel;
 import main.KeyHandler;
 import object.OBJ_Fireball;
-import object.OBJ_Key;
-import object.OBJ_Rock;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
 
@@ -111,14 +109,24 @@ public class Player extends Entity {
 	
 	public void getPlayerAttackImage() {
 		if (currentWeapon.type == type_sword) {
-			attackUp1 = setup("/player/boy_attack_up_1.png", gp.tileSize, gp.tileSize*2);
-			attackUp2 = setup("/player/boy_attack_up_2.png", gp.tileSize, gp.tileSize*2);
-			attackDown1 = setup("/player/boy_attack_down_1.png", gp.tileSize, gp.tileSize*2);
-			attackDown2 = setup("/player/boy_attack_down_2.png", gp.tileSize, gp.tileSize*2);
-			attackLeft1 = setup("/player/boy_attack_left_1.png", gp.tileSize*2, gp.tileSize);
-			attackLeft2 = setup("/player/boy_attack_left_2.png", gp.tileSize*2, gp.tileSize);
-			attackRight1 = setup("/player/boy_gun_right.png", gp.tileSize, gp.tileSize);
-			attackRight2 = setup("/player/boy_gun_right.png", gp.tileSize, gp.tileSize);
+			attackUp1 = setup("/player/boy_up_1.png", gp.tileSize, gp.tileSize*2);
+			attackUp2 = setup("/player/boy_up_2.png", gp.tileSize, gp.tileSize*2);
+			attackDown1 = setup("/player/boy_down_1.png", gp.tileSize, gp.tileSize*2);
+			attackDown2 = setup("/player/boy_down_2.png", gp.tileSize, gp.tileSize*2);
+			attackLeft1 = setup("/player/boy_sword_left.png", gp.tileSize*2, gp.tileSize);
+			attackLeft2 = setup("/player/boy_sword_left.png", gp.tileSize*2, gp.tileSize);
+			attackRight1 = setup("/player/boy_sword_right.png", gp.tileSize*2, gp.tileSize);
+			attackRight2 = setup("/player/boy_sword_right.png", gp.tileSize*2, gp.tileSize);
+		}
+		if (currentWeapon.type == type_gun) {
+			attackUp1 = setup("/player/boy_up_1.png", gp.tileSize, gp.tileSize*2);
+			attackUp2 = setup("/player/boy_up_2.png", gp.tileSize, gp.tileSize*2);
+			attackDown1 = setup("/player/boy_down_1.png", gp.tileSize, gp.tileSize*2);
+			attackDown2 = setup("/player/boy_down_2.png", gp.tileSize, gp.tileSize*2);
+			attackLeft1 = setup("/player/boy_gun_left.png", gp.tileSize*2, gp.tileSize);
+			attackLeft2 = setup("/player/boy_gun_left.png", gp.tileSize*2, gp.tileSize);
+			attackRight1 = setup("/player/boy_gun_right.png", gp.tileSize*2, gp.tileSize);
+			attackRight2 = setup("/player/boy_gun_right.png", gp.tileSize*2, gp.tileSize);
 		}
 		if (currentWeapon.type == type_axe) {
 			attackUp1 = setup("/player/boy_axe_up_1.png", gp.tileSize, gp.tileSize*2);
@@ -485,17 +493,29 @@ public class Player extends Entity {
 		
 		if (tempScreenX > worldX) {
 			x = worldX;
+			if (attacking && direction.equals("left")) {
+				x -= gp.tileSize;
+			}
 		}
 		if (tempScreenY > worldY) {
 			y = worldY;
+			if (attacking && direction.equals("up")) {
+				y -= gp.tileSize;
+			}
 		}
 		int rightOffset = gp.screenWidth - tempScreenX;
 		if (rightOffset > gp.worldWidth - worldX) {
 			x = gp.screenWidth - (gp.worldWidth - worldX);
+			if (attacking && direction.equals("left")) {
+				x -= gp.tileSize;
+			}
 		}
 		int bottomOffset = gp.screenHeight - tempScreenY;
 		if (bottomOffset > gp.worldHeight - worldY) {
 			y = gp.screenHeight - (gp.worldHeight - worldY);
+			if (attacking && direction.equals("up")) {
+				y -= gp.tileSize;
+			}
 		}
 		
 		if (invincible) {
