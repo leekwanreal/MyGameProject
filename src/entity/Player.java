@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 import main.GamePanel;
 import main.KeyHandler;
+import object.OBJ_Bullet_Rifle;
 import object.OBJ_Fireball;
+import object.OBJ_Gun;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
 
@@ -42,12 +44,12 @@ public class Player extends Entity {
 		attackArea.height = 36;
 	}
 	public void setDefaultValues() {
-		worldX = gp.tileSize * 29;
-		worldY = gp.tileSize * 15;
+		worldX = gp.tileSize * 39;
+		worldY = gp.tileSize * 24;
 		//worldX = gp.tileSize * 10;
 		//worldY = gp.tileSize * 13;
 		speed = 4;
-		direction = "down";
+		direction = "left";
 		
 		// Player Status
 		level = 1;
@@ -63,7 +65,7 @@ public class Player extends Entity {
 		coin = 0;
 		currentWeapon = new OBJ_Sword_Normal(gp);
 		currentShield = new OBJ_Shield_Wood(gp);
-		projectile = new OBJ_Fireball(gp);
+		projectile = new OBJ_Bullet_Rifle(gp);
 		//projectile = new OBJ_Rock(gp);
 		attack = getAttack();
 		defense = getDefense();
@@ -85,6 +87,7 @@ public class Player extends Entity {
 	public void setItem() {
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
+		inventory.add(new OBJ_Gun(gp));
 	}
 	
 	public int getAttack() {
@@ -109,6 +112,7 @@ public class Player extends Entity {
 	
 	public void getPlayerAttackImage() {
 		if (currentWeapon.type == type_sword) {
+			
 			attackUp1 = setup("/player/boy_up_1.png", gp.tileSize, gp.tileSize*2);
 			attackUp2 = setup("/player/boy_up_2.png", gp.tileSize, gp.tileSize*2);
 			attackDown1 = setup("/player/boy_down_1.png", gp.tileSize, gp.tileSize*2);
@@ -117,16 +121,28 @@ public class Player extends Entity {
 			attackLeft2 = setup("/player/boy_sword_left.png", gp.tileSize*2, gp.tileSize);
 			attackRight1 = setup("/player/boy_sword_right.png", gp.tileSize*2, gp.tileSize);
 			attackRight2 = setup("/player/boy_sword_right.png", gp.tileSize*2, gp.tileSize);
+			
+			getPlayerImage();
 		}
 		if (currentWeapon.type == type_gun) {
-			attackUp1 = setup("/player/boy_up_1.png", gp.tileSize, gp.tileSize*2);
-			attackUp2 = setup("/player/boy_up_2.png", gp.tileSize, gp.tileSize*2);
-			attackDown1 = setup("/player/boy_down_1.png", gp.tileSize, gp.tileSize*2);
-			attackDown2 = setup("/player/boy_down_2.png", gp.tileSize, gp.tileSize*2);
+			/* 
+			attackUp1 = setup("/player/boy_gun_up_1.png", gp.tileSize, gp.tileSize*2);
+			attackUp2 = setup("/player/boy_gun_up_2.png", gp.tileSize, gp.tileSize*2);
+			attackDown1 = setup("/player/boy_gun_down_1.png", gp.tileSize, gp.tileSize*2);
+			attackDown2 = setup("/player/boy_gun_down_2.png", gp.tileSize, gp.tileSize*2);
 			attackLeft1 = setup("/player/boy_gun_left.png", gp.tileSize*2, gp.tileSize);
 			attackLeft2 = setup("/player/boy_gun_left.png", gp.tileSize*2, gp.tileSize);
 			attackRight1 = setup("/player/boy_gun_right.png", gp.tileSize*2, gp.tileSize);
 			attackRight2 = setup("/player/boy_gun_right.png", gp.tileSize*2, gp.tileSize);
+			*/
+			up1 = setup("/player/boy_gun_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_gun_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_gun_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_gun_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_gun_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_gun_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_gun_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_gun_right_2.png", gp.tileSize*2, gp.tileSize);
 		}
 		if (currentWeapon.type == type_axe) {
 			attackUp1 = setup("/player/boy_axe_up_1.png", gp.tileSize, gp.tileSize*2);
@@ -221,7 +237,7 @@ public class Player extends Entity {
 		}
 		
 		if (gp.keyH.shotKeyPressed && !projectile.alive 
-				&& shotCoolDown == 30 && projectile.haveResource(this)) {
+				&& shotCoolDown == 30 && projectile.haveResource(this) && currentWeapon.type == type_gun) { // 30 
 			// Set Default Values
 			projectile.set(worldX, worldY, direction, true, this);
 			
@@ -235,7 +251,7 @@ public class Player extends Entity {
 			gp.playSE(10);
 		}
 		
-		if (shotCoolDown < 30) {
+		if (shotCoolDown < 30) { // 30
 			shotCoolDown++;
 		}
 		
@@ -422,7 +438,7 @@ public class Player extends Entity {
 		int itemIndex  = gp.ui.getItemIndexOnSlot();
 		if (itemIndex < inventory.size()) {
 			Entity selectedItem = inventory.get(itemIndex);
-			if (selectedItem.type == type_sword || selectedItem.type == type_axe) {
+			if (selectedItem.type == type_sword || selectedItem.type == type_axe || selectedItem.type == type_gun) {
 				currentWeapon = selectedItem;
 				attack = getAttack();
 				getPlayerAttackImage();
@@ -491,6 +507,7 @@ public class Player extends Entity {
 		int x = tempScreenX;
 		int y = tempScreenY;
 		
+		/* 
 		if (tempScreenX > worldX) {
 			x = worldX;
 			if (attacking && direction.equals("left")) {
@@ -517,7 +534,8 @@ public class Player extends Entity {
 				y -= gp.tileSize;
 			}
 		}
-		
+		*/
+
 		if (invincible) {
 			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
 		}

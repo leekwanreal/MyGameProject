@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
+import java.awt.Color;
 import main.GamePanel;
 import main.UtilityTool;
 
@@ -15,6 +16,7 @@ public class TileManager {
 	GamePanel gp;
 	public Tile[] tile;
 	public int mapTileNum[][][];
+	boolean drawPath = true;
 	
 	public TileManager(GamePanel gp) {
 		this.gp = gp;
@@ -102,6 +104,7 @@ public class TileManager {
 		setup(68, "stadium_plain", false); 
 		setup(69, "stadium_vertical_line", false);
 		setup(70, "kickoff", false);
+		setup(71, "black", true);
 
 		// 3 digits map 2
 		setup(100, "ground(10)", false);
@@ -114,7 +117,7 @@ public class TileManager {
 		setup(107, "pavement(17)", false);
 		setup(108, "grass(18)", false);
 		setup(109, "brick(19)", true);
-		setup(123, "whitestair2c(20)", true);
+		setup(124, "whitestair2c(20)", true);
 		setup(110, "wall1(21)", true);
 		setup(111, "wall2(22)", true);
 		setup(112, "wall3(23)", true);
@@ -128,6 +131,7 @@ public class TileManager {
 		setup(120, "road2(92)", false);
 		setup(121, "road3(93)", false);
 		setup(122, "sidepavement(94)", true);
+		setup(123, "black", true);
 		
 	}
 	
@@ -172,7 +176,8 @@ public class TileManager {
 				int worldY = i * gp.tileSize;
 				int screenX = worldX - gp.player.worldX + gp.player.screenX;
 				int screenY = worldY - gp.player.worldY + gp.player.screenY;
-			
+				
+				/* 
 				// Stop moving the camera at the edge
 				if (gp.player.screenX > gp.player.worldX) {
 					screenX = worldX;
@@ -188,7 +193,6 @@ public class TileManager {
 				if (bottomOffset > gp.worldHeight - gp.player.worldY) {
 					screenY = gp.screenHeight - (gp.worldHeight - worldY);
 				}
-				
 				if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && 
 					worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
 					worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && 
@@ -201,6 +205,24 @@ public class TileManager {
 						 bottomOffset > gp.worldHeight - gp.player.worldY) {
 						g2.drawImage(tile[tileNum].image, screenX, screenY, null);
 				}
+				*/
+				if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && 
+					worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+					worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && 
+					worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+					g2.drawImage(tile[tileNum].image, screenX, screenY, null);
+				}
+			}
+		}
+		if (drawPath == true) {
+			g2.setColor(new Color(255,0,0,70));
+			for (int i = 0; i < gp.pFinder.pathList.size(); ++i) {
+				int worldX = gp.pFinder.pathList.get(i).col * gp.tileSize;
+				int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
+				int screenX = worldX - gp.player.worldX + gp.player.screenX;
+				int screenY = worldY - gp.player.worldY + gp.player.screenY;
+
+				g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
 			}
 		}
 	}

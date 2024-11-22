@@ -1,13 +1,8 @@
 package entity;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Random;
 
-import javax.imageio.ImageIO;
-
 import main.GamePanel;
-import main.UtilityTool;
 
 public class NPC_OldMan extends Entity{
 	public NPC_OldMan(GamePanel gp) {
@@ -38,28 +33,38 @@ public class NPC_OldMan extends Entity{
 	}
 	
 	public void setAction() {
-		actionLockCounter++;
+
+		if (onPath == true) {
+			int goalCol = (gp.player.worldX + gp.player.solidArea.x)/gp.tileSize;
+			int goalRow = (gp.player.worldY + gp.player.solidArea.y)/gp.tileSize;
+
+			searchPath(goalCol, goalRow);
+		}
+		else {
+			actionLockCounter++;
 		
-		if (actionLockCounter == 120) {
-			Random random = new Random();
-			// Get a number 1 - 100
-			int i = random.nextInt(100) + 1; 
-			if (i <= 25) {
-				direction = "up";
+			if (actionLockCounter == 120) {
+				Random random = new Random();
+				// Get a number 1 - 100
+				int i = random.nextInt(100) + 1; 
+				if (i <= 25) {
+					direction = "up";
+				}
+				if (i > 25 && i <= 50) {
+					direction = "down";
+				}
+				if (i > 50 && i <= 75) {
+					direction = "left";
+				}
+				if (i > 75 && i <= 100) {
+					direction = "right";
+				}
+				actionLockCounter = 0;
 			}
-			if (i > 25 && i <= 50) {
-				direction = "down";
-			}
-			if (i > 50 && i <= 75) {
-				direction = "left";
-			}
-			if (i > 75 && i <= 100) {
-				direction = "right";
-			}
-			actionLockCounter = 0;
 		}
 	}
 	public void speak() {
 		super.speak();
+		onPath = true;
 	}
 }

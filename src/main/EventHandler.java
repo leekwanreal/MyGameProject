@@ -41,16 +41,16 @@ public class EventHandler {
 			//if (hit(27,16,"right")) {damagePit(27,16,gp.dialogueState);}
 			//if (hit(23,19,"any")) {damagePit(27,16,gp.dialogueState);}
 			//if (hit(23,12,"up")) {healingPool(23,12,gp.dialogueState);}
-			if (hit(0,18,15,"left")) {
+			if (hit(0,27,24,"left")) {
 				talkToNPC(gp.dialogueState);
 			}
-			if (hit(0,18,16,"left")) {
+			if (hit(0,27,25,"left")) {
 				talkToNPC(gp.dialogueState);
 			}		
-			if (hit(0,30,27,"right")) {
+			if (hit(0,39,36,"right")) {
 				transitMap(1, 16, 16);
 			}
-			if (hit(0,30,28,"right")) {
+			if (hit(0,39,37,"right")) {
 				transitMap(1, 16, 16);
 			}
 		}

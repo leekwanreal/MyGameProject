@@ -14,6 +14,7 @@ import java.util.Comparator;
 
 import javax.swing.JPanel;
 
+import ai.PathFinder;
 import entity.Entity;
 import entity.Player;
 import tile.TileManager;
@@ -31,11 +32,11 @@ public class GamePanel extends JPanel implements Runnable {
 	public int screenHeight = tileSize * maxScreenRow;
 	
 	// World Settings
-	public final int maxWorldCol = 32; // Do not change !!!
-	public final int maxWorldRow = 32; // Do not change !!!
+	public final int maxWorldCol = 50; // Do not change !!!
+	public final int maxWorldRow = 50; // Do not change !!!
 	public final int worldWidth = tileSize * maxWorldCol;
 	public final int worldHeight = tileSize * maxWorldRow;
-	public final int maxMap = 2;
+	public final int maxMap = 3;
 	public int currentMap = 0;
 	
 	// For Full Screen
@@ -58,6 +59,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public UI ui = new UI(this);
 	public EventHandler eHandler = new EventHandler(this);
 	Config config = new Config(this);
+	public PathFinder pFinder = new PathFinder(this);
 	public Thread gameThread;
 
 	// Entity and object
@@ -95,7 +97,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	public void setupGame() {
 		//aSetter.setObject();
-		//aSetter.setNPC();
+		aSetter.setNPC();
 		//aSetter.setMonster();
 		//aSetter.setInteractiveTile();
 		//playMusic(0);

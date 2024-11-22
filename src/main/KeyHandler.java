@@ -109,9 +109,9 @@ public class KeyHandler implements KeyListener {
 			gp.gameState = gp.characterState;
 		}
 		if (code == KeyEvent.VK_ENTER) {
-			enterPressed = true;;
+			enterPressed = true;
 		}
-		if (code == KeyEvent.VK_F) {
+		if (code == KeyEvent.VK_SPACE) {
 			shotKeyPressed = true;
 		}
 		if (code == KeyEvent.VK_ESCAPE) {
@@ -277,7 +277,7 @@ public class KeyHandler implements KeyListener {
 		if (code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
 			rightPressed = false;
 		}		
-		if (code == KeyEvent.VK_F) {
+		if (code == KeyEvent.VK_SPACE) {
 			shotKeyPressed = false;
 		}
 	}	
