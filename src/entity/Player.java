@@ -10,9 +10,11 @@ import main.GamePanel;
 import main.KeyHandler;
 import object.OBJ_Bullet_Rifle;
 import object.OBJ_Fireball;
-import object.OBJ_Gun;
+import object.OBJ_Pistol;
+import object.OBJ_Rifle;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
+import object.OBJ_Uzi;
 
 public class Player extends Entity {
 	KeyHandler keyH;
@@ -87,7 +89,9 @@ public class Player extends Entity {
 	public void setItem() {
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
-		inventory.add(new OBJ_Gun(gp));
+		inventory.add(new OBJ_Rifle(gp));
+		inventory.add(new OBJ_Uzi(gp));
+		inventory.add(new OBJ_Pistol(gp));
 	}
 	
 	public int getAttack() {
@@ -124,17 +128,7 @@ public class Player extends Entity {
 			
 			getPlayerImage();
 		}
-		if (currentWeapon.type == type_gun) {
-			/* 
-			attackUp1 = setup("/player/boy_gun_up_1.png", gp.tileSize, gp.tileSize*2);
-			attackUp2 = setup("/player/boy_gun_up_2.png", gp.tileSize, gp.tileSize*2);
-			attackDown1 = setup("/player/boy_gun_down_1.png", gp.tileSize, gp.tileSize*2);
-			attackDown2 = setup("/player/boy_gun_down_2.png", gp.tileSize, gp.tileSize*2);
-			attackLeft1 = setup("/player/boy_gun_left.png", gp.tileSize*2, gp.tileSize);
-			attackLeft2 = setup("/player/boy_gun_left.png", gp.tileSize*2, gp.tileSize);
-			attackRight1 = setup("/player/boy_gun_right.png", gp.tileSize*2, gp.tileSize);
-			attackRight2 = setup("/player/boy_gun_right.png", gp.tileSize*2, gp.tileSize);
-			*/
+		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_rifle) {
 			up1 = setup("/player/boy_rifle_up_1.png", gp.tileSize, gp.tileSize*2);
 			up2 = setup("/player/boy_rifle_up_2.png", gp.tileSize, gp.tileSize*2);
 			down1 = setup("/player/boy_rifle_down_1.png", gp.tileSize, gp.tileSize*2);
@@ -143,6 +137,26 @@ public class Player extends Entity {
 			left2 = setup("/player/boy_rifle_left_2.png", gp.tileSize*2, gp.tileSize);
 			right1 = setup("/player/boy_rifle_right_1.png", gp.tileSize*2, gp.tileSize);
 			right2 = setup("/player/boy_rifle_right_2.png", gp.tileSize*2, gp.tileSize);
+		}
+		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_pistol) {
+			up1 = setup("/player/boy_pistol_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_pistol_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_pistol_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_pistol_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_pistol_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_pistol_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_pistol_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_pistol_right_2.png", gp.tileSize*2, gp.tileSize);
+		}
+		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_uzi) {
+			up1 = setup("/player/boy_uzi_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_uzi_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_uzi_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_uzi_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_uzi_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_uzi_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_uzi_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_uzi_right_2.png", gp.tileSize*2, gp.tileSize);
 		}
 		if (currentWeapon.type == type_axe) {
 			attackUp1 = setup("/player/boy_axe_up_1.png", gp.tileSize, gp.tileSize*2);

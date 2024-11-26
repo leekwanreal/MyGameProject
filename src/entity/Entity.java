@@ -84,6 +84,11 @@ public class Entity {
 	public final int type_pickupOnly = 7;
 	public final int type_gun = 8;
 	
+	// Gun Type
+	public int gun_type;
+	public final int type_pistol = 0;
+	public final int type_uzi = 1;
+	public final int type_rifle = 2;
 	
 	public Entity(GamePanel gp) {
 		this.gp = gp;

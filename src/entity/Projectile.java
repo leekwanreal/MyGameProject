@@ -29,6 +29,11 @@ public class Projectile extends Entity{
 				generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
 				alive = false;
 			}
+			collisionOn = false;
+			gp.cChecker.checkTile(this);
+			if (collisionOn) {
+				alive = false;				
+			}
 		}
 		
 		if (user != gp.player) {

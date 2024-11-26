@@ -14,10 +14,10 @@ public class OBJ_Bullet_Rifle extends Projectile {
 		this.gp = gp;
 		
 		name = "Rifle Bullet";
-		speed = 20;
+		speed = 25;
 		maxLife = 40;
 		life = maxLife;
-		attack = 2;
+		attack = 5;
 		useCost = 0;
 		alive = false;
 		getImage();
