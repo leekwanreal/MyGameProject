@@ -135,14 +135,14 @@ public class Player extends Entity {
 			attackRight1 = setup("/player/boy_gun_right.png", gp.tileSize*2, gp.tileSize);
 			attackRight2 = setup("/player/boy_gun_right.png", gp.tileSize*2, gp.tileSize);
 			*/
-			up1 = setup("/player/boy_gun_up_1.png", gp.tileSize, gp.tileSize*2);
-			up2 = setup("/player/boy_gun_up_2.png", gp.tileSize, gp.tileSize*2);
-			down1 = setup("/player/boy_gun_down_1.png", gp.tileSize, gp.tileSize*2);
-			down2 = setup("/player/boy_gun_down_2.png", gp.tileSize, gp.tileSize*2);
-			left1 = setup("/player/boy_gun_left_1.png", gp.tileSize*2, gp.tileSize);
-			left2 = setup("/player/boy_gun_left_2.png", gp.tileSize*2, gp.tileSize);
-			right1 = setup("/player/boy_gun_right_1.png", gp.tileSize*2, gp.tileSize);
-			right2 = setup("/player/boy_gun_right_2.png", gp.tileSize*2, gp.tileSize);
+			up1 = setup("/player/boy_rifle_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_rifle_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_rifle_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_rifle_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_rifle_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_rifle_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_rifle_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_rifle_right_2.png", gp.tileSize*2, gp.tileSize);
 		}
 		if (currentWeapon.type == type_axe) {
 			attackUp1 = setup("/player/boy_axe_up_1.png", gp.tileSize, gp.tileSize*2);
@@ -248,7 +248,7 @@ public class Player extends Entity {
 			gp.projectileList.add(projectile);
 			
 			shotCoolDown = 0;
-			gp.playSE(10);
+			//gp.playSE(10);
 		}
 		
 		if (shotCoolDown < 30) { // 30
@@ -467,6 +467,9 @@ public class Player extends Entity {
 				if (spriteNum == 2) {image = attackUp2;}
 			}
 			else {
+				if (currentWeapon.type == type_gun) {
+					tempScreenY = screenY - gp.tileSize;
+				}
 				if (spriteNum == 1) {image = up1;}
 				if (spriteNum == 2) {image = up2;}
 			}
@@ -488,6 +491,9 @@ public class Player extends Entity {
 				if (spriteNum == 2) {image = attackLeft2;}
 			}
 			else {
+				if (currentWeapon.type == type_gun) {
+					tempScreenX = screenX - gp.tileSize;
+				}
 				if (spriteNum == 1) {image = left1;}
 				if (spriteNum == 2) {image = left2;}
 			}

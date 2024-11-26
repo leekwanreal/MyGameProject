@@ -11,6 +11,7 @@ public class NPC_OldMan extends Entity{
 		speed = 1;
 		getNPCImage();
 		setDialogue();
+		onPath = true;
 	}
 	
 	public void getNPCImage() {
@@ -65,6 +66,5 @@ public class NPC_OldMan extends Entity{
 	}
 	public void speak() {
 		super.speak();
-		onPath = true;
 	}
 }

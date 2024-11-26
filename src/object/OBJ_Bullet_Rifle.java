@@ -14,7 +14,7 @@ public class OBJ_Bullet_Rifle extends Projectile {
 		this.gp = gp;
 		
 		name = "Rifle Bullet";
-		speed = 10;
+		speed = 20;
 		maxLife = 40;
 		life = maxLife;
 		attack = 2;
