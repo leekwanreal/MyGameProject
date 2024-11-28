@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 import main.GamePanel;
 import main.KeyHandler;
+import object.OBJ_Bullet_Pistol;
 import object.OBJ_Bullet_Rifle;
+import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fireball;
 import object.OBJ_Pistol;
 import object.OBJ_Rifle;
@@ -25,6 +27,12 @@ public class Player extends Entity {
 	public boolean attackCanceled = false;
 	public ArrayList<Entity> inventory = new ArrayList<>();
 	public final int maxInventorySize = 20;
+	public BufferedImage avatar = setup("/player/boy_rifle_right_1.png", gp.tileSize*2, gp.tileSize);
+
+	// Bullets
+	Projectile pistol_bullet = new OBJ_Bullet_Pistol(gp);
+	Projectile uzi_bullet = new OBJ_Bullet_Uzi(gp);
+	Projectile rifle_bullet = new OBJ_Bullet_Rifle(gp);
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		super(gp);
@@ -67,18 +75,19 @@ public class Player extends Entity {
 		coin = 0;
 		currentWeapon = new OBJ_Sword_Normal(gp);
 		currentShield = new OBJ_Shield_Wood(gp);
-		projectile = new OBJ_Bullet_Rifle(gp);
+		projectile = pistol_bullet;
 		//projectile = new OBJ_Rock(gp);
 		attack = getAttack();
 		defense = getDefense();
-		
 	}
 	
+	
 	public void setDefaultPosition() {
-		worldX = gp.tileSize * 23;
-		worldY = gp.tileSize * 22;
+		worldX = gp.tileSize * 39;
+		worldY = gp.tileSize * 24;
 		direction = "down";
 	}
+	
 	
 	public void restoreLifeAndMana() {
 		life = maxLife;
@@ -87,6 +96,7 @@ public class Player extends Entity {
 	}
 	
 	public void setItem() {
+		inventory.clear();
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
 		inventory.add(new OBJ_Rifle(gp));
@@ -112,6 +122,18 @@ public class Player extends Entity {
 		left2 = setup("/player/boy_left_2.png", gp.tileSize, gp.tileSize);
 		right1 = setup("/player/boy_right_1.png", gp.tileSize, gp.tileSize);
 		right2 = setup("/player/boy_right_2.png", gp.tileSize, gp.tileSize);
+	}
+
+	public void getPlayerBullet() {
+		if (currentWeapon.gun_type == type_rifle) {
+			projectile = rifle_bullet;
+		}
+		if (currentWeapon.gun_type == type_uzi) {
+			projectile = uzi_bullet;
+		}
+		if (currentWeapon.gun_type == type_pistol) {
+			projectile = pistol_bullet;
+		}
 	}
 	
 	public void getPlayerAttackImage() {
@@ -349,7 +371,7 @@ public class Player extends Entity {
 			// Pick Up Only Items
 			if (gp.obj[gp.currentMap][i].type == type_pickupOnly) {
 				gp.obj[gp.currentMap][i].use(this);
-				gp.obj[i] = null;
+				gp.obj[gp.currentMap][i] = null;
 				
 			}
 			else {
@@ -364,7 +386,7 @@ public class Player extends Entity {
 					text = "Your inventory is full!";
 				}
 				gp.ui.addMessage(text);
-				gp.obj[i] = null;
+				gp.obj[gp.currentMap][i] = null;
 			}
 		}
 	}
@@ -452,10 +474,16 @@ public class Player extends Entity {
 		int itemIndex  = gp.ui.getItemIndexOnSlot();
 		if (itemIndex < inventory.size()) {
 			Entity selectedItem = inventory.get(itemIndex);
-			if (selectedItem.type == type_sword || selectedItem.type == type_axe || selectedItem.type == type_gun) {
+			if (selectedItem.type == type_sword || selectedItem.type == type_axe) {
 				currentWeapon = selectedItem;
 				attack = getAttack();
 				getPlayerAttackImage();
+			}
+			if (selectedItem.type == type_gun) {
+				currentWeapon = selectedItem;
+				attack = getAttack();
+				getPlayerAttackImage();
+				getPlayerBullet();
 			}
 			if (selectedItem.type == type_shield) {
 				currentShield = selectedItem;

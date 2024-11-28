@@ -211,7 +211,7 @@ public class UI {
 			// Player Image
 			x = gp.screenWidth/2 - gp.tileSize/2;
 			y += gp.tileSize;
-			g2.drawImage(gp.player.down1, x, y, gp.tileSize*2, gp.tileSize*2, null);
+			g2.drawImage(gp.player.avatar, x-gp.tileSize/2, y, gp.tileSize*4, gp.tileSize*2, null);
 			
 			// Menu
 			Color c = new Color(128,128,128,220);
@@ -671,7 +671,7 @@ public class UI {
 		textY = frameY + gp.tileSize*2;
 		g2.drawString("WASD", textX, textY); textY += gp.tileSize;
 		g2.drawString("ENTER", textX, textY); textY += gp.tileSize;
-		g2.drawString("F", textX, textY); textY += gp.tileSize;
+		g2.drawString("SPACE", textX, textY); textY += gp.tileSize;
 		g2.drawString("C", textX, textY); textY += gp.tileSize;
 		g2.drawString("P", textX, textY); textY += gp.tileSize;
 		g2.drawString("ESC", textX, textY); textY += gp.tileSize;

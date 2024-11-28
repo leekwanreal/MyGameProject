@@ -89,6 +89,9 @@ public class CollisionChecker {
 				gp.obj[gp.currentMap][i].solidArea.y = gp.obj[gp.currentMap][i].solidAreaDefaultY;
 			}
 		}
+
+		
+
 		return index;
 	}
 	// NPC or Monsters

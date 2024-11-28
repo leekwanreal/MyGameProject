@@ -22,12 +22,13 @@ public class AssetSetter {
 	}
 	
 	public void setObject() {
-		/* 
+		
 		int mapNum = 0;
 		int i = 0;
 		gp.obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*25;
 		gp.obj[mapNum][i].worldY = gp.tileSize*19;
+		/*
 		i++;
 		gp.obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*21;
@@ -56,8 +57,12 @@ public class AssetSetter {
 		gp.obj[i] = new OBJ_ManaCrystal(gp);
 		gp.obj[i].worldX = gp.tileSize*22;
 		gp.obj[i].worldY = gp.tileSize*31;
-		i++;
 		*/
+		i++;
+		mapNum = 1;
+		gp.obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*25;
+		gp.obj[mapNum][i].worldY = gp.tileSize*19;
 	}
 	
 	public void setNPC() {
@@ -74,29 +79,31 @@ public class AssetSetter {
 	}
 	
 	public void setMonster() {
-		/* 
+		
 		int mapNum = 0;
 		int i = 0;
-		gp.monster[i] = new MON_GreenSlime(gp);
-		gp.monster[i].worldX = gp.tileSize * 23;
-		gp.monster[i].worldY = gp.tileSize * 36;
+		gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+		gp.monster[mapNum][i].worldX = gp.tileSize * 29;
+		gp.monster[mapNum][i].worldY = gp.tileSize * 17;
 		i++;
-		gp.monster[i] = new MON_GreenSlime(gp);
-		gp.monster[i].worldX = gp.tileSize * 23;
-		gp.monster[i].worldY = gp.tileSize * 37;
+		gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+		gp.monster[mapNum][i].worldX = gp.tileSize * 30;
+		gp.monster[mapNum][i].worldY = gp.tileSize * 17;
 		i++;
-		gp.monster[i] = new MON_GreenSlime(gp);
-		gp.monster[i].worldX = gp.tileSize * 24;
-		gp.monster[i].worldY = gp.tileSize * 37;
+		gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+		gp.monster[mapNum][i].worldX = gp.tileSize * 32;
+		gp.monster[mapNum][i].worldY = gp.tileSize * 17;
 		i++;
-		gp.monster[i] = new MON_GreenSlime(gp);
-		gp.monster[i].worldX = gp.tileSize * 34;
-		gp.monster[i].worldY = gp.tileSize * 42;
+		gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+		gp.monster[mapNum][i].worldX = gp.tileSize * 34;
+		gp.monster[mapNum][i].worldY = gp.tileSize * 17;
+		/*
 		i++;
-		gp.monster[i] = new MON_GreenSlime(gp);
-		gp.monster[i].worldX = gp.tileSize * 38;
-		gp.monster[i].worldY = gp.tileSize * 42;
+		gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+		gp.monster[mapNum][i].worldX = gp.tileSize * 38;
+		gp.monster[mapNum][i].worldY = gp.tileSize * 42;
 		i++;
+		mapNum = 2;
 		*/
 	}
 	

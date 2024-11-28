@@ -14,7 +14,7 @@ public class OBJ_Bullet_Uzi extends Projectile {
 		this.gp = gp;
 		
 		name = "Uzi Bullet";
-		speed = 25;
+		speed = 30;
 		maxLife = 40;
 		life = maxLife;
 		attack = 3;

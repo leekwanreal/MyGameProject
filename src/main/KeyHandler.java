@@ -77,11 +77,18 @@ public class KeyHandler implements KeyListener {
 		}
 		if (code == KeyEvent.VK_ENTER) {
 			if (gp.ui.commandNum == 0) {
-				gp.gameState = gp.playState;
-				//gp.playMusic(0);
+				if (gp.firstTimeLoadGame == false) {
+					gp.restart();
+				}
+				else {
+					gp.firstTimeLoadGame = false;
+					gp.gameState = gp.playState;
+					gp.playMusic(0);
+				}
 			}
 			if (gp.ui.commandNum == 1) {
-				
+				gp.gameState = gp.playState;
+
 			}
 			if (gp.ui.commandNum == 2) {
 				System.exit(0);
