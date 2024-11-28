@@ -25,42 +25,34 @@ public class AssetSetter {
 		
 		int mapNum = 0;
 		int i = 0;
-		gp.obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
-		gp.obj[mapNum][i].worldX = gp.tileSize*25;
-		gp.obj[mapNum][i].worldY = gp.tileSize*19;
-		/*
+		gp.obj[mapNum][i] = new OBJ_Potion_Red(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*35;
+		gp.obj[mapNum][i].worldY = gp.tileSize*24;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
-		gp.obj[mapNum][i].worldX = gp.tileSize*21;
-		gp.obj[mapNum][i].worldY = gp.tileSize*19;
+		gp.obj[mapNum][i] = new OBJ_Potion_Red(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*33;
+		gp.obj[mapNum][i].worldY = gp.tileSize*24;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
-		gp.obj[mapNum][i].worldX = gp.tileSize*26;
-		gp.obj[mapNum][i].worldY = gp.tileSize*21;
+		gp.obj[mapNum][i] = new OBJ_Potion_Red(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*31;
+		gp.obj[mapNum][i].worldY = gp.tileSize*24;
 		i++;
-		gp.obj[i] = new OBJ_Axe(gp);
-		gp.obj[i].worldX = gp.tileSize*33;
-		gp.obj[i].worldY = gp.tileSize*21;
+		gp.obj[mapNum][i] = new OBJ_Door(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*28;
+		gp.obj[mapNum][i].worldY = gp.tileSize*27;
 		i++;
-		gp.obj[i] = new OBJ_Shield_Blue(gp);
-		gp.obj[i].worldX = gp.tileSize*35;
-		gp.obj[i].worldY = gp.tileSize*21;
+		gp.obj[mapNum][i] = new OBJ_Door(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize*29;
+		gp.obj[mapNum][i].worldY = gp.tileSize*27;
 		i++;
-		gp.obj[i] = new OBJ_Potion_Red(gp);
-		gp.obj[i].worldX = gp.tileSize*22;
-		gp.obj[i].worldY = gp.tileSize*27;
+		gp.obj[mapNum][i] = new OBJ_Chest(gp);
+		gp.obj[mapNum][i].setLoot();
+		gp.obj[mapNum][i].worldX = gp.tileSize*38;
+		gp.obj[mapNum][i].worldY = gp.tileSize*32;
 		i++;
-		gp.obj[i] = new OBJ_Heart(gp);
-		gp.obj[i].worldX = gp.tileSize*22;
-		gp.obj[i].worldY = gp.tileSize*29;
-		i++;
-		gp.obj[i] = new OBJ_ManaCrystal(gp);
-		gp.obj[i].worldX = gp.tileSize*22;
-		gp.obj[i].worldY = gp.tileSize*31;
-		*/
-		i++;
+		// Map 2
 		mapNum = 1;
-		gp.obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
+		gp.obj[mapNum][i] = new OBJ_Potion_Red(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*25;
 		gp.obj[mapNum][i].worldY = gp.tileSize*19;
 	}

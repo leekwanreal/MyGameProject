@@ -16,12 +16,13 @@ public class OBJ_Heart extends Entity {
 		image3 = setup("/objects/heart_blank.png", gp.tileSize, gp.tileSize);
 	}
 	
-	public void use(Entity entity) {
+	public boolean use(Entity entity) {
 		gp.playSE(2);
-		gp.ui.addMessage("Life +" + value);
+		//gp.ui.addMessage("Life +" + value);
 		entity.life += value;
 		if (entity.life > entity.maxLife) {
 			entity.life = entity.maxLife; 
 		}
+		return true;
 	}
 }

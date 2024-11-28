@@ -43,6 +43,11 @@ public class Projectile extends Entity{
 				generateParticle(user.projectile, gp.player);
 				alive = false;
 			}
+			collisionOn = false;
+			gp.cChecker.checkTile(this);
+			if (collisionOn) {
+				alive = false;				
+			}
 		}
 		
 		switch(direction) {

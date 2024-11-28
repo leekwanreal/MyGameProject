@@ -128,6 +128,7 @@ public class EventHandler {
 			if (talkToNPCindex > 2) {
 				talkToNPCindex = 0;
 			}
+			//gp.saveLoad.save();
 		}
 	}
 

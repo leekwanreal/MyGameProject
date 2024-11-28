@@ -12,6 +12,7 @@ import object.OBJ_Bullet_Pistol;
 import object.OBJ_Bullet_Rifle;
 import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fireball;
+import object.OBJ_Key;
 import object.OBJ_Pistol;
 import object.OBJ_Rifle;
 import object.OBJ_Shield_Wood;
@@ -42,9 +43,6 @@ public class Player extends Entity {
 		screenY = gp.screenHeight/2 - (gp.tileSize / 2);
 		
 		setDefaultValues();
-		getPlayerImage();
-		getPlayerAttackImage();
-		setItem();
 		
 		solidArea = new Rectangle(12, 16, 32, 32);
 		solidAreaDefaultX = solidArea.x;
@@ -79,13 +77,17 @@ public class Player extends Entity {
 		//projectile = new OBJ_Rock(gp);
 		attack = getAttack();
 		defense = getDefense();
+
+		getPlayerImage();
+		getPlayerAttackImage();
+		setItem();
 	}
 	
 	
 	public void setDefaultPosition() {
 		worldX = gp.tileSize * 39;
 		worldY = gp.tileSize * 24;
-		direction = "down";
+		direction = "left";
 	}
 	
 	
@@ -102,6 +104,7 @@ public class Player extends Entity {
 		inventory.add(new OBJ_Rifle(gp));
 		inventory.add(new OBJ_Uzi(gp));
 		inventory.add(new OBJ_Pistol(gp));
+		inventory.add(new OBJ_Key(gp));
 	}
 	
 	public int getAttack() {
@@ -111,6 +114,26 @@ public class Player extends Entity {
 	
 	public int getDefense() {
 		return defense = dexterity * currentShield.defenseValue;
+	}
+
+	public int getCurrentWeaponSlot() {
+		int currentWeaponSlot = 0;
+		for (int i = 0; i < inventory.size(); ++i) {
+			if (inventory.get(i) == currentWeapon) {
+				currentWeaponSlot = i;
+			}
+		}
+		return currentWeaponSlot;
+	}
+
+	public int getCurrentShieldSlot() {
+		int currentShieldSlot = 0;
+		for (int i = 0; i < inventory.size(); ++i) {
+			if (inventory.get(i) == currentShield) {
+				currentShieldSlot = i;
+			}
+		}
+		return currentShieldSlot;
 	}
 	
 	public void getPlayerImage() {
@@ -310,7 +333,7 @@ public class Player extends Entity {
 		if (life <= 0) {
 			gp.gameState = gp.gameOverState;
 			gp.ui.commandNum = -1; 
-			gp.stopMusic();
+			//gp.stopMusic();
 			gp.playSE(12);
 		}
 	}
@@ -374,18 +397,26 @@ public class Player extends Entity {
 				gp.obj[gp.currentMap][i] = null;
 				
 			}
+
+			// Obstacle
+			else if (gp.obj[gp.currentMap][i].type == type_obstacle) {
+				if (keyH.enterPressed == true) {
+					attackCanceled = true;
+					gp.obj[gp.currentMap][i].interact();
+				}				
+			}
+
 			else {
 				// Inventory Items
 				String text;
-				if (inventory.size() != maxInventorySize) {
-					inventory.add(gp.obj[gp.currentMap][i]);
+				if (canObtainItem(gp.obj[gp.currentMap][i])) {
 					gp.playSE(1);
 					text = "Got a " + gp.obj[gp.currentMap][i].name + "!";
 				}
 				else {
 					text = "Your inventory is full!";
 				}
-				gp.ui.addMessage(text);
+				//gp.ui.addMessage(text);
 				gp.obj[gp.currentMap][i] = null;
 			}
 		}
@@ -422,7 +453,7 @@ public class Player extends Entity {
 				}
 				
 				gp.monster[gp.currentMap][i].life -= damage;
-				gp.ui.addMessage(damage + "damage!");
+				//gp.ui.addMessage(damage + "damage!");
 				
 				
 				gp.monster[gp.currentMap][i].invincible = true;
@@ -431,8 +462,8 @@ public class Player extends Entity {
 				if (gp.monster[gp.currentMap][i].life <= 0) {
 					gp.monster[gp.currentMap][i].life = 0;
 					gp.monster[gp.currentMap][i].dying = true;
-					gp.ui.addMessage("killed the " + gp.monster[gp.currentMap][i].name + "!");
-					gp.ui.addMessage("Exp + " + gp.monster[gp.currentMap][i].exp);
+					//gp.ui.addMessage("killed the " + gp.monster[gp.currentMap][i].name + "!");
+					//gp.ui.addMessage("Exp + " + gp.monster[gp.currentMap][i].exp);
 					exp += gp.monster[gp.currentMap][i].exp;
 					checkLevelUp();
 				}
@@ -465,8 +496,8 @@ public class Player extends Entity {
 			defense = getDefense();
 			
 			gp.playSE(8);
-			gp.gameState = gp.dialogueState;
-			gp.ui.currentDialogue = "You are level " + level + " now!\n";
+			//gp.gameState = gp.dialogueState;
+			//gp.ui.currentDialogue = "You are level " + level + " now!\n";
 		}
 	}
 	
@@ -490,12 +521,59 @@ public class Player extends Entity {
 				defense = getDefense();
 			}
 			if (selectedItem.type == type_consumable) {
-				selectedItem.use(this);
-				inventory.remove(itemIndex);
+				if (selectedItem.use(this) == true) {
+					if (selectedItem.amount > 1) {
+						selectedItem.amount--;
+					}
+					else {
+						inventory.remove(itemIndex);
+					}
+				}
+		
 			}
 		}
 	}
 	
+	public int searchItemInInventory(String itemName) {
+		int itemIndex = 999;
+		
+		for (int i = 0; i < inventory.size(); ++i) {
+			if (inventory.get(i).name.equals(itemName)) {
+				itemIndex = i;
+				break;
+			}
+		}
+
+		return itemIndex;
+	}
+
+	public boolean canObtainItem(Entity item) {
+		boolean canObtain = false;
+
+		// Check if stackable
+		if (item.stackable == true) {
+			int index = searchItemInInventory(item.name);
+			if (index != 999) {
+				inventory.get(index).amount++;
+				canObtain = true;
+			}
+			else {
+				if (inventory.size() != maxInventorySize) {
+					inventory.add(item);
+					canObtain = true;
+				}
+			}
+		}
+
+		else {
+			if (inventory.size() != maxInventorySize) {
+				inventory.add(item);
+				canObtain = true;
+			}		
+		}
+		return canObtain;
+	}
+
  	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
 		int tempScreenX = screenX;
