@@ -2,6 +2,7 @@ package main;
 
 import entity.NPC_OldMan;
 import entity.NPC_Girl;
+import entity.MON_Bat;
 import monster.MON_GreenSlime;
 import object.OBJ_Axe;
 import object.OBJ_Boots;
@@ -97,6 +98,10 @@ public class AssetSetter {
 		i++;
 		mapNum = 2;
 		*/
+		gp.monster[mapNum][i] = new MON_Bat(gp);
+		gp.monster[mapNum][i].worldX = gp.tileSize * 14;
+		gp.monster[mapNum][i].worldY = gp.tileSize * 12;
+		i++;
 	}
 	
 	public void setInteractiveTile() {

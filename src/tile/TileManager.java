@@ -16,7 +16,7 @@ public class TileManager {
 	GamePanel gp;
 	public Tile[] tile;
 	public int mapTileNum[][][];
-	boolean drawPath = true;
+	boolean drawPath = false; // 
 	
 	public TileManager(GamePanel gp) {
 		this.gp = gp;
