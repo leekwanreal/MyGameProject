@@ -101,8 +101,8 @@ public class Player extends Entity {
 		inventory.clear();
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
-		inventory.add(new OBJ_Rifle(gp));
-		inventory.add(new OBJ_Uzi(gp));
+		//inventory.add(new OBJ_Rifle(gp));
+		//inventory.add(new OBJ_Uzi(gp));
 		inventory.add(new OBJ_Pistol(gp));
 		inventory.add(new OBJ_Key(gp));
 	}
@@ -267,7 +267,9 @@ public class Player extends Entity {
 			}
 			
 			if (keyH.enterPressed && attackCanceled == false) {
-				gp.playSE(7);
+				if (currentWeapon.type != type_gun) {
+					gp.playSE(7);
+				}
 				attacking = true;
 				spriteCounter = 0;
 			}
@@ -581,7 +583,7 @@ public class Player extends Entity {
 		
 		switch(direction) {
 		case "up":
-			if (attacking) {
+			if (attacking && currentWeapon.type != type_gun) {
 				tempScreenY = screenY - gp.tileSize;
 				if (spriteNum == 1) {image = attackUp1;}
 				if (spriteNum == 2) {image = attackUp2;}
@@ -595,7 +597,7 @@ public class Player extends Entity {
 			}
 			break;
 		case "down":
-			if (attacking) {
+			if (attacking && currentWeapon.type != type_gun) {
 				if (spriteNum == 1) {image = attackDown1;}
 				if (spriteNum == 2) {image = attackDown2;}	
 			}
@@ -605,7 +607,7 @@ public class Player extends Entity {
 			}
 			break;
 		case "left":
-			if (attacking) {
+			if (attacking && currentWeapon.type != type_gun) {
 				tempScreenX = screenX - gp.tileSize;
 				if (spriteNum == 1) {image = attackLeft1;}
 				if (spriteNum == 2) {image = attackLeft2;}
@@ -619,7 +621,7 @@ public class Player extends Entity {
 			}
 			break;
 		case "right":
-			if (attacking) {
+			if (attacking && currentWeapon.type != type_gun) {
 				if (spriteNum == 1) {image = attackRight1;}
 				if (spriteNum == 2) {image = attackRight2;}
 			}

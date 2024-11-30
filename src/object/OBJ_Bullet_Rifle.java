@@ -21,6 +21,13 @@ public class OBJ_Bullet_Rifle extends Projectile {
 		useCost = 0;
 		alive = false;
 		getImage();
+
+		solidArea.x = 20;
+		solidArea.y = 20;
+		solidArea.width = 8;
+		solidArea.height = 8;
+		solidAreaDefaultX = solidArea.x;
+		solidAreaDefaultY = solidArea.y;
 	}
 	
 	public void getImage() {

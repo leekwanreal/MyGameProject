@@ -2,7 +2,7 @@ package main;
 
 import entity.NPC_OldMan;
 import entity.NPC_Girl;
-import entity.MON_Bat;
+import monster.MON_Bat;
 import monster.MON_GreenSlime;
 import object.OBJ_Axe;
 import object.OBJ_Boots;
@@ -13,7 +13,9 @@ import object.OBJ_Heart;
 import object.OBJ_Key;
 import object.OBJ_ManaCrystal;
 import object.OBJ_Potion_Red;
+import object.OBJ_Rifle;
 import object.OBJ_Shield_Blue;
+import object.OBJ_Uzi;
 import tile_interactive.IT_DryTree;
 
 public class AssetSetter {
@@ -26,11 +28,11 @@ public class AssetSetter {
 		
 		int mapNum = 0;
 		int i = 0;
-		gp.obj[mapNum][i] = new OBJ_Potion_Red(gp);
+		gp.obj[mapNum][i] = new OBJ_Rifle(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*35;
 		gp.obj[mapNum][i].worldY = gp.tileSize*24;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Potion_Red(gp);
+		gp.obj[mapNum][i] = new OBJ_Uzi(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*33;
 		gp.obj[mapNum][i].worldY = gp.tileSize*24;
 		i++;
@@ -46,7 +48,7 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*29;
 		gp.obj[mapNum][i].worldY = gp.tileSize*27;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Chest(gp);
+		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_Key(gp));
 		gp.obj[mapNum][i].setLoot();
 		gp.obj[mapNum][i].worldX = gp.tileSize*38;
 		gp.obj[mapNum][i].worldY = gp.tileSize*32;

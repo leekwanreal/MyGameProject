@@ -1,7 +1,8 @@
-package entity;
+package monster;
 
 import java.util.Random;
 
+import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Rock;
 
@@ -20,10 +21,10 @@ public class MON_Bat extends Entity {
 		onPath = true;
 		//projectile = new OBJ_Rock(gp);
 		
-		solidArea.x = 0;
-		solidArea.y = 18;
-		solidArea.width = 48;
-		solidArea.height = 30;
+		solidArea.x = 12;
+		solidArea.y = 12;
+		solidArea.width = 24;
+		solidArea.height = 24;
 		solidAreaDefaultX = solidArea.x;
 		solidAreaDefaultY = solidArea.y;
 		
