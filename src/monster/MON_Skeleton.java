@@ -5,21 +5,21 @@ import java.util.Random;
 import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Potion_Red;
-import object.OBJ_Rock;
+import object.OBJ_Arrow;
 
-public class MON_Bat extends Entity {
-	public MON_Bat(GamePanel gp) {
+public class MON_Skeleton extends Entity{
+	public MON_Skeleton(GamePanel gp) {
 		super(gp);
 		
 		type = type_monster;
-		name = "Bat";
-		speed = 2;
-		maxLife = 4;  
+		name = "Skeleton";
+		speed = 1;
+		maxLife = 6;  
 		life = maxLife;
 		attack = 2;
-		defense = 0;
+		defense = 1;
 		exp = 2;
-		projectile = new OBJ_Rock(gp);
+		projectile = new OBJ_Arrow(gp);
 		onPath = true;
 		
 		solidArea.x = 6;
@@ -33,14 +33,14 @@ public class MON_Bat extends Entity {
 	}
 	
 	public void getImage(GamePanel gp) {
-		up1 = setup("/monster/Bat2.png", gp.tileSize, gp.tileSize*2/3);
-		up2 = setup("/monster/Bat3.png", gp.tileSize, gp.tileSize*2/3);
-		down1 = setup("/monster/Bat2.png", gp.tileSize, gp.tileSize*2/3);
-		down2 = setup("/monster/Bat3.png", gp.tileSize, gp.tileSize*2/3);
-		left1 = setup("/monster/Bat2.png", gp.tileSize, gp.tileSize*2/3);
-		left2 = setup("/monster/Bat3.png", gp.tileSize, gp.tileSize*2/3);
-		right1 = setup("/monster/Bat2.png", gp.tileSize, gp.tileSize*2/3);
-		right2 = setup("/monster/Bat3.png", gp.tileSize, gp.tileSize*2/3);
+		up1 = setup("/monster/skeleton_up1.png", gp.tileSize, gp.tileSize);
+		up2 = setup("/monster/skeleton_up2.png", gp.tileSize, gp.tileSize);
+		down1 = setup("/monster/skeleton_down1.png", gp.tileSize, gp.tileSize);
+		down2 = setup("/monster/skeleton_down2.png", gp.tileSize, gp.tileSize);
+		left1 = setup("/monster/skeleton_left1.png", gp.tileSize, gp.tileSize);
+		left2 = setup("/monster/skeleton_left2.png", gp.tileSize, gp.tileSize);
+		right1 = setup("/monster/skeleton_right1.png", gp.tileSize, gp.tileSize);
+		right2 = setup("/monster/skeleton_right2.png", gp.tileSize, gp.tileSize);
 	}
 	
 	public void setAction() {
@@ -73,6 +73,13 @@ public class MON_Bat extends Entity {
 				actionLockCounter = 0;
 			}
 		}
+		int i = new Random().nextInt(100) + 1;
+		if (i > 99 && projectile.alive == false && shotCoolDown == 30) {
+			projectile.set(worldX, worldY, direction, true, this);
+			gp.projectileList.add(projectile);
+			shotCoolDown = 0;
+		
+		}
 	}
 	
 	public void checkDrop() {
@@ -83,3 +90,4 @@ public class MON_Bat extends Entity {
 		}
 	}
 }
+

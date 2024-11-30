@@ -41,29 +41,23 @@ public class EventHandler {
 			//if (hit(27,16,"right")) {damagePit(27,16,gp.dialogueState);}
 			//if (hit(23,19,"any")) {damagePit(27,16,gp.dialogueState);}
 			//if (hit(23,12,"up")) {healingPool(23,12,gp.dialogueState);}
-			if (hit(0,27,24,"left")) {
+			if (hit(0,27,24,"left") || hit(0,27,25,"left")) {
 				talkToNPC(gp.dialogueState);
-			}
-			if (hit(0,27,25,"left")) {
-				talkToNPC(gp.dialogueState);
-			}		
-			if (hit(0,39,36,"right")) {
+			}	
+			if (hit(0,39,36,"right") || hit(0,39,37,"right")) {
 				transitMap(1, 16, 16);
 			}
-			if (hit(0,39,37,"right")) {
-				transitMap(1, 16, 16);
-			}
-			if (hit(0,27,22,"up") && gp.setMonster1 == false) {
+			/* */
+			if ((hit(0,27,22,"any") || 
+				hit(0,28,22,"any") ||
+				hit(0,29,22,"any")) && gp.setMonster1 == false) {
 				gp.setMonster1 = true;
 				gp.aSetter.setMonster1();
 			}
-			if (hit(0,28,22,"up") && gp.setMonster1 == false) {
-				gp.setMonster1 = true;
-				gp.aSetter.setMonster1();
-			}
-			if (hit(0,29,22,"up") && gp.setMonster1 == false) {
-				gp.setMonster1 = true;
-				gp.aSetter.setMonster1();
+			
+			if ((hit(0,18,17,"any") || hit(0,18,16,"any")) && gp.setMonster2 == false) {
+				gp.setMonster2 = true;
+				gp.aSetter.setMonster2();
 			}
 		}
 	}

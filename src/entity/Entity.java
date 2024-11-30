@@ -88,6 +88,7 @@ public class Entity {
 	public final int type_pickupOnly = 7;
 	public final int type_obstacle = 8;
 	public final int type_gun = 9;
+	public final int type_nothing = 10;
 	
 	// Gun Type
 	public int gun_type;

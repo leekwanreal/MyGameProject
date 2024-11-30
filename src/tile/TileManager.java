@@ -106,6 +106,8 @@ public class TileManager {
 		setup(70, "kickoff", false);
 		setup(71, "black", true);
 		setup(72,"batspawner",false);
+		setup(73,"skeletonspawner",false);
+
 
 		// 3 digits map 2
 		setup(100, "ground(10)", false);

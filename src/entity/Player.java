@@ -12,6 +12,7 @@ import object.OBJ_Bullet_Pistol;
 import object.OBJ_Bullet_Rifle;
 import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fireball;
+import object.OBJ_Fist;
 import object.OBJ_Key;
 import object.OBJ_Key_Secret_Room;
 import object.OBJ_Pistol;
@@ -73,7 +74,7 @@ public class Player extends Entity {
 		exp = 0;
 		nextLevelExp = 5;
 		coin = 0;
-		currentWeapon = new OBJ_Sword_Normal(gp);
+		currentWeapon = new OBJ_Fist(gp);
 		currentShield = new OBJ_Shield_Wood(gp);
 		projectile = pistol_bullet;
 		//projectile = new OBJ_Rock(gp);
@@ -87,9 +88,16 @@ public class Player extends Entity {
 	
 	
 	public void setDefaultPosition() {
-		worldX = gp.tileSize * 28;
-		worldY = gp.tileSize * 23;
-		direction = "left";
+		if (gp.setMonster2 == true) {
+			worldX = gp.tileSize * 19;
+			worldY = gp.tileSize * 16;
+			direction = "left";
+		}
+		else if (gp.setMonster1 == true) {
+			worldX = gp.tileSize * 28;
+			worldY = gp.tileSize * 23;
+			direction = "left";		
+		}
 	}
 	
 	
@@ -104,7 +112,10 @@ public class Player extends Entity {
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
 		inventory.add(new OBJ_Pistol(gp));
-		inventory.add(new OBJ_Potion_Red(gp));
+		OBJ_Potion_Red potion = new OBJ_Potion_Red(gp);
+		potion.amount = 3;
+		inventory.add(potion);
+
 	}
 	
 	public int getAttack() {
@@ -171,6 +182,9 @@ public class Player extends Entity {
 			attackRight1 = setup("/player/boy_sword_right.png", gp.tileSize*2, gp.tileSize);
 			attackRight2 = setup("/player/boy_sword_right.png", gp.tileSize*2, gp.tileSize);
 			
+			getPlayerImage();
+		}
+		if (currentWeapon.type == type_nothing) {
 			getPlayerImage();
 		}
 		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_rifle) {
@@ -265,7 +279,7 @@ public class Player extends Entity {
 				case "right": worldX += speed; break;
 				}
 			}
-			
+			/*
 			if (keyH.enterPressed && attackCanceled == false) {
 				if (currentWeapon.type != type_gun) {
 					gp.playSE(7);
@@ -275,7 +289,7 @@ public class Player extends Entity {
 			}
 			
 			attackCanceled = false;
-			
+			*/
 			gp.keyH.enterPressed = false;
 
 			spriteCounter++;
@@ -514,11 +528,18 @@ public class Player extends Entity {
 				attack = getAttack();
 				getPlayerAttackImage();
 			}
-			if (selectedItem.type == type_gun) {
+			if (selectedItem.type == type_nothing) {
 				currentWeapon = selectedItem;
 				attack = getAttack();
 				getPlayerAttackImage();
+
+			}
+			if (selectedItem.type == type_gun) {
+				currentWeapon = selectedItem;
+				attack = getAttack();
 				getPlayerBullet();
+				getPlayerAttackImage();
+
 			}
 			if (selectedItem.type == type_shield) {
 				currentShield = selectedItem;

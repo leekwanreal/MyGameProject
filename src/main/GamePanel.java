@@ -64,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 	// Entity and object
 	public Player player = new Player(this, keyH);
-	public Entity obj[][] = new Entity[maxMap][20];
+	public Entity obj[][] = new Entity[maxMap][50];
 	public Entity npc[][] = new Entity[maxMap][10];
 	public Entity monster[][] = new Entity[maxMap][20];
 	public InteractiveTile iTile[][] = new InteractiveTile[maxMap][50];
@@ -82,7 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int optionState = 5;
 	public final int gameOverState = 6;
 	public boolean firstTimeLoadGame = true;
-	boolean setMonster1 = false;
+	public boolean setMonster1 = false, setMonster2 = false, setMonster3 = false;
 	
 	// Set default position
 	int playerX = 100;

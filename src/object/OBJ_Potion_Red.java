@@ -5,7 +5,7 @@ import main.GamePanel;
 
 public class OBJ_Potion_Red extends Entity{
 	GamePanel gp;
-	int value = 5;
+	int value = 4;
 	
 	public OBJ_Potion_Red(GamePanel gp) {
 		super(gp);
