@@ -54,7 +54,7 @@ public class TileManager {
 		setup(18, "brick", true);
 		setup(19, "stonelinedown", false);
 		setup(20, "stonelineup", false);
-		setup(21, "cellright", true);
+		setup(21, "cellright", false);
 		setup(22, "cellup", true);
 		setup(23, "cellleft", true);
 		setup(24, "celldown", true);
@@ -105,6 +105,7 @@ public class TileManager {
 		setup(69, "stadium_vertical_line", false);
 		setup(70, "kickoff", false);
 		setup(71, "black", true);
+		setup(72,"batspawner",false);
 
 		// 3 digits map 2
 		setup(100, "ground(10)", false);

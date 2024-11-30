@@ -4,6 +4,7 @@ import java.util.Random;
 
 import entity.Entity;
 import main.GamePanel;
+import object.OBJ_Potion_Red;
 import object.OBJ_Rock;
 
 public class MON_Bat extends Entity {
@@ -15,16 +16,16 @@ public class MON_Bat extends Entity {
 		speed = 2;
 		maxLife = 4;  
 		life = maxLife;
-		attack = 1;
+		attack = 2;
 		defense = 0;
 		exp = 2;
 		onPath = true;
-		//projectile = new OBJ_Rock(gp);
+		projectile = new OBJ_Rock(gp);
 		
-		solidArea.x = 12;
-		solidArea.y = 12;
-		solidArea.width = 24;
-		solidArea.height = 24;
+		solidArea.x = 6;
+		solidArea.y = 6;
+		solidArea.width = 36;
+		solidArea.height = 36;
 		solidAreaDefaultX = solidArea.x;
 		solidAreaDefaultY = solidArea.y;
 		
@@ -72,16 +73,18 @@ public class MON_Bat extends Entity {
 				actionLockCounter = 0;
 			}
 		}
-	}
-
-		
-		/*int i = new Random().nextInt(100) + 1;
+		/* 
+		int i = new Random().nextInt(100) + 1;
 		if (i > 99 && projectile.alive == false && shotCoolDown == 30) {
 			projectile.set(worldX, worldY, direction, true, this);
 			gp.projectileList.add(projectile);
 			shotCoolDown = 0;
 		
-		}*/
+		}
+		*/
+		
+	}
+
 	
 	
 	public void damageReaction() {
@@ -89,18 +92,12 @@ public class MON_Bat extends Entity {
 		direction = gp.player.direction;
 	}
 	
-	/*public void checkDrop() {
+	public void checkDrop() {
 		int i = new Random().nextInt(100) + 1;
 		
 		// Set the monster drop
 		if (i < 50) {
-			dropItem(new OBJ_Coin_Bronze(gp));
+			dropItem(new OBJ_Potion_Red(gp));
 		}
-		if (i >= 50 && i < 75) {
-			dropItem(new OBJ_Heart(gp));
-		}
-		if (i >= 75 && i < 100) {
-			dropItem(new OBJ_ManaCrystal(gp));
-		}
-	}*/
+	}
 }

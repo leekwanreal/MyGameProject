@@ -12,9 +12,9 @@ public class OBJ_Uzi extends Entity{
 
 		name = "Uzi";
 		down1 = setup("/objects/uzi.png",gp.tileSize,gp.tileSize);
-		attackValue = 4;
+		attackValue = 3;
 		
-		description = "[" + name + "]\nDamage: 3\nSpeed: 25";
+		description = "[" + name + "]\nDamage: 3\nSpeed: 30";
 		attackArea.width = 36;
 		attackArea.height = 36;
 	}

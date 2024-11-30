@@ -10,7 +10,7 @@ public class OBJ_Rifle extends Entity{
 		type = type_gun;
 		gun_type = type_rifle;
 
-		name = "Gun";
+		name = "Rifle";
 		down1 = setup("/objects/rifle.png",gp.tileSize,gp.tileSize);
 		attackValue = 4;
 		

@@ -53,6 +53,18 @@ public class EventHandler {
 			if (hit(0,39,37,"right")) {
 				transitMap(1, 16, 16);
 			}
+			if (hit(0,27,22,"up") && gp.setMonster1 == false) {
+				gp.setMonster1 = true;
+				gp.aSetter.setMonster1();
+			}
+			if (hit(0,28,22,"up") && gp.setMonster1 == false) {
+				gp.setMonster1 = true;
+				gp.aSetter.setMonster1();
+			}
+			if (hit(0,29,22,"up") && gp.setMonster1 == false) {
+				gp.setMonster1 = true;
+				gp.aSetter.setMonster1();
+			}
 		}
 	}
 	
@@ -109,7 +121,7 @@ public class EventHandler {
 			gp.ui.currentDialogue = "You drink the water. \nYour life has been recovered.";
 			gp.player.life = gp.player.maxLife;
 			gp.player.mana = gp.player.maxMana;
-			gp.aSetter.setMonster();
+			//gp.aSetter.setMonster();
 		}
 		
 	}

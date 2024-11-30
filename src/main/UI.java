@@ -132,7 +132,7 @@ public class UI {
 			i++;
 			x += gp.tileSize;
 		}
-		
+		/*
 		// Draw Max Mana
 		x = gp.tileSize/2-5;
 		y = (int) (gp.tileSize*1.5);
@@ -152,6 +152,7 @@ public class UI {
 			i++;
 			x += 35;
 		}
+		*/
 	}
 	
 	public void drawMessage() {

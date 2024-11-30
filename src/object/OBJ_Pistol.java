@@ -12,7 +12,7 @@ public class OBJ_Pistol extends Entity{
 
 		name = "Pistol";
 		down1 = setup("/objects/pistol.png",gp.tileSize,gp.tileSize);
-		attackValue = 4;
+		attackValue = 2;
 		
 		description = "[" + name + "]\nDamage: 2\nSpeed: 15";
 		attackArea.width = 36;

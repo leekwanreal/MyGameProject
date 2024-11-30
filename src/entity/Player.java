@@ -13,7 +13,9 @@ import object.OBJ_Bullet_Rifle;
 import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fireball;
 import object.OBJ_Key;
+import object.OBJ_Key_Secret_Room;
 import object.OBJ_Pistol;
+import object.OBJ_Potion_Red;
 import object.OBJ_Rifle;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
@@ -85,8 +87,8 @@ public class Player extends Entity {
 	
 	
 	public void setDefaultPosition() {
-		worldX = gp.tileSize * 39;
-		worldY = gp.tileSize * 24;
+		worldX = gp.tileSize * 28;
+		worldY = gp.tileSize * 23;
 		direction = "left";
 	}
 	
@@ -101,10 +103,8 @@ public class Player extends Entity {
 		inventory.clear();
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
-		//inventory.add(new OBJ_Rifle(gp));
-		//inventory.add(new OBJ_Uzi(gp));
 		inventory.add(new OBJ_Pistol(gp));
-		inventory.add(new OBJ_Key(gp));
+		inventory.add(new OBJ_Potion_Red(gp));
 	}
 	
 	public int getAttack() {
@@ -318,7 +318,7 @@ public class Player extends Entity {
 		
 		if (invincible) {
 			invincibleCounter++;
-			if (invincibleCounter > 60) {
+			if (invincibleCounter > 20) {
 				invincible = false;
 				invincibleCounter = 0;
 			}
@@ -491,11 +491,13 @@ public class Player extends Entity {
 		if (exp >= nextLevelExp) {
 			level++;
 			nextLevelExp = nextLevelExp * 2;
-			maxLife += 2;
-			strength++;
-			dexterity++;
-			attack = getAttack();
-			defense = getDefense();
+			if (maxLife + 2 <= 16) {
+				maxLife += 2;
+			}
+			//strength++;
+			//dexterity++;
+			//attack = getAttack();
+			//defense = getDefense();
 			
 			gp.playSE(8);
 			//gp.gameState = gp.dialogueState;

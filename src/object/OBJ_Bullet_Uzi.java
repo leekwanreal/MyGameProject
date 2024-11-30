@@ -17,7 +17,7 @@ public class OBJ_Bullet_Uzi extends Projectile {
 		speed = 30;
 		maxLife = 40;
 		life = maxLife;
-		attack = 3;
+		attack = 2;
 		useCost = 0;
 		alive = false;
 		getImage();

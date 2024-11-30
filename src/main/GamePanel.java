@@ -82,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int optionState = 5;
 	public final int gameOverState = 6;
 	public boolean firstTimeLoadGame = true;
+	boolean setMonster1 = false;
 	
 	// Set default position
 	int playerX = 100;
@@ -99,7 +100,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void setupGame() {
 		aSetter.setObject();
 		aSetter.setNPC();
-		aSetter.setMonster();
+		//aSetter.setMonster();
 		//aSetter.setInteractiveTile();
 		//playMusic(0);
 		gameState = titleState;
@@ -115,18 +116,19 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void resetGame(boolean restart) {
-		player.getPlayerImage();
+		//player.getPlayerImage();
 		player.setDefaultPosition();
 		player.restoreLifeAndMana();
 		aSetter.setNPC();
-		aSetter.setMonster();
-
+		//aSetter.setMonster();
 		if (restart == true) {
 			currentMap = 0;
 			player.setDefaultValues();
 			aSetter.setObject();
 			aSetter.setNPC();
-			aSetter.setMonster();
+			aSetter.clearMonster();
+
+			//aSetter.setMonster();
 			aSetter.setInteractiveTile();
 		}
 	}
