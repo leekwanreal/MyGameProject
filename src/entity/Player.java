@@ -14,6 +14,8 @@ import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fireball;
 import object.OBJ_Fist;
 import object.OBJ_Key;
+import object.OBJ_Key_Room_1;
+import object.OBJ_Key_Room_3;
 import object.OBJ_Key_Secret_Room;
 import object.OBJ_Pistol;
 import object.OBJ_Potion_Red;
@@ -88,8 +90,13 @@ public class Player extends Entity {
 	
 	
 	public void setDefaultPosition() {
-		if (gp.setMonster2 == true) {
-			worldX = gp.tileSize * 19;
+		if (gp.setMonster3 == true) {
+			worldX = gp.tileSize * 20;
+			worldY = gp.tileSize * 23;
+			direction = "down";
+		}
+		else if (gp.setMonster2 == true) {
+			worldX = gp.tileSize * 20;
 			worldY = gp.tileSize * 16;
 			direction = "left";
 		}

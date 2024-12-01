@@ -47,7 +47,7 @@ public class EventHandler {
 			if (hit(0,39,36,"right") || hit(0,39,37,"right")) {
 				transitMap(1, 16, 16);
 			}
-			/* */
+			
 			if ((hit(0,27,22,"any") || 
 				hit(0,28,22,"any") ||
 				hit(0,29,22,"any")) && gp.setMonster1 == false) {
@@ -55,9 +55,16 @@ public class EventHandler {
 				gp.aSetter.setMonster1();
 			}
 			
-			if ((hit(0,18,17,"any") || hit(0,18,16,"any")) && gp.setMonster2 == false) {
+			if ((hit(0,18,17,"any") || 
+				hit(0,18,16,"any")) && gp.setMonster2 == false) {
 				gp.setMonster2 = true;
 				gp.aSetter.setMonster2();
+			}
+			
+			if ((hit(0,20,23,"any") || 
+				hit(0,21,23,"any")) && gp.setMonster3 == false) {
+				gp.setMonster3 = true;
+				gp.aSetter.setMonster3();
 			}
 		}
 	}

@@ -7,6 +7,7 @@ import main.GamePanel;
 import object.OBJ_Coin_Bronze;
 import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
+import object.OBJ_Potion_Red;
 import object.OBJ_Rock;
 import object.OBJ_Arrow;
 import object.OBJ_Fireball;
@@ -18,17 +19,18 @@ public class MON_Witch extends Entity{
 		type = type_monster;
 		name = "Skeleton";
 		speed = 1;
-		maxLife = 2;  
+		maxLife = 6;  
 		life = maxLife;
 		attack = 2;
 		defense = 2;
 		exp = 2;
 		projectile = new OBJ_Fireball(gp);
+		onPath = true;
 		
-		solidArea.x = 0;
-		solidArea.y = 0;
-		solidArea.width = 96;
-		solidArea.height = 96;
+		solidArea.x = 12;
+		solidArea.y = 6;
+		solidArea.width = 24;
+		solidArea.height = 36;
 		solidAreaDefaultX = solidArea.x;
 		solidAreaDefaultY = solidArea.y;
 		
@@ -47,25 +49,33 @@ public class MON_Witch extends Entity{
 	}
 	
 	public void setAction() {
-		actionLockCounter++;
+		if (onPath == true) {
+			int goalCol = (gp.player.worldX + gp.player.solidArea.x)/gp.tileSize;
+			int goalRow = (gp.player.worldY + gp.player.solidArea.y)/gp.tileSize;
+
+			searchPath(goalCol, goalRow);
+		}
+		else {
+			actionLockCounter++;
 		
-		if (actionLockCounter == 120) {
-			Random random = new Random();
-			// Get a number 1 - 100
-			int i = random.nextInt(100) + 1; 
-			if (i <= 25) {
-				direction = "up";
+			if (actionLockCounter == 120) {
+				Random random = new Random();
+				// Get a number 1 - 100
+				int i = random.nextInt(100) + 1; 
+				if (i <= 25) {
+					direction = "up";
+				}
+				if (i > 25 && i <= 50) {
+					direction = "down";
+				}
+				if (i > 50 && i <= 75) {
+					direction = "left";
+				}
+				if (i > 75 && i <= 100) {
+					direction = "right";
+				}
+				actionLockCounter = 0;
 			}
-			if (i > 25 && i <= 50) {
-				direction = "down";
-			}
-			if (i > 50 && i <= 75) {
-				direction = "left";
-			}
-			if (i > 75 && i <= 100) {
-				direction = "right";
-			}
-			actionLockCounter = 0;
 		}
 		
 		int i = new Random().nextInt(100) + 1;
@@ -85,15 +95,8 @@ public class MON_Witch extends Entity{
 	public void checkDrop() {
 		int i = new Random().nextInt(100) + 1;
 		
-		// Set the monster drop
 		if (i < 50) {
-			dropItem(new OBJ_Coin_Bronze(gp));
-		}
-		if (i >= 50 && i < 75) {
-			dropItem(new OBJ_Heart(gp));
-		}
-		if (i >= 75 && i < 100) {
-			dropItem(new OBJ_ManaCrystal(gp));
+			dropItem(new OBJ_Potion_Red(gp));
 		}
 	}
 }

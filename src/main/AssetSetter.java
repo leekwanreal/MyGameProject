@@ -5,6 +5,7 @@ import entity.NPC_Girl;
 import monster.MON_Bat;
 import monster.MON_GreenSlime;
 import monster.MON_Skeleton;
+import monster.MON_Witch;
 import object.OBJ_Axe;
 import object.OBJ_Boots;
 import object.OBJ_Cell_Gate;
@@ -109,17 +110,9 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*22;
 		gp.obj[mapNum][i].worldY = gp.tileSize*16;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Door_Room_1(gp);
-		gp.obj[mapNum][i].worldX = gp.tileSize*22;
-		gp.obj[mapNum][i].worldY = gp.tileSize*17;
-		i++;
 		gp.obj[mapNum][i] = new OBJ_Door_Room_2(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*19;
 		gp.obj[mapNum][i].worldY = gp.tileSize*16;
-		i++;
-		gp.obj[mapNum][i] = new OBJ_Door_Room_2(gp);
-		gp.obj[mapNum][i].worldX = gp.tileSize*19;
-		gp.obj[mapNum][i].worldY = gp.tileSize*17;
 		i++;
 		gp.obj[mapNum][i] = new OBJ_Door_Room_3(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*20;
@@ -138,6 +131,11 @@ public class AssetSetter {
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
 		gp.npc[mapNum][0].worldX = gp.tileSize * 25;
 		gp.npc[mapNum][0].worldY = gp.tileSize * 24;
+
+		if (gp.setMonster3 == true) {
+			gp.npc[mapNum][0].worldX = gp.tileSize * 20;
+			gp.npc[mapNum][0].worldY = gp.tileSize * 21;
+		}
 
 		mapNum = 1;
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
@@ -176,21 +174,24 @@ public class AssetSetter {
 			}
 			
 			// Spawn second wave
-			gp.monster[mapNum][4] = new MON_Bat(gp);
-			gp.monster[mapNum][4].worldX = gp.tileSize * 23;
-			gp.monster[mapNum][4].worldY = gp.tileSize * 10;
-			
-			gp.monster[mapNum][5] = new MON_Bat(gp);
-			gp.monster[mapNum][5].worldX = gp.tileSize * 31;
-			gp.monster[mapNum][5].worldY = gp.tileSize * 10;
+			if (gp.setMonster1 == true) {
+				gp.monster[mapNum][4] = new MON_Bat(gp);
+				gp.monster[mapNum][4].worldX = gp.tileSize * 23;
+				gp.monster[mapNum][4].worldY = gp.tileSize * 10;
+				
+				gp.monster[mapNum][5] = new MON_Bat(gp);
+				gp.monster[mapNum][5].worldX = gp.tileSize * 31;
+				gp.monster[mapNum][5].worldY = gp.tileSize * 10;
+	
+				gp.monster[mapNum][6] = new MON_Bat(gp);
+				gp.monster[mapNum][6].worldX = gp.tileSize * 34;
+				gp.monster[mapNum][6].worldY = gp.tileSize * 10;
+	
+				gp.monster[mapNum][7] = new MON_Bat(gp);
+				gp.monster[mapNum][7].worldX = gp.tileSize * 37;
+				gp.monster[mapNum][7].worldY = gp.tileSize * 10;
+			}
 
-			gp.monster[mapNum][6] = new MON_Bat(gp);
-			gp.monster[mapNum][6].worldX = gp.tileSize * 34;
-			gp.monster[mapNum][6].worldY = gp.tileSize * 10;
-
-			gp.monster[mapNum][7] = new MON_Bat(gp);
-			gp.monster[mapNum][7].worldX = gp.tileSize * 37;
-			gp.monster[mapNum][7].worldY = gp.tileSize * 10;
 		}).start();
 
 		new Thread(() -> {
@@ -201,23 +202,23 @@ public class AssetSetter {
 			}
 			
 			// Spawn third wave
-			gp.monster[mapNum][8] = new MON_Bat(gp);
-			gp.monster[mapNum][8].worldX = gp.tileSize * 23;
-			gp.monster[mapNum][8].worldY = gp.tileSize * 10;
-
-			gp.monster[mapNum][9] = new MON_Bat(gp);
-			gp.monster[mapNum][9].worldX = gp.tileSize * 31;
-			gp.monster[mapNum][9].worldY = gp.tileSize * 10;
-
-			gp.monster[mapNum][10] = new MON_Bat(gp);
-			gp.monster[mapNum][10].worldX = gp.tileSize * 34;
-			gp.monster[mapNum][10].worldY = gp.tileSize * 10;
-
-			gp.monster[mapNum][11] = new MON_Bat(gp);
-			gp.monster[mapNum][11].worldX = gp.tileSize * 37;
-			gp.monster[mapNum][11].worldY = gp.tileSize * 10;
-
-
+			if (gp.setMonster1 == true) {
+				gp.monster[mapNum][8] = new MON_Bat(gp);
+				gp.monster[mapNum][8].worldX = gp.tileSize * 23;
+				gp.monster[mapNum][8].worldY = gp.tileSize * 10;
+	
+				gp.monster[mapNum][9] = new MON_Bat(gp);
+				gp.monster[mapNum][9].worldX = gp.tileSize * 31;
+				gp.monster[mapNum][9].worldY = gp.tileSize * 10;
+	
+				gp.monster[mapNum][10] = new MON_Bat(gp);
+				gp.monster[mapNum][10].worldX = gp.tileSize * 34;
+				gp.monster[mapNum][10].worldY = gp.tileSize * 10;
+	
+				gp.monster[mapNum][11] = new MON_Bat(gp);
+				gp.monster[mapNum][11].worldX = gp.tileSize * 37;
+				gp.monster[mapNum][11].worldY = gp.tileSize * 10;
+			}
 		}).start();
 
 
@@ -243,44 +244,136 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(40000); // Pause for 25 seconds
+				Thread.sleep(25000); // Pause for 25 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 			// Spawn second wave
-			gp.monster[mapNum][3] = new MON_Skeleton(gp);
-			gp.monster[mapNum][3].worldX = gp.tileSize * 10;
-			gp.monster[mapNum][3].worldY = gp.tileSize * 11;
-	
-			gp.monster[mapNum][4] = new MON_Skeleton(gp);
-			gp.monster[mapNum][4].worldX = gp.tileSize * 10;
-			gp.monster[mapNum][4].worldY = gp.tileSize * 16;
-			
-			gp.monster[mapNum][5] = new MON_Skeleton(gp);
-			gp.monster[mapNum][5].worldX = gp.tileSize * 10;
-			gp.monster[mapNum][5].worldY = gp.tileSize * 21;
+			if (gp.setMonster2) {
+				gp.monster[mapNum][3] = new MON_Skeleton(gp);
+				gp.monster[mapNum][3].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][3].worldY = gp.tileSize * 11;
+		
+				gp.monster[mapNum][4] = new MON_Skeleton(gp);
+				gp.monster[mapNum][4].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][4].worldY = gp.tileSize * 16;
+				
+				gp.monster[mapNum][5] = new MON_Skeleton(gp);
+				gp.monster[mapNum][5].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][5].worldY = gp.tileSize * 21;
+			}
 		}).start();
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(80000); // Pause for 50 seconds
+				Thread.sleep(50000); // Pause for 50 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 			// Spawn third wave
-			gp.monster[mapNum][6] = new MON_Skeleton(gp);
-			gp.monster[mapNum][6].worldX = gp.tileSize * 10;
-			gp.monster[mapNum][6].worldY = gp.tileSize * 11;
-	
-			gp.monster[mapNum][7] = new MON_Skeleton(gp);
-			gp.monster[mapNum][7].worldX = gp.tileSize * 10;
-			gp.monster[mapNum][7].worldY = gp.tileSize * 16;
+			if (gp.setMonster2 == true) {
+				gp.monster[mapNum][6] = new MON_Skeleton(gp);
+				gp.monster[mapNum][6].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][6].worldY = gp.tileSize * 11;
+		
+				gp.monster[mapNum][7] = new MON_Skeleton(gp);
+				gp.monster[mapNum][7].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][7].worldY = gp.tileSize * 16;
+				
+				gp.monster[mapNum][8] = new MON_Skeleton(gp);
+				gp.monster[mapNum][8].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][8].worldY = gp.tileSize * 21;
+			}
+		}).start();
+	}
+
+	public void setMonster3() {
+				
+		int mapNum = 0;
+
+		// Spawn first wave
+		gp.monster[mapNum][0] = new MON_Witch(gp);
+		gp.monster[mapNum][0].worldX = gp.tileSize * 10;
+		gp.monster[mapNum][0].worldY = gp.tileSize * 30;
+
+		gp.monster[mapNum][1] = new MON_Witch(gp);
+		gp.monster[mapNum][1].worldX = gp.tileSize * 10;
+		gp.monster[mapNum][1].worldY = gp.tileSize * 39;
+		
+		gp.monster[mapNum][2] = new MON_Witch(gp);
+		gp.monster[mapNum][2].worldX = gp.tileSize * 18;
+		gp.monster[mapNum][2].worldY = gp.tileSize * 39;
+
+		gp.monster[mapNum][3] = new MON_Witch(gp);
+		gp.monster[mapNum][3].worldX = gp.tileSize * 26;
+		gp.monster[mapNum][3].worldY = gp.tileSize * 30;
+
+		gp.monster[mapNum][4] = new MON_Witch(gp);
+		gp.monster[mapNum][4].worldX = gp.tileSize * 26;
+		gp.monster[mapNum][4].worldY = gp.tileSize * 39;
+
+		new Thread(() -> {
+			try {
+				Thread.sleep(25000); // Pause for 25 seconds
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			
-			gp.monster[mapNum][8] = new MON_Skeleton(gp);
-			gp.monster[mapNum][8].worldX = gp.tileSize * 10;
-			gp.monster[mapNum][8].worldY = gp.tileSize * 21;
+			// Spawn second wave
+			if (gp.setMonster3) {
+				gp.monster[mapNum][5] = new MON_Witch(gp);
+				gp.monster[mapNum][5].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][5].worldY = gp.tileSize * 30;
+		
+				gp.monster[mapNum][6] = new MON_Witch(gp);
+				gp.monster[mapNum][6].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][6].worldY = gp.tileSize * 39;
+				
+				gp.monster[mapNum][7] = new MON_Witch(gp);
+				gp.monster[mapNum][7].worldX = gp.tileSize * 18;
+				gp.monster[mapNum][7].worldY = gp.tileSize * 39;
+		
+				gp.monster[mapNum][8] = new MON_Witch(gp);
+				gp.monster[mapNum][8].worldX = gp.tileSize * 26;
+				gp.monster[mapNum][8].worldY = gp.tileSize * 30;
+		
+				gp.monster[mapNum][9] = new MON_Witch(gp);
+				gp.monster[mapNum][9].worldX = gp.tileSize * 26;
+				gp.monster[mapNum][9].worldY = gp.tileSize * 39;
+			}
+		}).start();
+
+		new Thread(() -> {
+			try {
+				Thread.sleep(50000); // Pause for 50 seconds
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			// Spawn third wave
+			if (gp.setMonster3 == true) {
+				gp.monster[mapNum][10] = new MON_Witch(gp);
+				gp.monster[mapNum][10].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][10].worldY = gp.tileSize * 30;
+		
+				gp.monster[mapNum][11] = new MON_Witch(gp);
+				gp.monster[mapNum][11].worldX = gp.tileSize * 10;
+				gp.monster[mapNum][11].worldY = gp.tileSize * 39;
+				
+				gp.monster[mapNum][12] = new MON_Witch(gp);
+				gp.monster[mapNum][12].worldX = gp.tileSize * 18;
+				gp.monster[mapNum][12].worldY = gp.tileSize * 39;
+		
+				gp.monster[mapNum][13] = new MON_Witch(gp);
+				gp.monster[mapNum][13].worldX = gp.tileSize * 26;
+				gp.monster[mapNum][13].worldY = gp.tileSize * 30;
+		
+				gp.monster[mapNum][14] = new MON_Witch(gp);
+				gp.monster[mapNum][14].worldX = gp.tileSize * 26;
+				gp.monster[mapNum][14].worldY = gp.tileSize * 39;
+			}
 		}).start();
 	}
 
@@ -291,6 +384,8 @@ public class AssetSetter {
 			}
 		}
 		gp.setMonster1 = false;
+		gp.setMonster2 = false;
+		gp.setMonster3 = false;
 	}
 	
 	public void setInteractiveTile() {
