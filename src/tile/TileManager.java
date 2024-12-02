@@ -74,7 +74,7 @@ public class TileManager {
 		setup(38, "bookshelf2", true);
 		setup(39, "chairboard", true);
 		setup(40, "stair1", false);
-		setup(41, "holder1", false);
+		setup(41, "holder1", true);
 		setup(42, "england1", true);
 		setup(43, "vietnam1", true);
 		setup(44, "usa1", true);
@@ -108,6 +108,7 @@ public class TileManager {
 		setup(72,"batspawner",false);
 		setup(73,"skeletonspawner",false);
 		setup(74,"witch_spawner",false);
+		setup(75,"stonesmooth",false);
 
 
 		// 3 digits map 2

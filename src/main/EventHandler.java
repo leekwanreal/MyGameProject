@@ -44,6 +44,7 @@ public class EventHandler {
 			if (hit(0,27,24,"left") || hit(0,27,25,"left")) {
 				talkToNPC(gp.dialogueState);
 			}	
+
 			if (hit(0,39,36,"right") || hit(0,39,37,"right")) {
 				transitMap(1, 16, 16);
 			}
@@ -65,6 +66,22 @@ public class EventHandler {
 				hit(0,21,23,"any")) && gp.setMonster3 == false) {
 				gp.setMonster3 = true;
 				gp.aSetter.setMonster3();
+			}
+
+			if ((hit(0,28,28,"any") || 
+				hit(0,29,28,"any")) && gp.setMonster4 == false) {
+				gp.setMonster4 = true;
+				gp.aSetter.setMonster4();
+			}		
+			
+			if ((hit(0,27,34,"any") || 
+				hit(0,27,35,"any") ||
+				hit(0,27,36,"any") ||
+				hit(0,27,37,"any") ||
+				hit(0,27,38,"any") ||
+				hit(0,27,39,"any")) && gp.setMonster5 == false) {
+				gp.setMonster5 = true;
+				gp.aSetter.setMonster5();
 			}
 		}
 	}

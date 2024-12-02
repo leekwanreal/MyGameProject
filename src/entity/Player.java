@@ -90,7 +90,17 @@ public class Player extends Entity {
 	
 	
 	public void setDefaultPosition() {
-		if (gp.setMonster3 == true) {
+		if (gp.setMonster5 == true) {
+			worldX = gp.tileSize * 26;
+			worldY = gp.tileSize * 36;
+			direction = "right";
+		}
+		else if (gp.setMonster4 == true) {
+			worldX = gp.tileSize * 29;
+			worldY = gp.tileSize * 26;
+			direction = "down";
+		}
+		else if (gp.setMonster3 == true) {
 			worldX = gp.tileSize * 20;
 			worldY = gp.tileSize * 23;
 			direction = "down";
@@ -122,7 +132,6 @@ public class Player extends Entity {
 		OBJ_Potion_Red potion = new OBJ_Potion_Red(gp);
 		potion.amount = 3;
 		inventory.add(potion);
-
 	}
 	
 	public int getAttack() {

@@ -17,7 +17,7 @@ public class MON_Skeleton extends Entity{
 		maxLife = 6;  
 		life = maxLife;
 		attack = 2;
-		defense = 1;
+		defense = 0;
 		exp = 2;
 		projectile = new OBJ_Arrow(gp);
 		onPath = true;

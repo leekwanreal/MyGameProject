@@ -82,7 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int optionState = 5;
 	public final int gameOverState = 6;
 	public boolean firstTimeLoadGame = true;
-	public boolean setMonster1 = false, setMonster2 = false, setMonster3 = false;
+	public boolean setMonster1 = false, setMonster2 = false, setMonster3 = false, setMonster4 = false, setMonster5 = false;
 	
 	// Set default position
 	int playerX = 100;
