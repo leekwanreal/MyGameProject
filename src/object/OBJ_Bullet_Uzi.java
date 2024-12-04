@@ -31,14 +31,14 @@ public class OBJ_Bullet_Uzi extends Projectile {
 	}
 	
 	public void getImage() {
-		up1 = setup("/projectile/rifle_bullet_up.png", gp.tileSize, gp.tileSize);
-		up2 = setup("/projectile/rifle_bullet_up.png", gp.tileSize, gp.tileSize);
-		down1 = setup("/projectile/rifle_bullet_down.png", gp.tileSize, gp.tileSize);
-		down2 = setup("/projectile/rifle_bullet_down.png", gp.tileSize, gp.tileSize);
-		left1 = setup("/projectile/rifle_bullet_left.png", gp.tileSize, gp.tileSize);
-		left2 = setup("/projectile/rifle_bullet_left.png", gp.tileSize, gp.tileSize);
-		right1 = setup("/projectile/rifle_bullet_right.png", gp.tileSize, gp.tileSize);
-		right2 = setup("/projectile/rifle_bullet_right.png", gp.tileSize, gp.tileSize);	
+		up1 = setup("/projectile/uzi_bullet_up.png", gp.tileSize, gp.tileSize);
+		up2 = setup("/projectile/uzi_bullet_up.png", gp.tileSize, gp.tileSize);
+		down1 = setup("/projectile/uzi_bullet_down.png", gp.tileSize, gp.tileSize);
+		down2 = setup("/projectile/uzi_bullet_down.png", gp.tileSize, gp.tileSize);
+		left1 = setup("/projectile/uzi_bullet_left.png", gp.tileSize, gp.tileSize);
+		left2 = setup("/projectile/uzi_bullet_left.png", gp.tileSize, gp.tileSize);
+		right1 = setup("/projectile/uzi_bullet_right.png", gp.tileSize, gp.tileSize);
+		right2 = setup("/projectile/uzi_bullet_right.png", gp.tileSize, gp.tileSize);	
 	}
 	
 	public boolean haveResource(Entity user) {

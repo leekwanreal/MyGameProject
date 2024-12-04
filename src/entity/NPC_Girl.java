@@ -26,10 +26,10 @@ public class NPC_Girl extends Entity{
 	}
 	
 	public void setDialogue() {
-		dialogue[0] = "Hello, buddy.";
-		dialogue[1] = "You must find the treasure on this \nisland.";
-		dialogue[2] = "I'm too old for an adventure.";
-		dialogue[3] = "Good luck!";
+		dialogue[0] = "Open the chests in the cell.";
+		dialogue[1] = "The keys in there can lead us to the football stadium.";
+		dialogue[2] = "Then we have to get pass a lot of witches.";
+		dialogue[3] = "After that we must get to the school gate to escape.";
 		
 	}
 	

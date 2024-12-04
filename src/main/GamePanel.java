@@ -104,8 +104,8 @@ public class GamePanel extends JPanel implements Runnable {
 		//aSetter.setInteractiveTile();
 		//playMusic(0);
 		gameState = titleState;
-		
 		currentMap = 0;
+		aSetter.setBoss();
 
 		tempScreen = new BufferedImage(screenWidth,screenHeight, BufferedImage.TYPE_INT_ARGB);
 		g2 = (Graphics2D)tempScreen.getGraphics();
@@ -121,6 +121,7 @@ public class GamePanel extends JPanel implements Runnable {
 		player.restoreLifeAndMana();
 		aSetter.setNPC();
 		//aSetter.setMonster();
+	
 		if (restart == true) {
 			currentMap = 0;
 			player.setDefaultValues();

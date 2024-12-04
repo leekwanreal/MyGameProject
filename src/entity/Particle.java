@@ -26,8 +26,11 @@ public class Particle extends Entity{
 		life = maxLife;
 		
 		int offset = gp.tileSize/2 - (size/2);
+		if (generator.boss == true) {
+			offset = 5*gp.tileSize/2 - size/2;
+		}
 		
-		worldX = generator.worldX + offset;
+		worldX = generator.worldX + offset + gp.tileSize/2;
 		worldY = generator.worldY + offset;
 	}
 	

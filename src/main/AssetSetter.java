@@ -3,6 +3,7 @@ package main;
 import entity.NPC_OldMan;
 import entity.NPC_Girl;
 import monster.MON_Bat;
+import monster.MON_Goblin;
 import monster.MON_GreenSlime;
 import monster.MON_Skeleton;
 import monster.MON_Witch;
@@ -132,7 +133,7 @@ public class AssetSetter {
 		gp.npc[mapNum][0].worldX = gp.tileSize * 25;
 		gp.npc[mapNum][0].worldY = gp.tileSize * 24;
 
-		if (gp.setMonster3 == true) {
+		if (gp.setMonster4 == true) {
 			gp.npc[mapNum][0].worldX = gp.tileSize * 20;
 			gp.npc[mapNum][0].worldY = gp.tileSize * 21;
 		}
@@ -249,7 +250,7 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(25000); // Pause for 25 seconds
+				Thread.sleep(20000); // Pause for 20 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -272,7 +273,7 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(50000); // Pause for 50 seconds
+				Thread.sleep(40000); // Pause for 40 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -321,7 +322,7 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(25000); // Pause for 25 seconds
+				Thread.sleep(20000); // Pause for 20 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -352,7 +353,7 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(50000); // Pause for 50 seconds
+				Thread.sleep(40000); // Pause for 40 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -434,7 +435,7 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(25000); // Pause for 25 seconds
+				Thread.sleep(15000); // Pause for 15 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -469,7 +470,7 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(50000); // Pause for 50 seconds
+				Thread.sleep(30000); // Pause for 30 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -502,6 +503,14 @@ public class AssetSetter {
 			}
 		}).start();
 
+	}
+
+	public void setBoss() {
+		int mapNum = 1;
+
+		gp.monster[mapNum][0] = new MON_Goblin(gp);
+		gp.monster[mapNum][0].worldX = gp.tileSize * 24;
+		gp.monster[mapNum][0].worldY = gp.tileSize * 24;
 	}
 
 	public void clearMonster() {
