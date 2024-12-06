@@ -17,7 +17,7 @@ public class OBJ_Bullet_Rifle extends Projectile {
 		speed = 20;
 		maxLife = 40;
 		life = maxLife;
-		attack = 5;
+		attack = 4;
 		useCost = 0;
 		alive = false;
 		getImage();

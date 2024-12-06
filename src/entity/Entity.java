@@ -97,6 +97,9 @@ public class Entity {
 	public final int type_pistol = 0;
 	public final int type_uzi = 1;
 	public final int type_rifle = 2;
+	public final int type_ak47 = 3;
+	public final int type_awm = 4;
+	public final int type_shotgun = 5;
 	
 	public Entity(GamePanel gp) {
 		this.gp = gp;

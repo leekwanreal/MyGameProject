@@ -8,8 +8,13 @@ import java.util.ArrayList;
 
 import main.GamePanel;
 import main.KeyHandler;
+import object.OBJ_AK47;
+import object.OBJ_AWM;
+import object.OBJ_Bullet_AK47;
+import object.OBJ_Bullet_AWM;
 import object.OBJ_Bullet_Pistol;
 import object.OBJ_Bullet_Rifle;
+import object.OBJ_Bullet_Shotgun;
 import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fireball;
 import object.OBJ_Fist;
@@ -22,6 +27,7 @@ import object.OBJ_Pistol;
 import object.OBJ_Potion_Red;
 import object.OBJ_Rifle;
 import object.OBJ_Shield_Wood;
+import object.OBJ_Shotgun;
 import object.OBJ_Sword_Normal;
 import object.OBJ_Uzi;
 
@@ -40,6 +46,10 @@ public class Player extends Entity {
 	Projectile pistol_bullet = new OBJ_Bullet_Pistol(gp);
 	Projectile uzi_bullet = new OBJ_Bullet_Uzi(gp);
 	Projectile rifle_bullet = new OBJ_Bullet_Rifle(gp);
+	Projectile ak47_bullet = new OBJ_Bullet_AK47(gp);
+	Projectile awm_bullet = new OBJ_Bullet_AWM(gp);
+	Projectile shotgun_bullet = new OBJ_Bullet_Shotgun(gp);
+
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		super(gp);
@@ -138,8 +148,6 @@ public class Player extends Entity {
 		OBJ_Potion_Red potion = new OBJ_Potion_Red(gp);
 		potion.amount = 3;
 		inventory.add(potion);
-		inventory.add(new OBJ_Rifle(gp));
-		inventory.add(new OBJ_Uzi(gp));
 	}
 	
 	public int getAttack() {
@@ -192,6 +200,15 @@ public class Player extends Entity {
 		if (currentWeapon.gun_type == type_pistol) {
 			projectile = pistol_bullet;
 		}
+		if (currentWeapon.gun_type == type_ak47) {
+			projectile = ak47_bullet;
+		}
+		if (currentWeapon.gun_type == type_awm) {
+			projectile = awm_bullet;
+		}
+		if (currentWeapon.gun_type == type_shotgun) {
+			projectile = shotgun_bullet;
+		}
 	}
 	
 	public void getPlayerAttackImage() {
@@ -241,15 +258,35 @@ public class Player extends Entity {
 			right1 = setup("/player/boy_uzi_right_1.png", gp.tileSize*2, gp.tileSize);
 			right2 = setup("/player/boy_uzi_right_2.png", gp.tileSize*2, gp.tileSize);
 		}
-		if (currentWeapon.type == type_axe) {
-			attackUp1 = setup("/player/boy_axe_up_1.png", gp.tileSize, gp.tileSize*2);
-			attackUp2 = setup("/player/boy_axe_up_2.png", gp.tileSize, gp.tileSize*2);
-			attackDown1 = setup("/player/boy_axe_down_1.png", gp.tileSize, gp.tileSize*2);
-			attackDown2 = setup("/player/boy_axe_down_2.png", gp.tileSize, gp.tileSize*2);
-			attackLeft1 = setup("/player/boy_axe_left_1.png", gp.tileSize*2, gp.tileSize);
-			attackLeft2 = setup("/player/boy_axe_left_2.png", gp.tileSize*2, gp.tileSize);
-			attackRight1 = setup("/player/boy_axe_right_1.png", gp.tileSize*2, gp.tileSize);
-			attackRight2 = setup("/player/boy_axe_right_2.png", gp.tileSize*2, gp.tileSize);
+		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_ak47) {
+			up1 = setup("/player/boy_ak47_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_ak47_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_ak47_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_ak47_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_ak47_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_ak47_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_ak47_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_ak47_right_2.png", gp.tileSize*2, gp.tileSize);
+		}
+		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_awm) {
+			up1 = setup("/player/boy_awm_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_awm_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_awm_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_awm_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_awm_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_awm_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_awm_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_awm_right_2.png", gp.tileSize*2, gp.tileSize);
+		}
+		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_shotgun) {
+			up1 = setup("/player/boy_shotgun_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_shotgun_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_shotgun_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_shotgun_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_shotgun_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_shotgun_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_shotgun_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_shotgun_right_2.png", gp.tileSize*2, gp.tileSize);
 		}
 	}
 	
@@ -528,13 +565,12 @@ public class Player extends Entity {
 	public void checkLevelUp() {
 		if (exp >= nextLevelExp) {
 			level++;
-			nextLevelExp = nextLevelExp * 2;
-			if (maxLife + 2 <= 16) {
-				maxLife += 2;
-			}
+			nextLevelExp = nextLevelExp + 15;
+			maxLife += 2;
 			//strength++;
 			//dexterity++;
 			//attack = getAttack();
+		
 			//defense = getDefense();
 			
 			gp.playSE(8);

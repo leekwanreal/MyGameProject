@@ -45,7 +45,7 @@ public class EventHandler {
 				talkToNPC(gp.dialogueState);
 			}	
 
-			if (hit(0,39,36,"right") || hit(0,39,37,"right")) {
+			if (hit(0,39,36,"any") || hit(0,39,37,"any")) {
 				transitMap(1, 16, 16);
 			}
 			

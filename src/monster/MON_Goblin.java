@@ -58,10 +58,10 @@ public class MON_Goblin extends Entity {
 		attackUp2 = setup("/monster/goblin_attack_up_2.png", gp.tileSize*i, gp.tileSize*i);
 		attackDown1 = setup("/monster/goblin_attack_down_1.png", gp.tileSize*i, gp.tileSize*i);
 		attackDown2 = setup("/monster/goblin_attack_down_2.png", gp.tileSize*i, gp.tileSize*i);
-		attackLeft1 = setup("/monster/goblin_attack_left_1.png", gp.tileSize*i, gp.tileSize*i);
-		attackLeft2 = setup("/monster/goblin_attack_left_2.png", gp.tileSize*i, gp.tileSize*i);
-		attackRight1 = setup("/monster/goblin_attack_right_1.png", gp.tileSize*i, gp.tileSize*i);
-		attackRight2 = setup("/monster/goblin_attack_right_2.png", gp.tileSize*i, gp.tileSize*i);
+		attackLeft1 = setup("/monster/goblin_attack_left_2.png", gp.tileSize*i, gp.tileSize*i);
+		attackLeft2 = setup("/monster/goblin_attack_left_1.png", gp.tileSize*i, gp.tileSize*i);
+		attackRight1 = setup("/monster/goblin_attack_right_2.png", gp.tileSize*i, gp.tileSize*i);
+		attackRight2 = setup("/monster/goblin_attack_right_1.png", gp.tileSize*i, gp.tileSize*i);
 	}
 	
 	public void setAction() {

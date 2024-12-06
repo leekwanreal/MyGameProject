@@ -7,6 +7,8 @@ import monster.MON_Goblin;
 import monster.MON_GreenSlime;
 import monster.MON_Skeleton;
 import monster.MON_Witch;
+import object.OBJ_AK47;
+import object.OBJ_AWM;
 import object.OBJ_Axe;
 import object.OBJ_Boots;
 import object.OBJ_Cell_Gate;
@@ -28,6 +30,7 @@ import object.OBJ_ManaCrystal;
 import object.OBJ_Potion_Red;
 import object.OBJ_Rifle;
 import object.OBJ_Shield_Blue;
+import object.OBJ_Shotgun;
 import object.OBJ_Uzi;
 import tile_interactive.IT_DryTree;
 
@@ -123,6 +126,26 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*21;
 		gp.obj[mapNum][i].worldY = gp.tileSize*22;
 		i++;
+		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_AK47(gp));
+		gp.obj[mapNum][i].setLoot();
+		gp.obj[mapNum][i].worldX = gp.tileSize*28;
+		gp.obj[mapNum][i].worldY = gp.tileSize*34;
+		i++;
+		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_AWM(gp));
+		gp.obj[mapNum][i].setLoot();
+		gp.obj[mapNum][i].worldX = gp.tileSize*28;
+		gp.obj[mapNum][i].worldY = gp.tileSize*35;
+		i++;
+		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_Shotgun(gp));
+		gp.obj[mapNum][i].setLoot();
+		gp.obj[mapNum][i].worldX = gp.tileSize*28;
+		gp.obj[mapNum][i].worldY = gp.tileSize*38;
+		i++;
+		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_Key_Secret_Room(gp));
+		gp.obj[mapNum][i].setLoot();
+		gp.obj[mapNum][i].worldX = gp.tileSize*28;
+		gp.obj[mapNum][i].worldY = gp.tileSize*39;
+		i++;
 		// Map 2
 		
 	}
@@ -133,7 +156,7 @@ public class AssetSetter {
 		gp.npc[mapNum][0].worldX = gp.tileSize * 25;
 		gp.npc[mapNum][0].worldY = gp.tileSize * 24;
 
-		if (gp.setMonster4 == true) {
+		if (gp.setMonster3 == true) {
 			gp.npc[mapNum][0].worldX = gp.tileSize * 20;
 			gp.npc[mapNum][0].worldY = gp.tileSize * 21;
 		}
@@ -147,6 +170,7 @@ public class AssetSetter {
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
 		gp.npc[mapNum][0].worldX = gp.tileSize * 14;
 		gp.npc[mapNum][0].worldY = gp.tileSize * 16;
+		gp.npc[mapNum][0].speed = 0;
 
 	}
 	
@@ -435,7 +459,7 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(15000); // Pause for 15 seconds
+				Thread.sleep(25000); // Pause for 25 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -470,7 +494,7 @@ public class AssetSetter {
 
 		new Thread(() -> {
 			try {
-				Thread.sleep(30000); // Pause for 30 seconds
+				Thread.sleep(50000); // Pause for 50 seconds
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

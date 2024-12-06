@@ -22,7 +22,7 @@ public class MON_Witch extends Entity{
 		maxLife = 6;  
 		life = maxLife;
 		attack = 2;
-		defense = 2;
+		defense = 1;
 		exp = 2;
 		projectile = new OBJ_Fireball(gp);
 		onPath = true;
