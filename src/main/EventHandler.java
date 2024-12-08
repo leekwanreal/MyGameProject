@@ -1,5 +1,7 @@
 package main;
 
+import data.Progress;
+
 public class EventHandler {
 	GamePanel gp;
 	EventRect eventRect[][][];
@@ -43,6 +45,7 @@ public class EventHandler {
 			//if (hit(23,12,"up")) {healingPool(23,12,gp.dialogueState);}
 			if (hit(0,27,24,"left") || hit(0,27,25,"left")) {
 				talkToNPC(gp.dialogueState);
+				Progress.bossDefeated = true;
 			}	
 
 			if (hit(0,39,36,"any") || hit(0,39,37,"any")) {

@@ -80,11 +80,12 @@ public class KeyHandler implements KeyListener {
 				if (gp.firstTimeLoadGame == false) {
 					gp.resetGame(true);
 					gp.gameState = gp.playState;
-
+					gp.playMusic(0);
 				}
 				else {
 					gp.firstTimeLoadGame = false;
 					gp.gameState = gp.playState;
+					gp.playMusic(0);
 				}
 			}
 			if (gp.ui.commandNum == 1) {
@@ -259,7 +260,7 @@ public class KeyHandler implements KeyListener {
 				gp.resetGame(false);
 				gp.gameState = gp.playState;
 
-				//gp.playMusic(0);
+				gp.playMusic(0);
 			}
 			else if (gp.ui.commandNum == 1) {
 				gp.gameState = gp.titleState;

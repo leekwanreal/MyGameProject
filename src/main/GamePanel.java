@@ -15,6 +15,7 @@ import java.util.Comparator;
 import javax.swing.JPanel;
 
 import ai.PathFinder;
+import data.Progress;
 import entity.Entity;
 import entity.Player;
 import tile.TileManager;
@@ -60,6 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public EventHandler eHandler = new EventHandler(this);
 	Config config = new Config(this);
 	public PathFinder pFinder = new PathFinder(this);
+	public CutsceneManager csManager = new CutsceneManager(this); 
 	public Thread gameThread;
 
 	// Entity and object
@@ -116,6 +118,7 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void resetGame(boolean restart) {
+		stopMusic();
 		//player.getPlayerImage();
 		player.setDefaultPosition();
 		player.restoreLifeAndMana();
@@ -307,6 +310,11 @@ public class GamePanel extends JPanel implements Runnable {
 			
 			// Draw UI
 			ui.draw(g2);
+			
+			// Cutscene manager
+			if (Progress.bossDefeated == true) {
+				csManager.draw(g2);
+			}
 		}
 		
 		// Debug
@@ -326,7 +334,6 @@ public class GamePanel extends JPanel implements Runnable {
 			g2.drawString("Row" + (player.worldY + player.solidArea.y)/tileSize, x, y); y += lineHeight;
 			g2.drawString("Draw Time: " + passed, x, y);
 		}
-
 	}
 	
 	public void drawToScreen() {
@@ -339,9 +346,11 @@ public class GamePanel extends JPanel implements Runnable {
 		music.play();
 		music.loop();
 	}
+
 	public void stopMusic() {
 		music.stop();
 	}
+
 	public void playSE(int i) {
 		se.setFile(i);
 		se.play();

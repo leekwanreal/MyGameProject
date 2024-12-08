@@ -1,5 +1,6 @@
 package main;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Main {
@@ -10,7 +11,8 @@ public class Main {
 		window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
-		window.setTitle("Adventure Game");
+		window.setTitle("Damsterams Has Fallen");
+		new Main().setIcon();
 		
 		GamePanel gamePanel = new GamePanel();
 		window.add(gamePanel);
@@ -27,5 +29,10 @@ public class Main {
 		
 		gamePanel.setupGame();
 		gamePanel.startGameThread();
+	}
+
+	public void setIcon() {
+		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("player/boy_right_1.png"));
+		window.setIconImage(icon.getImage());
 	}
 }

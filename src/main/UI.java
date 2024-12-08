@@ -133,27 +133,28 @@ public class UI {
 			i++;
 			x += iconSize;
 		}
-		/*
+		
+		iconSize = 32;
 		// Draw Max Mana
 		x = gp.tileSize/2-5;
-		y = (int) (gp.tileSize*1.5);
+		y = (int) (gp.tileSize*1.25);
 		i = 0;
 		while (i < gp.player.maxMana) {
-			g2.drawImage(crystal_blank, x, y, null);
+			g2.drawImage(crystal_blank, x, y, iconSize, iconSize, null);
 			i++;
-			x += 35;
+			x += 20;
 		}
 		
 		// Draw Mana
 		x = gp.tileSize/2-5;
-		y = (int) (gp.tileSize*1.5);
+		y = (int) (gp.tileSize*1.25);
 		i = 0;
 		while (i < gp.player.mana) {
-			g2.drawImage(crystal_full, x, y, null);
+			g2.drawImage(crystal_full, x, y, iconSize, iconSize, null);
 			i++;
-			x += 35;
+			x += 20;
 		}
-		*/
+		
 	}
 
 	public void drawMonsterLife() {			
@@ -803,6 +804,7 @@ public class UI {
 			if (gp.keyH.enterPressed == true) {
 				subState = 0;
 				gp.gameState = gp.titleState;
+				gp.stopMusic();
 			}
 		}
 		

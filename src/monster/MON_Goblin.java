@@ -2,8 +2,10 @@ package monster;
 
 import java.util.Random;
 
+import data.Progress;
 import entity.Entity;
 import main.GamePanel;
+import object.OBJ_Key_Secret_Room;
 import object.OBJ_Potion_Red;
 import object.OBJ_Rock;
 
@@ -107,10 +109,8 @@ public class MON_Goblin extends Entity {
 	}
 	
 	public void checkDrop() {
-		int i = new Random().nextInt(100) + 1;
-		
-		if (i < 50) {
-			dropItem(new OBJ_Potion_Red(gp));
-		}
+		Progress.bossDefeated = true;
+
+		dropItem(new OBJ_Key_Secret_Room(gp));
 	}
 }
