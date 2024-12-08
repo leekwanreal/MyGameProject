@@ -1,6 +1,7 @@
 package main;
 
 import entity.NPC_OldMan;
+import entity.Turret;
 import entity.NPC_Girl;
 import monster.MON_Bat;
 import monster.MON_Goblin;
@@ -155,6 +156,10 @@ public class AssetSetter {
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
 		gp.npc[mapNum][0].worldX = gp.tileSize * 25;
 		gp.npc[mapNum][0].worldY = gp.tileSize * 24;
+		
+		gp.npc[mapNum][1] = new Turret(gp);
+		gp.npc[mapNum][1].worldX = gp.tileSize * 29;
+		gp.npc[mapNum][1].worldY = gp.tileSize * 19;
 
 		if (gp.setMonster3 == true) {
 			gp.npc[mapNum][0].worldX = gp.tileSize * 20;

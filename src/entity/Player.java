@@ -14,6 +14,7 @@ import object.OBJ_Bullet_AK47;
 import object.OBJ_Bullet_AWM;
 import object.OBJ_Bullet_Pistol;
 import object.OBJ_Bullet_Rifle;
+import object.OBJ_Snowball;
 import object.OBJ_Bullet_Shotgun;
 import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fireball;
@@ -28,6 +29,7 @@ import object.OBJ_Potion_Red;
 import object.OBJ_Rifle;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Shotgun;
+import object.OBJ_Snow_Gun;
 import object.OBJ_Sword_Normal;
 import object.OBJ_Uzi;
 
@@ -49,6 +51,7 @@ public class Player extends Entity {
 	Projectile ak47_bullet = new OBJ_Bullet_AK47(gp);
 	Projectile awm_bullet = new OBJ_Bullet_AWM(gp);
 	Projectile shotgun_bullet = new OBJ_Bullet_Shotgun(gp);
+	Projectile snowball = new OBJ_Snowball(gp);
 
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
@@ -145,6 +148,7 @@ public class Player extends Entity {
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
 		inventory.add(new OBJ_Pistol(gp));
+		inventory.add(new OBJ_Snow_Gun(gp));
 		OBJ_Potion_Red potion = new OBJ_Potion_Red(gp);
 		potion.amount = 3;
 		inventory.add(potion);
@@ -208,6 +212,9 @@ public class Player extends Entity {
 		}
 		if (currentWeapon.gun_type == type_shotgun) {
 			projectile = shotgun_bullet;
+		}
+		if (currentWeapon.gun_type == type_snowgun) {
+			projectile = snowball;
 		}
 	}
 	
@@ -287,6 +294,16 @@ public class Player extends Entity {
 			left2 = setup("/player/boy_shotgun_left_2.png", gp.tileSize*2, gp.tileSize);
 			right1 = setup("/player/boy_shotgun_right_1.png", gp.tileSize*2, gp.tileSize);
 			right2 = setup("/player/boy_shotgun_right_2.png", gp.tileSize*2, gp.tileSize);
+		}
+		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_snowgun) {
+			up1 = setup("/player/boy_rifle_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_rifle_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_rifle_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_rifle_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_rifle_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_rifle_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_rifle_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_rifle_right_2.png", gp.tileSize*2, gp.tileSize);
 		}
 	}
 	
@@ -532,6 +549,15 @@ public class Player extends Entity {
 				gp.monster[gp.currentMap][i].life -= damage;
 				//gp.ui.addMessage(damage + "damage!");
 				
+				if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_snowgun) {
+					gp.monster[gp.currentMap][i].frozen = true;
+									
+					// isFrozen(gp.monster[gp.currentMap][i]);
+					/*if (gp.monster[gp.currentMap][i].frozen == false) {
+					    gp.monster[gp.currentMap][i].defense = maxDefense;
+					    gp.monster[gp.currentMap][i].speed = maxSpeed;
+					}*/
+				}
 				
 				gp.monster[gp.currentMap][i].invincible = true;
 				gp.monster[gp.currentMap][i].damageReaction();
@@ -545,6 +571,11 @@ public class Player extends Entity {
 					checkLevelUp();
 				}
 			}
+			if (gp.monster[gp.currentMap][i].frozen == true) {
+				//gp.monster[gp.currentMap][i].freezeCounter++;
+			    gp.monster[gp.currentMap][i].defense = 1;
+			    gp.monster[gp.currentMap][i].speed = 0;
+			}	
 		}
 	}
 	

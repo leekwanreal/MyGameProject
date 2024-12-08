@@ -21,8 +21,10 @@ public class MON_Witch extends Entity{
 		speed = 1;
 		maxLife = 6;  
 		life = maxLife;
+		maxDefense = 2;
+		maxSpeed = 1;
 		attack = 2;
-		defense = 1;
+		defense = 2;
 		exp = 2;
 		projectile = new OBJ_Fireball(gp);
 		onPath = true;
