@@ -39,6 +39,8 @@ public class Entity {
 	public boolean onPath = false;
 	public Entity loot;
 	public boolean opened = false;
+	public boolean turnOn = true;
+	public boolean frozen = false;
 
 	// Counter
 	public int spriteCounter = 0;
@@ -47,6 +49,7 @@ public class Entity {
 	public int shotCoolDown = 0;
 	public int dyingCounter = 0;
 	public int hpBarCounter;
+	public int freezeCounter;
 	
 	// Character Attributes
 	public String name;
@@ -61,6 +64,8 @@ public class Entity {
 	public int dexterity;
 	public int attack;
 	public int defense;
+	public int maxDefense;
+	public int maxSpeed;
 	public int exp;
 	public int nextLevelExp;
 	public int coin;
@@ -100,6 +105,7 @@ public class Entity {
 	public final int type_ak47 = 3;
 	public final int type_awm = 4;
 	public final int type_shotgun = 5;
+	public final int type_snowgun = 6;
 	
 	public Entity(GamePanel gp) {
 		this.gp = gp;
@@ -274,6 +280,19 @@ public class Entity {
 		else {
 			setAction();
 			checkCollision();
+			
+			if (frozen) {
+				freezeCounter++;
+		        if (freezeCounter > 180) { // 3 seconds freeze
+		            frozen = false;
+		            freezeCounter = 0;
+		        }
+			}
+			
+			if (!frozen) {
+				defense = maxDefense;
+				speed = maxSpeed;
+			}
 			
 			if (!collisionOn) {
 				switch(direction) {

@@ -16,6 +16,8 @@ public class MON_Bat extends Entity {
 		speed = 2;
 		maxLife = 6;  
 		life = maxLife;
+		maxDefense = 0;
+		maxSpeed = 2;
 		attack = 2;
 		defense = 0;
 		exp = 2;

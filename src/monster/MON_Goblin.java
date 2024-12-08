@@ -23,6 +23,8 @@ public class MON_Goblin extends Entity {
 		speed = 2;
 		maxLife = 50;  
 		life = maxLife;
+		maxDefense = 3;
+		maxSpeed = 2;
 		attack = 5;
 		defense = 3;
 		exp = 50;
@@ -103,7 +105,7 @@ public class MON_Goblin extends Entity {
 	}
 
 	public void rageMode() {
-		speed *= 2;
+		maxSpeed *= 2;
 		attack *= 2;
 		rate /= 2;
 	}
