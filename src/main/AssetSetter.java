@@ -111,7 +111,7 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*26;
 		gp.obj[mapNum][i].worldY = gp.tileSize*25;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Door_Room_1(gp);
+		/*gp.obj[mapNum][i] = new OBJ_Door_Room_1(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*22;
 		gp.obj[mapNum][i].worldY = gp.tileSize*16;
 		i++;
@@ -126,7 +126,7 @@ public class AssetSetter {
 		gp.obj[mapNum][i] = new OBJ_Door_Room_3(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*21;
 		gp.obj[mapNum][i].worldY = gp.tileSize*22;
-		i++;
+		i++;*/
 		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_AK47(gp));
 		gp.obj[mapNum][i].setLoot();
 		gp.obj[mapNum][i].worldX = gp.tileSize*28;

@@ -137,6 +137,8 @@ public class TileManager {
 		setup(121, "road3(93)", false);
 		setup(122, "sidepavement(94)", true);
 		setup(123, "black", true);
+		setup(124, "fence1(124)", true);
+		setup(125, "fence2(125)", true);
 		
 	}
 	
