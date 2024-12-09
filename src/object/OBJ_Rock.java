@@ -14,10 +14,10 @@ public class OBJ_Rock extends Projectile {
 		this.gp = gp;
 		
 		name = "Rock";
-		speed = 8;
+		speed = 20;
 		maxLife = 80;
 		life = maxLife;
-		attack = 2;
+		attack = 5;
 		useCost = 1;
 		alive = false;
 		getImage();

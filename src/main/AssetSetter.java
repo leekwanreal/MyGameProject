@@ -1,39 +1,29 @@
 package main;
 
-import entity.NPC_OldMan;
 import entity.Turret;
 import entity.NPC_Girl;
 import monster.MON_Bat;
 import monster.MON_Goblin;
-import monster.MON_GreenSlime;
 import monster.MON_Skeleton;
 import monster.MON_Witch;
 import object.OBJ_AK47;
 import object.OBJ_AWM;
-import object.OBJ_Axe;
-import object.OBJ_Boots;
 import object.OBJ_Cell_Gate;
 import object.OBJ_Chest;
-import object.OBJ_Coin_Bronze;
 import object.OBJ_Door;
 import object.OBJ_Door_Room_1;
 import object.OBJ_Door_Room_2;
 import object.OBJ_Door_Room_3;
 import object.OBJ_Door_Secret_Room;
-import object.OBJ_Heart;
-import object.OBJ_Key;
 import object.OBJ_Key_Cell;
 import object.OBJ_Key_Room_1;
 import object.OBJ_Key_Room_2;
 import object.OBJ_Key_Room_3;
 import object.OBJ_Key_Secret_Room;
-import object.OBJ_ManaCrystal;
-import object.OBJ_Potion_Red;
 import object.OBJ_Rifle;
 import object.OBJ_Shield_Blue;
 import object.OBJ_Shotgun;
 import object.OBJ_Uzi;
-import tile_interactive.IT_DryTree;
 
 public class AssetSetter {
 	GamePanel gp;
@@ -111,7 +101,7 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*26;
 		gp.obj[mapNum][i].worldY = gp.tileSize*25;
 		i++;
-		/*gp.obj[mapNum][i] = new OBJ_Door_Room_1(gp);
+		gp.obj[mapNum][i] = new OBJ_Door_Room_1(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*22;
 		gp.obj[mapNum][i].worldY = gp.tileSize*16;
 		i++;
@@ -126,7 +116,7 @@ public class AssetSetter {
 		gp.obj[mapNum][i] = new OBJ_Door_Room_3(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize*21;
 		gp.obj[mapNum][i].worldY = gp.tileSize*22;
-		i++;*/
+		i++;
 		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_AK47(gp));
 		gp.obj[mapNum][i].setLoot();
 		gp.obj[mapNum][i].worldX = gp.tileSize*28;
@@ -148,6 +138,20 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldY = gp.tileSize*39;
 		i++;
 		// Map 2
+		i = 0;
+		mapNum = 1;
+		gp.obj[mapNum][i] = new Turret(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize * 25;
+		gp.obj[mapNum][i].worldY = gp.tileSize * 27;
+		i++;
+		gp.obj[mapNum][i] = new OBJ_Door(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize * 24;
+		gp.obj[mapNum][i].worldY = gp.tileSize * 34;
+		i++;
+		gp.obj[mapNum][i] = new OBJ_Door(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize * 25;
+		gp.obj[mapNum][i].worldY = gp.tileSize * 34;
+		i++;
 		
 	}
 	
@@ -156,10 +160,6 @@ public class AssetSetter {
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
 		gp.npc[mapNum][0].worldX = gp.tileSize * 25;
 		gp.npc[mapNum][0].worldY = gp.tileSize * 24;
-		
-		gp.npc[mapNum][1] = new Turret(gp);
-		gp.npc[mapNum][1].worldX = gp.tileSize * 29;
-		gp.npc[mapNum][1].worldY = gp.tileSize * 19;
 
 		if (gp.setMonster3 == true) {
 			gp.npc[mapNum][0].worldX = gp.tileSize * 20;

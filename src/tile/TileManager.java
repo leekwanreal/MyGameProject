@@ -51,7 +51,7 @@ public class TileManager {
 		setup(15, "chair_2", true);
 		setup(16, "chair_3", true);
 		setup(17, "chair_4", true);
-		setup(18, "brick", true);
+		setup(18, "brick", false);
  		setup(19, "stonelinedown", false);
 		setup(20, "stonelineup", false);
 		setup(21, "cellright", false);

@@ -73,13 +73,9 @@ public class Turret extends Entity{
 	        	direction = "up";
 	        	projectile.set(worldX + 54,worldY + 54,direction,true,this);
 	        	gp.projectileList.add(projectile);
-
-	            //gp.projectileList.add(upBullet);
-	            //projectile.subtractResource(this);
 	            shotCoolDown = 0;
 	            i++;
 	            Paused = true;
-	            //turretPause(1);
 	        }
 	        if (i >= 3 && i < 6 && projectile.alive == false && shotCoolDown == 10) {
 	            direction = "right";
@@ -93,57 +89,21 @@ public class Turret extends Entity{
 	            direction = "down";
 	        	projectile.set(worldX + 54, worldY + 54, direction,true,this);
 	        	gp.projectileList.add(projectile);
-
 	            shotCoolDown = 0;
 	            i++;
 	            Paused = true;
-
-	            //turretPause(1);
 	        }
 	        if (i >= 9 && i < 12 && projectile.alive == false && shotCoolDown == 10) {
 	            direction = "left";
 	        	projectile.set(worldX + 54,worldY + 54,direction,true,this);
 	        	gp.projectileList.add(projectile);
-
 	            shotCoolDown = 0;
 	            i++;
 	            Paused = true;
-
 	        }
 	        if (i >= 12) {
 	            i = 0; 
 	        }
-			/*actionLockCounter++;
-			int j = 0;
-			
-			if (actionLockCounter == 120) {
-				Random random = new Random();
-				// Get a number 1 - 100
-				int i = random.nextInt(100) + 1; 
-				if (i <= 25) {
-					direction = "up";
-					j = 0;
-				}
-				if (i > 25 && i <= 50) {
-					direction = "down";
-					j = 0;
-				}
-				if (i > 50 && i <= 75) {
-					direction = "left";
-					j = 0;
-				}
-				if (i > 75 && i <= 100) {
-					direction = "right";
-					j = 0;
-				}
-			}	
-			actionLockCounter = 0;
-		    if (projectile.alive == false && shotCoolDown == 5) {
-			projectile.set(worldX, worldY, direction, true, this);
-			gp.projectileList.add(projectile);
-			projectile.subtractResource(this);
-			shotCoolDown = 0;
-		    }  */  
 	    }			
 	}
 

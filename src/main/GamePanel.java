@@ -189,6 +189,7 @@ public class GamePanel extends JPanel implements Runnable {
 		if (gameState == playState) {
 			// Player
 			player.update();
+
 			// NPC
 			for (int i = 0; i < npc[1].length; ++i) {
 				if (npc[currentMap][i] != null) {
@@ -230,6 +231,10 @@ public class GamePanel extends JPanel implements Runnable {
 				if (iTile[currentMap][i] != null) {
 					iTile[currentMap][i].update();
 				}
+			}
+			// Turret
+			if (currentMap == 1) {
+				obj[1][0].update();
 			}
 		}
 		if (gameState == pauseState) {
