@@ -140,6 +140,7 @@ public class TileManager {
 		setup(124, "fence1(124)", true);
 		setup(125, "fence2(125)", true);
 		
+		
 	}
 	
 	public void setup(int index, String imageName, boolean collision) {

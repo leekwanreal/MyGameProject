@@ -10,7 +10,7 @@ public class OBJ_Fist extends Entity{
 		type = type_nothing;
 		name = "Fist";
 		down1 = setup("/objects/fist.png",gp.tileSize,gp.tileSize);
-		attackValue = 0;
+		attackValue = 1;
 		
 		description = "[" + name + "]\nHolding nothing.";
 		attackArea.width = 36;

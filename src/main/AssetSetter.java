@@ -15,6 +15,8 @@ import object.OBJ_Door_Room_1;
 import object.OBJ_Door_Room_2;
 import object.OBJ_Door_Room_3;
 import object.OBJ_Door_Secret_Room;
+import object.OBJ_Gate_Left;
+import object.OBJ_Gate_Right;
 import object.OBJ_Key_Cell;
 import object.OBJ_Key_Room_1;
 import object.OBJ_Key_Room_2;
@@ -144,13 +146,13 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize * 25;
 		gp.obj[mapNum][i].worldY = gp.tileSize * 27;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Door(gp);
-		gp.obj[mapNum][i].worldX = gp.tileSize * 24;
-		gp.obj[mapNum][i].worldY = gp.tileSize * 34;
+		gp.obj[mapNum][i] = new OBJ_Gate_Left(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize * 23;
+		gp.obj[mapNum][i].worldY = gp.tileSize * 33;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Door(gp);
+		gp.obj[mapNum][i] = new OBJ_Gate_Right(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize * 25;
-		gp.obj[mapNum][i].worldY = gp.tileSize * 34;
+		gp.obj[mapNum][i].worldY = gp.tileSize * 33;
 		i++;
 		
 	}
