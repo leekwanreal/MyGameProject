@@ -181,7 +181,7 @@ public class AssetSetter {
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
 		gp.npc[mapNum][0].worldX = gp.tileSize * 14;
 		gp.npc[mapNum][0].worldY = gp.tileSize * 16;
-		gp.npc[mapNum][0].speed = 0;
+		//gp.npc[mapNum][0].speed = 0;
 
 	}
 	

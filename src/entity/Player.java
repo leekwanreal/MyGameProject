@@ -16,6 +16,7 @@ import object.OBJ_Snowball;
 import object.OBJ_Bullet_Shotgun;
 import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fist;
+import object.OBJ_Key_Cell;
 import object.OBJ_Key_Turret;
 import object.OBJ_Pistol;
 import object.OBJ_Potion_Red;
@@ -142,6 +143,7 @@ public class Player extends Entity {
 		potion.amount = 3;
 		inventory.add(potion);
 		inventory.add(new OBJ_Key_Turret(gp));
+		inventory.add(new OBJ_Key_Cell(gp));
 	}
 	
 	public int getAttack() {

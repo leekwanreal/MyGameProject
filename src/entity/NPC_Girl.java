@@ -9,6 +9,7 @@ public class NPC_Girl extends Entity{
 		super(gp);
 		direction = "down";
 		speed = 1;
+		maxSpeed = 1;
 		getNPCImage();
 		setDialogue();
 		onPath = true;
