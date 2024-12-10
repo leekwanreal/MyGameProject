@@ -20,6 +20,7 @@ public class OBJ_Snowball extends Projectile {
 		attack = 0;
 		useCost = 1;
 		alive = false;
+		snow = true;
 		getImage();
 
 		solidArea.x = 20;
@@ -31,14 +32,14 @@ public class OBJ_Snowball extends Projectile {
 	}
 	
 	public void getImage() {
-		up1 = setup("/projectile/snowball.png", gp.tileSize*2/3, gp.tileSize*2/3);
-		up2 = setup("/projectile/snowball.png", gp.tileSize*2/3, gp.tileSize*2/3);
-		down1 = setup("/projectile/snowball.png", gp.tileSize*2/3, gp.tileSize*2/3);
-		down2 = setup("/projectile/snowball.png", gp.tileSize*2/3, gp.tileSize*2/3);
-		left1 = setup("/projectile/snowball.png", gp.tileSize*2/3, gp.tileSize*2/3);
-		left2 = setup("/projectile/snowball.png", gp.tileSize*2/3, gp.tileSize*2/3);
-		right1 = setup("/projectile/snowball.png", gp.tileSize*2/3, gp.tileSize*2/3);
-		right2 = setup("/projectile/snowball.png", gp.tileSize*2/3, gp.tileSize*2/3);	
+		up1 = setup("/projectile/snowball_ud.png", gp.tileSize*3/4, gp.tileSize*3/4);
+		up2 = setup("/projectile/snowball_ud.png", gp.tileSize*3/4, gp.tileSize*3/4);
+		down1 = setup("/projectile/snowball_ud.png", gp.tileSize*3/4, gp.tileSize*3/4);
+		down2 = setup("/projectile/snowball_ud.png", gp.tileSize*3/4, gp.tileSize*3/4);
+		left1 = setup("/projectile/snowball_rl.png", gp.tileSize*3/4, gp.tileSize*3/4);
+		left2 = setup("/projectile/snowball_rl.png", gp.tileSize*3/4, gp.tileSize*3/4);
+		right1 = setup("/projectile/snowball_rl.png", gp.tileSize*3/4, gp.tileSize*3/4);
+		right2 = setup("/projectile/snowball_rl.png", gp.tileSize*3/4, gp.tileSize*3/4);	
 	}
 	
 	public boolean haveResource(Entity user) {

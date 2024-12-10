@@ -49,8 +49,13 @@ public class EventHandler {
 			}	
 
 			if (hit(0,39,36,"any") || hit(0,39,37,"any")) {
-				transitMap(1, 16, 16);
+				transitMap(1, 28, 25);
 			}
+
+			if (hit(1,45,24,"any") || hit(1,45,25,"any")) {
+				transitMap(2, 15, 16);
+			}
+
 			
 			if ((hit(0,27,22,"any") || 
 				hit(0,28,22,"any") ||
@@ -167,8 +172,8 @@ public class EventHandler {
 
 	public void transitMap(int map, int col, int row) {
 		gp.currentMap = map;
-		gp.player.worldX = row * gp.tileSize;
-		gp.player.worldY = col * gp.tileSize;
+		gp.player.worldX = col * gp.tileSize;
+		gp.player.worldY = row * gp.tileSize;
 		previousEventX = gp.player.worldX;
 		previousEventY = gp.player.worldY;
 		canTouchEvent = false;

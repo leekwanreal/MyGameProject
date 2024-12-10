@@ -1,12 +1,10 @@
 package entity;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-
 import main.GamePanel;
 
 public class Projectile extends Entity{
 	Entity user;
+	protected boolean snow = false;
 	
 	public Projectile(GamePanel gp) {
 		super(gp);
@@ -27,6 +25,10 @@ public class Projectile extends Entity{
 			if (monsterIndex != 999) {
 				gp.player.damageMonster(monsterIndex, attack);
 				generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
+				if (snow == true) {
+					gp.monster[gp.currentMap][monsterIndex].frozen = true;
+					gp.monster[gp.currentMap][monsterIndex].speed = 0;
+				}
 				alive = false;
 			} 
 			collisionOn = false;
@@ -35,20 +37,23 @@ public class Projectile extends Entity{
 				alive = false;				
 			}
 		}
-		
-		if (user != gp.player) {
-			boolean contactPlayer = gp.cChecker.checkPlayer(this);
-			if (gp.player.invincible == false && contactPlayer == true) {
-				damagePlayer(attack);
-				generateParticle(user.projectile, gp.player);
-				alive = false;
-			}
+
+		if (user == gp.turret) {
 			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
 			if (monsterIndex != 999) {
 				gp.player.damageMonster(monsterIndex, attack);
 				generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
 				alive = false;
 			} 
+		}
+		
+		if (user != gp.player && user != gp.turret) {
+			boolean contactPlayer = gp.cChecker.checkPlayer(this);
+			if (gp.player.invincible == false && contactPlayer == true) {
+				damagePlayer(attack);
+				generateParticle(user.projectile, gp.player);
+				alive = false;
+			}
 			collisionOn = false;
 			gp.cChecker.checkTile(this);
 			if (collisionOn) {

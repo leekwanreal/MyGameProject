@@ -71,7 +71,7 @@ public class Entity {
 	public int coin;
 	public Entity currentWeapon;
 	public Entity currentShield;
-	public Projectile projectile; // Needs fixing
+	public Projectile projectile;
 	public boolean boss;
 
 	// Item Attributes
@@ -290,7 +290,6 @@ public class Entity {
 			}
 			
 			if (!frozen) {
-				defense = maxDefense;
 				speed = maxSpeed;
 			}
 			

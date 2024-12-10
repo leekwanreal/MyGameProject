@@ -18,6 +18,7 @@ import ai.PathFinder;
 import data.Progress;
 import entity.Entity;
 import entity.Player;
+import entity.Turret;
 import tile.TileManager;
 import tile_interactive.InteractiveTile;
 
@@ -73,6 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public ArrayList<Entity> projectileList = new ArrayList<>();
 	public ArrayList<Entity> particleList = new ArrayList<>();
 	ArrayList<Entity> entityList = new ArrayList<>();
+	public Turret turret = new Turret(this);
 	
 	// Game state
 	public int gameState;
@@ -232,9 +234,8 @@ public class GamePanel extends JPanel implements Runnable {
 					iTile[currentMap][i].update();
 				}
 			}
-			// Turret
-			if (currentMap == 1) {
-				obj[1][0].update();
+			if (currentMap == 2) {
+				turret.update();
 			}
 		}
 		if (gameState == pauseState) {

@@ -10,7 +10,6 @@ import object.OBJ_AK47;
 import object.OBJ_AWM;
 import object.OBJ_Cell_Gate;
 import object.OBJ_Chest;
-import object.OBJ_Door;
 import object.OBJ_Door_Room_1;
 import object.OBJ_Door_Room_2;
 import object.OBJ_Door_Room_3;
@@ -141,10 +140,10 @@ public class AssetSetter {
 		i++;
 		// Map 2
 		i = 0;
-		mapNum = 1;
-		gp.obj[mapNum][i] = new Turret(gp);
-		gp.obj[mapNum][i].worldX = gp.tileSize * 25;
-		gp.obj[mapNum][i].worldY = gp.tileSize * 27;
+		mapNum = 2;
+		gp.obj[mapNum][i] = gp.turret;
+		gp.obj[mapNum][i].worldX = gp.tileSize * 14;
+		gp.obj[mapNum][i].worldY = gp.tileSize * 26;
 		i++;
 		gp.obj[mapNum][i] = new OBJ_Gate_Left(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize * 23;
@@ -174,6 +173,11 @@ public class AssetSetter {
 		}
 
 		mapNum = 1;
+		gp.npc[mapNum][0] = new NPC_Girl(gp);
+		gp.npc[mapNum][0].worldX = gp.tileSize * 28;
+		gp.npc[mapNum][0].worldY = gp.tileSize * 24;
+
+		mapNum = 2;
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
 		gp.npc[mapNum][0].worldX = gp.tileSize * 14;
 		gp.npc[mapNum][0].worldY = gp.tileSize * 16;
@@ -537,7 +541,7 @@ public class AssetSetter {
 	}
 
 	public void setBoss() {
-		int mapNum = 1;
+		int mapNum = 2;
 
 		gp.monster[mapNum][0] = new MON_Goblin(gp);
 		gp.monster[mapNum][0].worldX = gp.tileSize * 24;

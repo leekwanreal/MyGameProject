@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 import main.GamePanel;
 import main.KeyHandler;
-import object.OBJ_AK47;
-import object.OBJ_AWM;
 import object.OBJ_Bullet_AK47;
 import object.OBJ_Bullet_AWM;
 import object.OBJ_Bullet_Pistol;
@@ -17,21 +15,12 @@ import object.OBJ_Bullet_Rifle;
 import object.OBJ_Snowball;
 import object.OBJ_Bullet_Shotgun;
 import object.OBJ_Bullet_Uzi;
-import object.OBJ_Fireball;
 import object.OBJ_Fist;
-import object.OBJ_Key;
-import object.OBJ_Key_Cell;
-import object.OBJ_Key_Room_1;
-import object.OBJ_Key_Room_3;
-import object.OBJ_Key_Secret_Room;
+import object.OBJ_Key_Turret;
 import object.OBJ_Pistol;
 import object.OBJ_Potion_Red;
-import object.OBJ_Rifle;
 import object.OBJ_Shield_Wood;
-import object.OBJ_Shotgun;
 import object.OBJ_Snow_Gun;
-import object.OBJ_Sword_Normal;
-import object.OBJ_Uzi;
 
 public class Player extends Entity {
 	KeyHandler keyH;
@@ -104,7 +93,7 @@ public class Player extends Entity {
 	
 	
 	public void setDefaultPosition() {
-		if (gp.currentMap == 1) {
+		if (gp.currentMap == 2) {
 			worldX = gp.tileSize * 16;
 			worldY = gp.tileSize * 16;
 			direction = "down";
@@ -152,6 +141,7 @@ public class Player extends Entity {
 		OBJ_Potion_Red potion = new OBJ_Potion_Red(gp);
 		potion.amount = 3;
 		inventory.add(potion);
+		inventory.add(new OBJ_Key_Turret(gp));
 	}
 	
 	public int getAttack() {
@@ -296,14 +286,14 @@ public class Player extends Entity {
 			right2 = setup("/player/boy_shotgun_right_2.png", gp.tileSize*2, gp.tileSize);
 		}
 		if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_snowgun) {
-			up1 = setup("/player/boy_rifle_up_1.png", gp.tileSize, gp.tileSize*2);
-			up2 = setup("/player/boy_rifle_up_2.png", gp.tileSize, gp.tileSize*2);
-			down1 = setup("/player/boy_rifle_down_1.png", gp.tileSize, gp.tileSize*2);
-			down2 = setup("/player/boy_rifle_down_2.png", gp.tileSize, gp.tileSize*2);
-			left1 = setup("/player/boy_rifle_left_1.png", gp.tileSize*2, gp.tileSize);
-			left2 = setup("/player/boy_rifle_left_2.png", gp.tileSize*2, gp.tileSize);
-			right1 = setup("/player/boy_rifle_right_1.png", gp.tileSize*2, gp.tileSize);
-			right2 = setup("/player/boy_rifle_right_2.png", gp.tileSize*2, gp.tileSize);
+			up1 = setup("/player/boy_snowgun_up_1.png", gp.tileSize, gp.tileSize*2);
+			up2 = setup("/player/boy_snowgun_up_2.png", gp.tileSize, gp.tileSize*2);
+			down1 = setup("/player/boy_snowgun_down_1.png", gp.tileSize, gp.tileSize*2);
+			down2 = setup("/player/boy_snowgun_down_2.png", gp.tileSize, gp.tileSize*2);
+			left1 = setup("/player/boy_snowgun_left_1.png", gp.tileSize*2, gp.tileSize);
+			left2 = setup("/player/boy_snowgun_left_2.png", gp.tileSize*2, gp.tileSize);
+			right1 = setup("/player/boy_snowgun_right_1.png", gp.tileSize*2, gp.tileSize);
+			right2 = setup("/player/boy_snowgun_right_2.png", gp.tileSize*2, gp.tileSize);
 		}
 	}
 	
@@ -343,7 +333,7 @@ public class Player extends Entity {
 			contactMonster(monsterIndex);
 			
 			// Check Interactive Tile Collision
-			int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
+			// int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
 			
 			
 			// Check Event
@@ -426,7 +416,7 @@ public class Player extends Entity {
 		
 		if (life <= 0) {
 			gp.gameState = gp.gameOverState;
-			gp.ui.commandNum = -1; 
+			gp.ui.commandNum = 0; // -1
 			//gp.stopMusic();
 			gp.playSE(12);
 		}
@@ -502,13 +492,13 @@ public class Player extends Entity {
 
 			else {
 				// Inventory Items
-				String text;
+				//String text;
 				if (canObtainItem(gp.obj[gp.currentMap][i])) {
 					gp.playSE(1);
-					text = "Got a " + gp.obj[gp.currentMap][i].name + "!";
+					//text = "Got a " + gp.obj[gp.currentMap][i].name + "!";
 				}
 				else {
-					text = "Your inventory is full!";
+					//text = "Your inventory is full!";
 				}
 				//gp.ui.addMessage(text);
 				gp.obj[gp.currentMap][i] = null;
@@ -549,16 +539,6 @@ public class Player extends Entity {
 				gp.monster[gp.currentMap][i].life -= damage;
 				//gp.ui.addMessage(damage + "damage!");
 				
-				if (currentWeapon.type == type_gun && currentWeapon.gun_type == type_snowgun) {
-					gp.monster[gp.currentMap][i].frozen = true;
-									
-					// isFrozen(gp.monster[gp.currentMap][i]);
-					/*if (gp.monster[gp.currentMap][i].frozen == false) {
-					    gp.monster[gp.currentMap][i].defense = maxDefense;
-					    gp.monster[gp.currentMap][i].speed = maxSpeed;
-					}*/
-				}
-				
 				gp.monster[gp.currentMap][i].invincible = true;
 				gp.monster[gp.currentMap][i].damageReaction();
 						
@@ -571,11 +551,6 @@ public class Player extends Entity {
 					checkLevelUp();
 				}
 			}
-			if (gp.monster[gp.currentMap][i].frozen == true) {
-				//gp.monster[gp.currentMap][i].freezeCounter++;
-			    gp.monster[gp.currentMap][i].defense = 1;
-			    gp.monster[gp.currentMap][i].speed = 0;
-			}	
 		}
 	}
 	

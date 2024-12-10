@@ -27,7 +27,9 @@ public class TileManager {
 		
 		getTileImage();
 		loadMap("/maps/mymap1.txt", 0);
-		loadMap("/maps/mymap2.txt", 1);
+		loadMap("/maps/laboratory.txt", 1);
+		loadMap("/maps/mymap2.txt", 2);
+
 	}
 	public void getTileImage() {
 		// Placeholder
@@ -42,7 +44,7 @@ public class TileManager {
 		setup(8, "mydirt", false);
 		setup(9, "mydirt", false);
 		
-		// Real setup
+		// Map 1
 		setup(10, "mydirt", false);
 		setup(11, "grass01", false);
 		setup(12, "table2", true);
@@ -139,7 +141,23 @@ public class TileManager {
 		setup(123, "black", true);
 		setup(124, "fence1(124)", true);
 		setup(125, "fence2(125)", true);
-		
+
+		// Laboratory
+		setup(150, "lab_wall_top", true);
+		setup(151, "lab_wall_left", true);
+		setup(152, "lab_wall_right", true);
+		setup(153, "lab_wall_down", true);
+		setup(154, "lab_wall_top_left", true);
+		setup(155, "lab_wall_top_right", true);
+		setup(156, "lab_wall_bottom_left", true);
+		setup(157, "lab_wall_bottom_right", true);
+		setup(158, "lab_floor_group_top_left", false);
+		setup(159, "lab_floor_group_top_right", false);
+		setup(160, "lab_floor_group_bottom_left", false);
+		setup(161, "lab_floor_group_bottom_right", false);
+		setup(162, "lab_wall_with_water_pipes_left", true);
+		setup(163, "lab_wall_with_water_pipes_right", true);
+		setup(164, "lab_wall_with_windows", true);
 		
 	}
 	

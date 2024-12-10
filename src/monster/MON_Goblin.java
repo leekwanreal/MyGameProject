@@ -6,7 +6,6 @@ import data.Progress;
 import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Key_Secret_Room;
-import object.OBJ_Potion_Red;
 import object.OBJ_Rock;
 
 public class MON_Goblin extends Entity {

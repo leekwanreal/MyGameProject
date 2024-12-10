@@ -8,7 +8,6 @@ import object.OBJ_Coin_Bronze;
 import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
 import object.OBJ_Rock;
-import monster.MON_GreenSlime;
 
 public class MON_BigSlime extends Entity{
 	public MON_BigSlime(GamePanel gp) {

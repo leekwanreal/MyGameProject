@@ -4,12 +4,7 @@ import java.util.Random;
 
 import entity.Entity;
 import main.GamePanel;
-import object.OBJ_Coin_Bronze;
-import object.OBJ_Heart;
-import object.OBJ_ManaCrystal;
 import object.OBJ_Potion_Red;
-import object.OBJ_Rock;
-import object.OBJ_Arrow;
 import object.OBJ_Fireball;
 
 public class MON_Witch extends Entity{
