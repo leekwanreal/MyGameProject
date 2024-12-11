@@ -95,13 +95,37 @@ public class CutsceneManager {
             }
         }
         if (scenePhase == 7) {
+            y = gp.screenHeight/2;
+            drawBlackBackground(1f);
+            drawString(1f, 60f, y, "Damsterams Has N Fallen", 40);
+            if (counterReached(50) == true) {
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 8) {
+            y = gp.screenHeight/2;
+            drawBlackBackground(1f);
+            drawString(1f, 60f, y, "Damsterams Has NO Fallen", 40);
+            if (counterReached(50) == true) {
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 9) {
+            y = gp.screenHeight/2;
+            drawBlackBackground(1f);
+            drawString(1f, 60f, y, "Damsterams Has NOT Fallen", 40);
+            if (counterReached(50) == true) {
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 10) {
             drawBlackBackground(1f);
             drawString(1f, 38f, y, endCredit, 40);
             if (counterReached(480) == true) {
                 scenePhase++;
             }
         }
-        if (scenePhase == 8) {
+        if (scenePhase == 11) {
             drawBlackBackground(1f);
             y--;
             drawString(1f, 38f, y, endCredit, 40);
