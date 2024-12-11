@@ -33,7 +33,7 @@ public class AssetSetter {
 	}
 	
 	public void setObject() {
-		
+		// Map 1
 		int mapNum = 0;
 		int i = 0;
 		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_Uzi(gp));
@@ -118,27 +118,34 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*21;
 		gp.obj[mapNum][i].worldY = gp.tileSize*22;
 		i++;
+		// Map 2 
+		i = 0;
+		mapNum = 1;
 		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_AK47(gp));
 		gp.obj[mapNum][i].setLoot();
-		gp.obj[mapNum][i].worldX = gp.tileSize*28;
-		gp.obj[mapNum][i].worldY = gp.tileSize*34;
+		gp.obj[mapNum][i].worldX = gp.tileSize*31;
+		gp.obj[mapNum][i].worldY = gp.tileSize*20;
 		i++;
 		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_AWM(gp));
 		gp.obj[mapNum][i].setLoot();
-		gp.obj[mapNum][i].worldX = gp.tileSize*28;
-		gp.obj[mapNum][i].worldY = gp.tileSize*35;
+		gp.obj[mapNum][i].worldX = gp.tileSize*32;
+		gp.obj[mapNum][i].worldY = gp.tileSize*20;
 		i++;
 		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_Shotgun(gp));
 		gp.obj[mapNum][i].setLoot();
-		gp.obj[mapNum][i].worldX = gp.tileSize*28;
-		gp.obj[mapNum][i].worldY = gp.tileSize*38;
+		gp.obj[mapNum][i].worldX = gp.tileSize*31;
+		gp.obj[mapNum][i].worldY = gp.tileSize*29;
 		i++;
-		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_Key_Secret_Room(gp));
+		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_Key_Turret(gp));
 		gp.obj[mapNum][i].setLoot();
-		gp.obj[mapNum][i].worldX = gp.tileSize*28;
-		gp.obj[mapNum][i].worldY = gp.tileSize*39;
+		gp.obj[mapNum][i].worldX = gp.tileSize*32;
+		gp.obj[mapNum][i].worldY = gp.tileSize*29;
 		i++;
-		// Map 2
+		gp.obj[mapNum][i] = new Turret(gp);
+		gp.obj[mapNum][i].worldX = gp.tileSize * 35;
+		gp.obj[mapNum][i].worldY = gp.tileSize * 23;
+		i++;
+		// Map 3
 		i = 0;
 		mapNum = 2;
 		gp.obj[mapNum][i] = gp.turret;
