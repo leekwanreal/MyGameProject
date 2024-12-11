@@ -19,7 +19,7 @@ public class OBJ_Key_Secret_Room extends Entity {
 
 		int objIndex = getDetected(entity, gp.obj, "Secret Room Door");
 		if (objIndex != 999) {
-			gp.ui.currentDialogue = "You use the " + name + " and open the door.";
+			gp.ui.currentDialogue = "You used the " + name + " and opened the door.";
 			gp.obj[gp.currentMap][objIndex] = null;
 			return true;
 		}

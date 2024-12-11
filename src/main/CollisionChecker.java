@@ -56,6 +56,10 @@ public class CollisionChecker {
 		}
 	}
 	public int checkObject(Entity entity, boolean player) {
+		if (entity == gp.monster[2][0]) {
+			return 999;
+		}
+
 		int index = 999;
 		
 		for (int i = 0; i < gp.obj[1].length; ++i) {

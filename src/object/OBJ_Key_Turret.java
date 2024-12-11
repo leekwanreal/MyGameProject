@@ -20,8 +20,9 @@ public class OBJ_Key_Turret extends Entity {
 
 		int objIndex = getDetected(entity, gp.obj, "Turret");
 		if (objIndex != 999) {
-			gp.ui.currentDialogue = "You use the " + name + " and activate the weapon.\nNow use it to beat the goblin.";
+			gp.ui.currentDialogue = "You used the " + name + " and activated \nthe weapon. Now use it to beat the goblin.";
             gp.obj[gp.currentMap][objIndex].turnOn = true;
+			gp.player.inventory.add(new OBJ_Key_Turret(gp));
 			return true;
 		}
 		else {

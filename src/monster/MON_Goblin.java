@@ -5,6 +5,7 @@ import java.util.Random;
 import data.Progress;
 import entity.Entity;
 import main.GamePanel;
+import object.OBJ_Key_School_Gate;
 import object.OBJ_Key_Secret_Room;
 import object.OBJ_Rock;
 
@@ -20,7 +21,7 @@ public class MON_Goblin extends Entity {
 		boss = true;
 		name = "Goblin";
 		speed = 2;
-		maxLife = 50;  
+		maxLife = 1;  
 		life = maxLife;
 		maxDefense = 3;
 		maxSpeed = 2;
@@ -110,8 +111,7 @@ public class MON_Goblin extends Entity {
 	}
 	
 	public void checkDrop() {
-		Progress.bossDefeated = true;
-
-		dropItem(new OBJ_Key_Secret_Room(gp));
+		gp.npc[2][0].speed = 2;
+		dropItem(new OBJ_Key_School_Gate(gp));
 	}
 }

@@ -27,11 +27,35 @@ public class NPC_Girl extends Entity{
 	}
 	
 	public void setDialogue() {
-		dialogue[0] = "Open the chests in the cell.";
-		dialogue[1] = "The keys in there can lead us to the football \nstadium.";
-		dialogue[2] = "Then we have to get pass a lot of witches.";
-		dialogue[3] = "After that we must get to the school gate to \nescape.";
-		
+		clearDialogue();
+		if (gp.currentMap == 0) {
+			dialogue[0] = "Eva: Open the chests in the cell.";
+			dialogue[1] = "Marc: What's in the chests?";
+			dialogue[2] = "Eva: The keys in there can lead us to the \nfootball stadium.";
+			dialogue[3] = "Eva: We have to get pass a lot of witches.";
+			dialogue[4] = "Marc: And then where to?";
+			dialogue[5] = "Eva: After that we must get to the Laboratory.";
+		}
+		if (gp.currentMap == 1) {
+			dialogue[0] = "Eva: This is the Laboratory.";
+			dialogue[1] = "Marc: What should we do here?";
+			dialogue[2] = "Eva: There are many weapons, but the most \nimportant one is the turret.";
+			dialogue[3] = "Marc: How do we activate it?";
+			dialogue[4] = "Eva: Get the turret key in one of these chests. \nStand at the top left corner of the turret to activate.";
+		}
+		if (gp.currentMap == 2) {
+			dialogue[0] = "Eva: We need to escape the school.";
+			dialogue[1] = "Marc: Do you have the keys?";
+			dialogue[2] = "Eva: No, but the Goblin does.";
+			dialogue[3] = "Marc: You should stay here and let me \n use the turret to defeat the Goblin.";
+			dialogue[4] = "Eva: Okay. Be careful!";
+		}
+	}
+
+	public void clearDialogue() {
+		for (int i = 0; i < dialogue.length; i++) {
+			dialogue[i] = null;
+		}
 	}
 	
 	public void setAction() {

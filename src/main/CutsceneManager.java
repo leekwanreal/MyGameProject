@@ -82,7 +82,7 @@ public class CutsceneManager {
                         + "its special weapon.";
             drawString(alpha, 38f, 200, text, 70);
         
-            if (counterReached(600) == true) {
+            if (counterReached(300) == true) {
                 scenePhase++;
             }
         }
@@ -98,7 +98,7 @@ public class CutsceneManager {
             y = gp.screenHeight/2;
             drawBlackBackground(1f);
             drawString(1f, 60f, y, "Damsterams Has N Fallen", 40);
-            if (counterReached(50) == true) {
+            if (counterReached(30) == true) {
                 scenePhase++;
             }
         }
@@ -106,7 +106,7 @@ public class CutsceneManager {
             y = gp.screenHeight/2;
             drawBlackBackground(1f);
             drawString(1f, 60f, y, "Damsterams Has NO Fallen", 40);
-            if (counterReached(50) == true) {
+            if (counterReached(30) == true) {
                 scenePhase++;
             }
         }
@@ -114,14 +114,14 @@ public class CutsceneManager {
             y = gp.screenHeight/2;
             drawBlackBackground(1f);
             drawString(1f, 60f, y, "Damsterams Has NOT Fallen", 40);
-            if (counterReached(50) == true) {
+            if (counterReached(30) == true) {
                 scenePhase++;
             }
         }
         if (scenePhase == 10) {
             drawBlackBackground(1f);
             drawString(1f, 38f, y, endCredit, 40);
-            if (counterReached(480) == true) {
+            if (counterReached(600) == true) {
                 scenePhase++;
             }
         }
@@ -129,7 +129,12 @@ public class CutsceneManager {
             drawBlackBackground(1f);
             y--;
             drawString(1f, 38f, y, endCredit, 40);
-
+            if (counterReached(600) == true) {
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 12) {
+            gp.gameState = gp.titleState;
         }
     }
 

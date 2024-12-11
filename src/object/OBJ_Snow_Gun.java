@@ -14,7 +14,7 @@ public class OBJ_Snow_Gun extends Entity{
 		down1 = setup("/objects/snowgun.png",gp.tileSize,gp.tileSize);
 		attackValue = 0;
 		
-		description = "[" + name + "]\nDamage: 0\nSpeed: 15";
+		description = "[" + name + "]\nFreeze Monsters";
 		attackArea.width = 36;
 		attackArea.height = 36;
 	}

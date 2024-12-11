@@ -15,9 +15,9 @@ public class OBJ_Rocket extends Projectile {
 		
 		name = "Rock";
 		speed = 30;
-		maxLife = 80;
+		maxLife = 50;
 		life = maxLife;
-		attack = 5;
+		attack = 10;
 		useCost = 1;
 		alive = false;
 		getImage();
@@ -64,6 +64,45 @@ public class OBJ_Rocket extends Projectile {
 	public int getParticleMaxLife() {
 		int maxLife = 20;
 		return maxLife;
+	}
+
+	@Override
+	public void update() {
+		int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+		if (monsterIndex != 999) {
+			gp.player.damageMonster(monsterIndex, attack);
+			generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
+			alive = false;
+		} 
+
+		collisionOn = false;
+		gp.cChecker.checkTile(this);
+		if (collisionOn) {
+			alive = false;				
+		}
+				
+		switch(direction) {
+			case "up": worldY -= speed; break;
+			case "down": worldY += speed; break;
+			case "left": worldX -= speed; break;
+			case "right": worldX += speed; break;
+			}
+			
+			life--;
+			if (life <= 0) {
+				alive = false;
+			}
+			
+			spriteCounter++;
+			if (spriteCounter > 12) {
+				if (spriteNum == 1) {
+					spriteNum = 2;
+				}
+				else if (spriteNum == 1) {
+					spriteNum = 1;
+				}
+				spriteCounter = 0;
+			}
 	}
 
 }

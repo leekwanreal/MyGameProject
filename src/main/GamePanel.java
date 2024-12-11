@@ -234,8 +234,10 @@ public class GamePanel extends JPanel implements Runnable {
 					iTile[currentMap][i].update();
 				}
 			}
-			if (currentMap == 1 || currentMap == 2) {
-				obj[1][4].update(); // update turret's firing at map 2
+			if (currentMap == 1) {
+				obj[1][5].update(); 
+			}
+			if (currentMap == 2) {
 				turret.update();
 			}
 		}
@@ -302,11 +304,17 @@ public class GamePanel extends JPanel implements Runnable {
 			Collections.sort(entityList, new Comparator<Entity>(){
 				@Override
 				public int compare(Entity e1, Entity e2) {
+					if (e1 == turret && e2 == monster[2][0]) {
+						return -1;
+					}
+					if (e1 == monster[2][0] && e2 == turret) {
+						return 1;
+					}
 					int result = Integer.compare(e1.worldY, e2.worldY);
 					return result;
 				}
 			});
-			
+
 			// Draw entities
 			for (int i = 0; i < entityList.size(); ++i) {
 				entityList.get(i).draw(g2);

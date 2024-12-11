@@ -3,7 +3,7 @@ package entity;
 import main.GamePanel;
 
 public class Projectile extends Entity{
-	Entity user;
+	protected Entity user;
 	protected boolean snow = false;
 	
 	public Projectile(GamePanel gp) {
@@ -45,6 +45,11 @@ public class Projectile extends Entity{
 				generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
 				alive = false;
 			} 
+			collisionOn = false;
+			gp.cChecker.checkTile(this);
+			if (collisionOn) {
+				alive = false;				
+			}
 		}
 		
 		if (user != gp.player && user != gp.turret) {

@@ -289,7 +289,7 @@ public class Entity {
 		        }
 			}
 			
-			if (!frozen) {
+			if (!frozen && this != gp.npc[2][0]) {
 				speed = maxSpeed;
 			}
 			

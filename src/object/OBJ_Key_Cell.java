@@ -19,7 +19,7 @@ public class OBJ_Key_Cell extends Entity {
 
 		int objIndex = getDetected(entity, gp.obj, "Cell Gate");
 		if (objIndex != 999) {
-			gp.ui.currentDialogue = "You use the " + name + " and open the Cell.";
+			gp.ui.currentDialogue = "You used the " + name + " and opened the Cell.";
 			gp.obj[gp.currentMap][objIndex] = null;
 			return true;
 		}

@@ -17,15 +17,15 @@ public class OBJ_Gate_Left extends Entity {
 		type = type_obstacle;
 		
 		solidArea.x = 0; 
-		solidArea.y = 0;
-		solidArea.width = 48;
-		solidArea.height = 48;
+		solidArea.y = 32;
+		solidArea.width = 96;
+		solidArea.height = 64;
 		solidAreaDefaultX = solidArea.x;
 		solidAreaDefaultY = solidArea.y;
 	}
 
 	public void interact() {
 		gp.gameState = gp.dialogueState;
-		gp.ui.currentDialogue = "You need a key to open this door.";
+		gp.ui.currentDialogue = "You need a key to open this gate.";
 	}
 }

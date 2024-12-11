@@ -138,12 +138,10 @@ public class Player extends Entity {
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
 		inventory.add(new OBJ_Pistol(gp));
-		inventory.add(new OBJ_Snow_Gun(gp));
 		OBJ_Potion_Red potion = new OBJ_Potion_Red(gp);
 		potion.amount = 3;
 		inventory.add(potion);
-		inventory.add(new OBJ_Key_Turret(gp));
-		inventory.add(new OBJ_Key_Cell(gp));
+
 	}
 	
 	public int getAttack() {

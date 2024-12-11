@@ -21,9 +21,11 @@ import object.OBJ_Key_Room_1;
 import object.OBJ_Key_Room_2;
 import object.OBJ_Key_Room_3;
 import object.OBJ_Key_Secret_Room;
+import object.OBJ_Key_Turret;
 import object.OBJ_Rifle;
 import object.OBJ_Shield_Blue;
 import object.OBJ_Shotgun;
+import object.OBJ_Snow_Gun;
 import object.OBJ_Uzi;
 
 public class AssetSetter {
@@ -141,6 +143,11 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*32;
 		gp.obj[mapNum][i].worldY = gp.tileSize*29;
 		i++;
+		gp.obj[mapNum][i] = new OBJ_Chest(gp, new OBJ_Snow_Gun(gp));
+		gp.obj[mapNum][i].setLoot();
+		gp.obj[mapNum][i].worldX = gp.tileSize*33;
+		gp.obj[mapNum][i].worldY = gp.tileSize*20;
+		i++;
 		gp.obj[mapNum][i] = new Turret(gp);
 		gp.obj[mapNum][i].worldX = gp.tileSize * 35;
 		gp.obj[mapNum][i].worldY = gp.tileSize * 23;
@@ -186,9 +193,9 @@ public class AssetSetter {
 
 		mapNum = 2;
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
-		gp.npc[mapNum][0].worldX = gp.tileSize * 14;
-		gp.npc[mapNum][0].worldY = gp.tileSize * 16;
-		//gp.npc[mapNum][0].speed = 0;
+		gp.npc[mapNum][0].worldX = gp.tileSize * 16;
+		gp.npc[mapNum][0].worldY = gp.tileSize * 10;
+		gp.npc[mapNum][0].speed = 0;
 
 	}
 	
