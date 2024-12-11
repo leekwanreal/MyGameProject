@@ -234,7 +234,8 @@ public class GamePanel extends JPanel implements Runnable {
 					iTile[currentMap][i].update();
 				}
 			}
-			if (currentMap == 2) {
+			if (currentMap == 1 || currentMap == 2) {
+				obj[1][4].update(); // update turret's firing at map 2
 				turret.update();
 			}
 		}
