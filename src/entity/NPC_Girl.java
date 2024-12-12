@@ -41,7 +41,7 @@ public class NPC_Girl extends Entity{
 			dialogue[1] = "Marc: What should we do here?";
 			dialogue[2] = "Eva: There are many weapons, but the most \nimportant one is the turret.";
 			dialogue[3] = "Marc: How do we activate it?";
-			dialogue[4] = "Eva: Get the turret key in one of these chests. \nStand at the top left corner of the turret to activate.";
+			dialogue[4] = "Eva: Get the turret key in one of these chests. \nStand at the top left corner of the turret to \nactivate.";
 		}
 		if (gp.currentMap == 2) {
 			dialogue[0] = "Eva: We need to escape the school.";
@@ -59,7 +59,7 @@ public class NPC_Girl extends Entity{
 	}
 	
 	public void setAction() {
-
+		setDialogue();
 		if (onPath == true) {
 			int goalCol = (gp.player.worldX + gp.player.solidArea.x)/gp.tileSize;
 			int goalRow = (gp.player.worldY + gp.player.solidArea.y)/gp.tileSize;

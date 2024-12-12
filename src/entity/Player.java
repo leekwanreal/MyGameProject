@@ -16,12 +16,9 @@ import object.OBJ_Snowball;
 import object.OBJ_Bullet_Shotgun;
 import object.OBJ_Bullet_Uzi;
 import object.OBJ_Fist;
-import object.OBJ_Key_Cell;
-import object.OBJ_Key_Turret;
 import object.OBJ_Pistol;
 import object.OBJ_Potion_Red;
 import object.OBJ_Shield_Wood;
-import object.OBJ_Snow_Gun;
 
 public class Player extends Entity {
 	KeyHandler keyH;
@@ -70,7 +67,7 @@ public class Player extends Entity {
 		
 		// Player Status
 		level = 1;
-		maxLife = 6;
+		maxLife = 14;
 		life = maxLife;
 		maxMana = 4;
 		mana = maxMana;
@@ -139,7 +136,7 @@ public class Player extends Entity {
 		inventory.add(currentShield);
 		inventory.add(new OBJ_Pistol(gp));
 		OBJ_Potion_Red potion = new OBJ_Potion_Red(gp);
-		potion.amount = 3;
+		potion.amount = 6;
 		inventory.add(potion);
 
 	}

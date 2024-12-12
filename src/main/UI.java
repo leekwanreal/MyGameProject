@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -10,6 +11,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
@@ -30,6 +33,7 @@ public class UI {
 	public int slotCol = 0;
 	public int slotRow = 0;
 	int subState = 0;
+	BufferedImage background1, background2, background3, background4;
 	
 	public UI(GamePanel gp) {
 		this.gp = gp;
@@ -54,6 +58,7 @@ public class UI {
 		Entity crystal = new OBJ_ManaCrystal(gp);
 		crystal_full = crystal.image;
 		crystal_blank = crystal.image2;
+		setup();
 		
 	}
 	
@@ -228,108 +233,90 @@ public class UI {
 		}
 	}
 	
-	public void drawTitleScreen() {
-		if (titleScreenState == 0) {
-			g2.setColor(Color.black);
-			g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+	public void drawTitleScreen() {				
+		g2.setColor(Color.black);
+		g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+		// Draw background
+		float alpha = 0.5f; // 50% transparency
+		AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
+		g2.setComposite(ac);
+		g2.drawImage(background1, 0, 0, null);
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+	
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 70F));
+		String text = "Damsterams";
+		int x = getXforCenteredText(text);
+		int y = gp.tileSize*2;
 		
-			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 70F));
-			String text = "Damsterarms";
-			int x = getXforCenteredText(text);
-			int y = gp.tileSize*2;
-					
-			// Shadow
-			//g2.setColor(Color.gray);
-			//g2.drawString(text, x + 5, y);
-			
-			// Main Color
-			g2.setColor(Color.white);
-			g2.drawString(text, x, y);
-			
-			text = "Has Fallen";
-			x = getXforCenteredText(text);
-			y += gp.tileSize*2;
-			// Shadow
-			//g2.setColor(Color.gray);
-			//g2.drawString(text, x + 5, y);
-			
-			// Main Color
-			g2.setColor(Color.white);
-			g2.drawString(text, x, y);
-			
-			// Player Image
-			x = gp.screenWidth/2 - gp.tileSize/2;
-			y += gp.tileSize;
-			g2.drawImage(gp.player.avatar, x-gp.tileSize/2, y, gp.tileSize*4, gp.tileSize*2, null);
-			
-			// Menu
-			Color c = new Color(128,128,128,220);
-			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
-			
-			text = "NEW GAME";
-			x = getXforCenteredText(text);
-			y += gp.tileSize*3.5;
-			g2.drawString(text, x, y);
-			if (commandNum == 0) {
-				g2.drawString(">", x - gp.tileSize, y);
-			}
-			
-			text = "LOAD GAME";
-			x = getXforCenteredText(text);
-			y += gp.tileSize;
-			g2.drawString(text, x, y);
-			if (commandNum == 1) {
-				g2.drawString(">", x - gp.tileSize, y);
-			}
-			
-			text = "QUIT";
-			x = getXforCenteredText(text);
-			y += gp.tileSize;
-			g2.drawString(text, x, y);
-			if (commandNum == 2) {
-				g2.drawString(">", x - gp.tileSize, y);
-			}
+		g2.setColor(Color.black);
+		g2.drawString(text, x, y+5);
+		g2.setColor(Color.white);
+		g2.drawString(text, x, y);
+		
+		text = "Has Fallen";
+		x = getXforCenteredText(text);
+		y += gp.tileSize*2;
+		
+		g2.setColor(Color.black);
+		g2.drawString(text, x, y+5);
+		g2.setColor(Color.white);
+		g2.drawString(text, x, y);
+		
+		// Menu shadow.
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+		g2.setColor(Color.black);
+
+		text = "NEW GAME";
+		x = getXforCenteredText(text);
+		y += gp.tileSize*3.5;
+		g2.drawString(text, x, y+3);
+		if (commandNum == 0) {
+			g2.drawString(">", x - gp.tileSize, y+3);
 		}
-		else if (titleScreenState == 1) {
-			g2.setColor(Color.white);
-			g2.setFont(g2.getFont().deriveFont(42F));
-			
-			String text = "Select your class!";
-			int x = getXforCenteredText(text);
-			int y = gp.tileSize*3;
-			g2.drawString(text, x, y);
-			
-			text = "Fighter";
-			x = getXforCenteredText(text);
-			y += gp.tileSize*3;
-			g2.drawString(text, x, y);
-			if (commandNum == 0) {
-				g2.drawString(">", x-gp.tileSize, y);
-			}
-			
-			text = "Thief";
-			x = getXforCenteredText(text);
-			y += gp.tileSize;
-			g2.drawString(text, x, y);
-			if (commandNum == 1) {
-				g2.drawString(">", x-gp.tileSize, y);
-			}
-			
-			text = "Sorcerer";
-			x = getXforCenteredText(text);
-			y += gp.tileSize;
-			g2.drawString(text, x, y);
-			if (commandNum == 2) {
-				g2.drawString(">", x-gp.tileSize, y);
-			}
-			
-			text = "Back";
-			x = getXforCenteredText(text);
-			y += gp.tileSize;
-			g2.drawString(text, x, y);
-			if (commandNum == 3) {
-				g2.drawString(">", x-gp.tileSize, y);
-			}
+		
+		text = "LOAD GAME";
+		x = getXforCenteredText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y+3);
+		if (commandNum == 1) {
+			g2.drawString(">", x - gp.tileSize, y+3);
+		}
+		
+		text = "QUIT";
+		x = getXforCenteredText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y+3);
+		if (commandNum == 2) {
+			g2.drawString(">", x - gp.tileSize, y+3);
+		}
+		
+		// Menu white
+		g2.setColor(Color.white);
+		y = gp.tileSize * 4;
+
+		text = "NEW GAME";
+		x = getXforCenteredText(text);
+		y += gp.tileSize*3.5;
+		g2.drawString(text, x, y);
+		if (commandNum == 0) {
+			g2.drawString(">", x - gp.tileSize, y);
+		}
+		
+		text = "LOAD GAME";
+		x = getXforCenteredText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y);
+		if (commandNum == 1) {
+			g2.drawString(">", x - gp.tileSize, y);
+		}
+		
+		text = "QUIT";
+		x = getXforCenteredText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y);
+		if (commandNum == 2) {
+			g2.drawString(">", x - gp.tileSize, y);
 		}
 	}
 	
@@ -732,7 +719,7 @@ public class UI {
 		textY += gp.tileSize;
 		
 		g2.drawString("Move", textX, textY); textY += gp.tileSize;
-		g2.drawString("Confirm/Attack", textX, textY); textY += gp.tileSize;
+		g2.drawString("Confirm/Interact", textX, textY); textY += gp.tileSize;
 		g2.drawString("Shoot/Cast", textX, textY); textY += gp.tileSize;
 		g2.drawString("Character Screen", textX, textY); textY += gp.tileSize;
 		g2.drawString("Pause", textX, textY); textY += gp.tileSize;
@@ -849,5 +836,25 @@ public class UI {
 		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 		int x = tailX - length;
 		return x;
+	}
+
+	public void setup() {
+		UtilityTool uTool = new UtilityTool();
+		try {	
+			background1 = ImageIO.read(getClass().getResourceAsStream("/background/background.png"));
+			background1 = uTool.scaleImage(background1, gp.screenWidth, gp.screenHeight);
+	
+			background2 = ImageIO.read(getClass().getResourceAsStream("/background/rescueNPC.png"));
+			background2 = uTool.scaleImage(background1, gp.screenWidth, gp.screenHeight);
+	
+			background3 = ImageIO.read(getClass().getResourceAsStream("/background/vsGoblin.png"));
+			background3 = uTool.scaleImage(background1, gp.screenWidth, gp.screenHeight);
+	
+			background4 = ImageIO.read(getClass().getResourceAsStream("/background/victory.png"));
+			background4 = uTool.scaleImage(background1, gp.screenWidth, gp.screenHeight);				
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

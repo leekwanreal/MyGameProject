@@ -3,6 +3,10 @@ package main;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class CutsceneManager {
     GamePanel gp;
@@ -13,6 +17,7 @@ public class CutsceneManager {
     float alpha = 0f;
     int y;
     String endCredit;
+    BufferedImage background_ending;
 
     public final int ending = 0;
 
@@ -26,6 +31,8 @@ public class CutsceneManager {
                 + "Hoang Anh Vu\n\n"
                 + "Nguyen Trinh Minh Hieu\n\n"
                 + "Vu Tien Dat";
+
+        getBackground();
     }
 
     public void draw(Graphics2D g2) {
@@ -89,6 +96,7 @@ public class CutsceneManager {
         if (scenePhase == 6) {
             y = gp.screenHeight/2;
             drawBlackBackground(1f);
+            drawBackground(0.5f);
             drawString(1f, 60f, y, "Damsterams Has Fallen", 40);
             if (counterReached(300) == true) {
                 scenePhase++;
@@ -97,6 +105,7 @@ public class CutsceneManager {
         if (scenePhase == 7) {
             y = gp.screenHeight/2;
             drawBlackBackground(1f);
+            drawBackground(0.5f);
             drawString(1f, 60f, y, "Damsterams Has N Fallen", 40);
             if (counterReached(30) == true) {
                 scenePhase++;
@@ -105,6 +114,7 @@ public class CutsceneManager {
         if (scenePhase == 8) {
             y = gp.screenHeight/2;
             drawBlackBackground(1f);
+            drawBackground(0.5f);
             drawString(1f, 60f, y, "Damsterams Has NO Fallen", 40);
             if (counterReached(30) == true) {
                 scenePhase++;
@@ -113,6 +123,7 @@ public class CutsceneManager {
         if (scenePhase == 9) {
             y = gp.screenHeight/2;
             drawBlackBackground(1f);
+            drawBackground(0.5f);
             drawString(1f, 60f, y, "Damsterams Has NOT Fallen", 40);
             if (counterReached(30) == true) {
                 scenePhase++;
@@ -120,6 +131,7 @@ public class CutsceneManager {
         }
         if (scenePhase == 10) {
             drawBlackBackground(1f);
+            drawBackground(0.5f);
             drawString(1f, 38f, y, endCredit, 40);
             if (counterReached(600) == true) {
                 scenePhase++;
@@ -127,6 +139,7 @@ public class CutsceneManager {
         }
         if (scenePhase == 11) {
             drawBlackBackground(1f);
+            drawBackground(0.5f);
             y--;
             drawString(1f, 38f, y, endCredit, 40);
             if (counterReached(600) == true) {
@@ -150,10 +163,27 @@ public class CutsceneManager {
         return counterReached;
     }
 
+    public void getBackground() {
+        UtilityTool uTool = new UtilityTool();
+		try {	
+			background_ending = ImageIO.read(getClass().getResourceAsStream("/background/victory.png"));
+			background_ending = uTool.scaleImage(background_ending, gp.screenWidth, gp.screenHeight);				
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+    }
+
     public void drawBlackBackground(float alpha) {
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
         g2.setColor(Color.black);
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+    }
+
+    public void drawBackground(float alpha) {
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+        g2.drawImage(background_ending, 0, 0, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
 

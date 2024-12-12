@@ -10,7 +10,7 @@ public class Node {
     boolean solid;
     boolean open;
     boolean checked;
-    
+
     public Node(int col, int row) {
         this.row = row;
         this.col = col;

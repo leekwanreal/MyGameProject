@@ -1,7 +1,5 @@
 package main;
 
-import data.Progress;
-
 public class EventHandler {
 	GamePanel gp;
 	EventRect eventRect[][][];
@@ -156,9 +154,9 @@ public class EventHandler {
 			gp.gameState = gameState;
 			gp.player.attackCanceled = true;
 			switch(talkToNPCindex) {
-			case 0: gp.ui.currentDialogue = "Help me please!"; break;
-			case 1: gp.ui.currentDialogue = "I am trapped here because the monsters \nhave taken over the school!"; break;
-			case 2: gp.ui.currentDialogue = "You need to rescue the school from the \nmonsters!"; break;
+			case 0: gp.ui.currentDialogue = "Eva: Help me please!"; break;
+			case 1: gp.ui.currentDialogue = "Eva: I am trapped here because the monsters \nhave taken over the school!"; break;
+			case 2: gp.ui.currentDialogue = "Eva: You need to rescue the school from the \nmonsters!"; break;
 
 			}
 			talkToNPCindex++;

@@ -1,7 +1,6 @@
 package ai;
 
 import java.util.ArrayList;
-
 import main.GamePanel;
 
 public class PathFinder {
@@ -35,8 +34,7 @@ public class PathFinder {
                 node[j][i].checked = false;
                 node[j][i].solid = false;
             }
-        } 
-
+        }
         openList.clear();
         pathList.clear();
         goalReached = false;
@@ -45,7 +43,6 @@ public class PathFinder {
 
     public void setNodes(int startCol, int startRow, int goalCol, int goalRow) {
         resetNodes();
-
         startNode = node[startCol][startRow];
         currentNode = startNode;
         goalNode = node[goalCol][goalRow];
@@ -54,19 +51,21 @@ public class PathFinder {
         // Check Interactive Tiles
         for (int k = 0; k < gp.iTile[1].length; ++k) {
             if (gp.iTile[gp.currentMap][k] != null && gp.iTile[gp.currentMap][k].destructible == true) {
-                int itCol = gp.iTile[gp.currentMap][k].worldX/gp.tileSize;
-                int itRow = gp.iTile[gp.currentMap][k].worldY/gp.tileSize;
+                int itCol = gp.iTile[gp.currentMap][k].worldX / gp.tileSize;
+                int itRow = gp.iTile[gp.currentMap][k].worldY / gp.tileSize;
                 node[itCol][itRow].solid = true;
             }
-        }        
-        
+        }
+
         for (int i = 0; i < gp.maxWorldRow; ++i) {
             for (int j = 0; j < gp.maxWorldCol; ++j) {
                 // Check Tiles
                 int tileNum = gp.tileM.mapTileNum[gp.currentMap][j][i];
+
                 if (gp.tileM.tile[tileNum].collision == true) {
                     node[j][i].solid = true;
                 }
+
                 // Set Cost
                 getCost(node[j][i]);
             }
@@ -78,10 +77,12 @@ public class PathFinder {
         int xDistance = Math.abs(node.col - startNode.col);
         int yDistance = Math.abs(node.row - startNode.row);
         node.gCost = xDistance + yDistance;
+
         // H Cost
         xDistance = Math.abs(node.col - goalNode.col);
         yDistance = Math.abs(node.row - goalNode.row);
         node.hCost = xDistance + yDistance;
+
         // F Cost
         node.fCost = node.gCost + node.hCost;
     }
@@ -97,19 +98,22 @@ public class PathFinder {
 
             // Open the Up node
             if (row - 1 >= 0) {
-                openNode(node[col][row-1]);
+                openNode(node[col][row - 1]);
             }
+
             // open the Left node
             if (col - 1 >= 0) {
-                openNode(node[col-1][row]);
+                openNode(node[col - 1][row]);
             }
+
             // Open the Down node
             if (row + 1 < gp.maxWorldRow) {
-                openNode(node[col][row+1]);
+                openNode(node[col][row + 1]);
             }
+
             // Open the Right node
             if (col + 1 < gp.maxWorldCol) {
-                openNode(node[col+1][row]);
+                openNode(node[col + 1][row]);
             }
 
             // Find the best node
@@ -122,6 +126,7 @@ public class PathFinder {
                     bestNodeIndex = i;
                     bestNodefCost = openList.get(i).fCost;
                 }
+
                 // If fcost is equal, check the g cost;
                 else if (openList.get(i).fCost == bestNodefCost) {
                     if (openList.get(i).gCost < openList.get(bestNodeIndex).gCost) {
@@ -142,10 +147,8 @@ public class PathFinder {
                 goalReached = true;
                 trackThePath();
             }
-
             step++;
         }
-
         return goalReached;
     }
 
@@ -165,5 +168,4 @@ public class PathFinder {
             current = current.parent;
         }
     }
-
 }
