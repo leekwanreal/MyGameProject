@@ -14,7 +14,7 @@ public class TileManager {
     GamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][][];
-    boolean drawPath = false; //
+    boolean drawPath = false;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
@@ -27,18 +27,6 @@ public class TileManager {
     }
 
     public void getTileImage() {
-        // Placeholder
-        setup(0, "mydirt", false);
-        setup(1, "mydirt", false);
-        setup(2, "mydirt", false);
-        setup(3, "mydirt", false);
-        setup(4, "mydirt", false);
-        setup(5, "mydirt", false);
-        setup(6, "mydirt", false);
-        setup(7, "mydirt", false);
-        setup(8, "mydirt", false);
-        setup(9, "mydirt", false);
-
         // Map 1
         setup(10, "mydirt", false);
         setup(11, "grass01", false);
@@ -198,44 +186,10 @@ public class TileManager {
                 int screenX = worldX - gp.player.worldX + gp.player.screenX;
                 int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-				/*
-                // Stop moving the camera at the edge
-                if (gp.player.screenX > gp.player.worldX) {
-                    screenX = worldX;
-                }
-
-                if (gp.player.screenY > gp.player.worldY) {
-                    screenY = worldY;
-                }
-                int rightOffset = gp.screenWidth - gp.player.screenX;
-
-                if (rightOffset > gp.worldWidth - gp.player.worldX) {
-                    screenX = gp.screenWidth - (gp.worldWidth - worldX);
-                }
-                int bottomOffset = gp.screenHeight - gp.player.screenY;
-
-                if (bottomOffset > gp.worldHeight - gp.player.worldY) {
-                    screenY = gp.screenHeight - (gp.worldHeight - worldY);
-                }
-
                 if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                    worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                    worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                    worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-                    g2.drawImage(tile[tileNum].image, screenX, screenY, null);
-                }
-                else if (gp.player.screenX > gp.player.worldX ||
-                         gp.player.screenY > gp.player.worldY ||
-                         rightOffset > gp.worldWidth - gp.player.worldX ||
-                         bottomOffset > gp.worldHeight - gp.player.worldY) {
-                    g2.drawImage(tile[tileNum].image, screenX, screenY, null);
-                }
-                */
-
-                if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                    worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                    worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                    worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
+                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
                     g2.drawImage(tile[tileNum].image, screenX, screenY, null);
                 }
             }

@@ -48,15 +48,6 @@ public class PathFinder {
         goalNode = node[goalCol][goalRow];
         openList.add(currentNode);
 
-        // Check Interactive Tiles
-        for (int k = 0; k < gp.iTile[1].length; ++k) {
-            if (gp.iTile[gp.currentMap][k] != null && gp.iTile[gp.currentMap][k].destructible == true) {
-                int itCol = gp.iTile[gp.currentMap][k].worldX / gp.tileSize;
-                int itRow = gp.iTile[gp.currentMap][k].worldY / gp.tileSize;
-                node[itCol][itRow].solid = true;
-            }
-        }
-
         for (int i = 0; i < gp.maxWorldRow; ++i) {
             for (int j = 0; j < gp.maxWorldCol; ++j) {
                 // Check Tiles
@@ -128,10 +119,8 @@ public class PathFinder {
                 }
 
                 // If fcost is equal, check the g cost;
-                else if (openList.get(i).fCost == bestNodefCost) {
-                    if (openList.get(i).gCost < openList.get(bestNodeIndex).gCost) {
+                else if (openList.get(i).fCost == bestNodefCost && openList.get(i).gCost < openList.get(bestNodeIndex).gCost) {
                         bestNodeIndex = i;
-                    }
                 }
             }
 

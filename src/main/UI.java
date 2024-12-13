@@ -39,9 +39,7 @@ public class UI {
 		this.gp = gp;
 		try {
 			InputStream is = getClass().getResourceAsStream("/font/COOPBL.TTF");
-			cooperBlack = Font.createFont(Font.TRUETYPE_FONT, is);	
-			//is = getClass().getResourceAsStream("/font/Purisa Bold.tff");
-			//purisaB = Font.createFont(Font.TRUETYPE_FONT, is);
+			cooperBlack = Font.createFont(Font.TRUETYPE_FONT, is);
 			is.close();		}
 		catch (FontFormatException e) {
 			e.printStackTrace();
@@ -132,6 +130,7 @@ public class UI {
 		while (i < gp.player.life) {
 			g2.drawImage(heart_half, x, y, iconSize, iconSize, null);
 			i++;
+
 			if (i < gp.player.life) {
 				g2.drawImage(heart_full, x, y, iconSize, iconSize, null);
 			}
@@ -144,6 +143,7 @@ public class UI {
 		x = gp.tileSize/2-5;
 		y = (int) (gp.tileSize*1.25);
 		i = 0;
+
 		while (i < gp.player.maxMana) {
 			g2.drawImage(crystal_blank, x, y, iconSize, iconSize, null);
 			i++;
@@ -154,6 +154,7 @@ public class UI {
 		x = gp.tileSize/2-5;
 		y = (int) (gp.tileSize*1.25);
 		i = 0;
+		
 		while (i < gp.player.mana) {
 			g2.drawImage(crystal_full, x, y, iconSize, iconSize, null);
 			i++;

@@ -120,6 +120,7 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize*21;
 		gp.obj[mapNum][i].worldY = gp.tileSize*22;
 		i++;
+
 		// Map 2 
 		i = 0;
 		mapNum = 1;
@@ -152,6 +153,7 @@ public class AssetSetter {
 		gp.obj[mapNum][i].worldX = gp.tileSize * 35;
 		gp.obj[mapNum][i].worldY = gp.tileSize * 23;
 		i++;
+
 		// Map 3
 		i = 0;
 		mapNum = 2;
@@ -185,7 +187,6 @@ public class AssetSetter {
 			gp.npc[mapNum][0].worldX = gp.tileSize * 25;
 			gp.npc[mapNum][0].worldY = gp.tileSize * 36;
 		}
-
 		mapNum = 1;
 		gp.npc[mapNum][0] = new NPC_Girl(gp);
 		gp.npc[mapNum][0].worldX = gp.tileSize * 28;
@@ -200,7 +201,6 @@ public class AssetSetter {
 	}
 	
 	public void setMonster1() {
-		
 		int mapNum = 0;
 
 		// Spawn first wave
@@ -220,11 +220,11 @@ public class AssetSetter {
 		gp.monster[mapNum][3].worldX = gp.tileSize * 37;
 		gp.monster[mapNum][3].worldY = gp.tileSize * 10;
 
-		/*
 		new Thread(() -> {
 			try {
 				Thread.sleep(15000); // Pause for 15 seconds
-			} catch (InterruptedException e) {
+			}
+            catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
@@ -252,7 +252,8 @@ public class AssetSetter {
 		new Thread(() -> {
 			try {
 				Thread.sleep(30000); // Pause for 30 seconds
-			} catch (InterruptedException e) {
+			}
+			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
@@ -275,13 +276,9 @@ public class AssetSetter {
 				gp.monster[mapNum][11].worldY = gp.tileSize * 10;
 			}
 		}).start();
-
-		*/
-
 	}
 
 	public void setMonster2() {
-				
 		int mapNum = 0;
 
 		// Spawn first wave
@@ -296,7 +293,7 @@ public class AssetSetter {
 		gp.monster[mapNum][2] = new MON_Skeleton(gp);
 		gp.monster[mapNum][2].worldX = gp.tileSize * 10;
 		gp.monster[mapNum][2].worldY = gp.tileSize * 21;
-		/*
+		
 		new Thread(() -> {
 			try {
 				Thread.sleep(20000); // Pause for 20 seconds
@@ -342,11 +339,9 @@ public class AssetSetter {
 				gp.monster[mapNum][8].worldY = gp.tileSize * 21;
 			}
 		}).start();
-		*/
 	}
 
 	public void setMonster3() {
-				
 		int mapNum = 0;
 
 		// Spawn first wave
@@ -369,7 +364,7 @@ public class AssetSetter {
 		gp.monster[mapNum][4] = new MON_Witch(gp);
 		gp.monster[mapNum][4].worldX = gp.tileSize * 26;
 		gp.monster[mapNum][4].worldY = gp.tileSize * 39;
-		/* 
+		
 		new Thread(() -> {
 			try {
 				Thread.sleep(20000); // Pause for 20 seconds
@@ -431,7 +426,6 @@ public class AssetSetter {
 				gp.monster[mapNum][14].worldY = gp.tileSize * 39;
 			}
 		}).start();
-		*/
 	}
 
 	public void setMonster4() {
@@ -483,7 +477,7 @@ public class AssetSetter {
 		gp.monster[mapNum][5] = new MON_Witch(gp);
 		gp.monster[mapNum][5].worldX = gp.tileSize * 39;
 		gp.monster[mapNum][5].worldY = gp.tileSize * 39;
-		/* 
+		
 		new Thread(() -> {
 			try {
 				Thread.sleep(25000); // Pause for 25 seconds
@@ -553,12 +547,10 @@ public class AssetSetter {
 				gp.monster[mapNum][17].worldY = gp.tileSize * 39;
 			}
 		}).start();
-		*/
 	}
 
 	public void setBoss() {
 		int mapNum = 2;
-
 		gp.monster[mapNum][0] = new MON_Goblin(gp);
 		gp.monster[mapNum][0].worldX = gp.tileSize * 39;
 		gp.monster[mapNum][0].worldY = gp.tileSize * 27;
@@ -575,19 +567,5 @@ public class AssetSetter {
 		gp.setMonster3 = false;
 		gp.setMonster4 = false;
 		gp.setMonster5 = false;
-	}
-	
-	public void setInteractiveTile() {
-		/* 
-		int mapNum = 0;
-		int i = 0;
-		gp.iTile[i] = new IT_DryTree(gp,27,12);i++;
-		gp.iTile[i] = new IT_DryTree(gp,28,12);i++;
-		gp.iTile[i] = new IT_DryTree(gp,29,12);i++;
-		gp.iTile[i] = new IT_DryTree(gp,30,12);i++;
-		gp.iTile[i] = new IT_DryTree(gp,31,12);i++;
-		gp.iTile[i] = new IT_DryTree(gp,32,12);i++;
-		gp.iTile[i] = new IT_DryTree(gp,33,12);i++;
-		*/
 	}
 }

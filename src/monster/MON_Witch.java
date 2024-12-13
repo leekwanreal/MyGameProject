@@ -74,7 +74,7 @@ public class MON_Witch extends Entity {
                 actionLockCounter = 0;
             }
         }
-		int i = new Random().nextInt(100) + 1;
+        int i = new Random().nextInt(100) + 1;
 
         if (i > 99 && projectile.alive == false && shotCoolDown == 30) {
             projectile.set(worldX, worldY, direction, true, this);
@@ -91,8 +91,7 @@ public class MON_Witch extends Entity {
     public void checkDrop() {
         int i = new Random().nextInt(100) + 1;
 
-        if (i < 50)
-        {
+        if (i < 50) {
             dropItem(new OBJ_Potion_Red(gp));
         }
     }
