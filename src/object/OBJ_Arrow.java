@@ -42,9 +42,9 @@ public class OBJ_Arrow extends Projectile {
 		return haveResource;
 	}
 	
-	/*public void subtractResource(Entity user) {
+	public void subtractResource(Entity user) {
 		user.ammo -= useCost;
-	}*/
+	}
 	
 	public Color getParticleColor() {
 		Color color = new Color(40,50,0);

@@ -2,7 +2,7 @@ package entity;
 
 import main.GamePanel;
 
-public class Projectile extends Entity {
+public abstract class Projectile extends Entity {
     protected Entity user;
     protected boolean snow = false;
 
@@ -105,11 +105,7 @@ public class Projectile extends Entity {
         }
     }
 
-    public boolean haveResource(Entity user) {
-        boolean haveResource = false;
-        return haveResource;
-    }
+    public abstract boolean haveResource(Entity user);
 
-    public void subtractResource(Entity user) {
-    }
+    public abstract void subtractResource(Entity user);
 }

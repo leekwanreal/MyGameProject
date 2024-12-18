@@ -163,6 +163,7 @@ public class CutsceneManager {
 
         if (scenePhase == 12) {
             gp.gameState = gp.titleState;
+            scenePhase++;
         }
     }
 
